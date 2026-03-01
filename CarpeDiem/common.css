@@ -1,0 +1,363 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+/* This css file sets the basic settings, and the style of header and Activity class tag*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+a, a:link, a:visited{
+    color:inherit;
+    text-decoration:none;
+}
+li{
+    list-style:none;
+}
+.container{ 
+    width:1140px;
+    margin:0 auto;
+}
+body {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+section {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+button {
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+header{
+    position:fixed;
+    color:white;
+    top:0;
+    z-index:2;
+    width:100%;
+    padding:0 0.5rem;
+    background-color: black;
+}
+header .container{
+    color: white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+header nav ul{
+    display:flex;
+}
+header nav ul li{
+    padding:0 2.5rem;
+}
+header nav ul .login-btn{
+    padding:0 0;
+}
+header button{
+    color:white;
+    background:transparent;
+    border:0;
+    cursor:pointer;
+}
+header a{
+    color:white;
+    background:transparent;
+    border:0;
+    cursor:pointer;
+}
+header div{
+    color:white;
+    background:transparent;
+    border:0;
+    cursor:pointer;
+}
+header h1 .logo{
+    margin-top: 0.2rem;
+    margin-left: 5rem;
+    font-size:0.7rem;
+    font-weight:bold;
+}
+header nav ul li button{
+    font-size: 1.2rem;
+}
+
+.main-visual-bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.9) 35%,
+      rgba(0,0,0,0.3) 90%,
+      rgba(0,0,0,0.04) 100%
+    ),
+    url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
+  z-index: 1;
+  padding-top: 85px;
+}
+
+.main-visual-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.doubleblue {
+  color: #2a1bff;
+  font-size: 2.4rem;
+  margin-left: 0.1em;
+}
+
+
+
+
+
+/* header dropdown */
+/* 드롭다운 메뉴 스타일 시작 */
+header nav ul li {
+  position: relative; /* 드롭다운 메뉴의 기준이 될 위치 */
+}
+
+/* 드롭다운 메뉴 기본은 숨김 */
+.hovermenu {
+  display: flex;            /* 항상 영역은 유지 */
+  justify-content: flex-end;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 0.27s cubic-bezier(.4,1,.45,1), height 0.33s cubic-bezier(.4,1,.45,1);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background: #000000;
+  z-index: 99;
+  padding: 0 0; /* padding이 있으면 height 애니메이션이 부자연스러움 */
+  box-shadow: 0 10px 32px rgba(0,0,0,0.19);
+  
+}
+
+.hovermenu .dropAbout{
+  margin: 0 1.5rem;
+}
+.hovermenu .dropGal{
+  margin: 0 1.5rem;
+}
+.hovermenu .dropCommu{
+  margin: 0 0.5rem;
+}
+
+.hovermenu .dropRecr{
+  margin: 0 1.9rem;
+}
+
+/* 펼쳐졌을 때 */
+.hovermenu.active {
+  opacity: 1;
+  height: 180px;   /* (드롭다운의 실제 높이. 맞게 조정!) */
+  pointer-events: all;
+  padding: 1.3rem 0 2rem 0;
+}
+
+
+/* 드롭다운 메뉴 항목 */
+header .hovermenu li a {
+  display: block;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.15s;
+  border-radius: 0.8rem;
+}
+header .hovermenu li a:hover {
+  color: #5a73fd;
+}
+
+/* 상위 메뉴 hover시 파란색 배경 */
+header nav ul li button:hover,
+header nav ul li:hover > button {
+  color: #4032ff;
+  transition: color 0.3s;
+}
+
+/* 드롭다운 나타날 때 부드럽게 */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px);}
+  to { opacity: 1; transform: translateX(-50%) translateY(0);}
+}
+
+
+
+
+
+
+/* Section starts */
+
+section{
+  padding:5rem 0;
+  background-color: rgb(17, 17, 17);
+}
+section .title{
+  display:flex;
+  justify-content: center;
+  margin-bottom:3rem;
+}
+section .title h4{
+  font-size:1.35rem;
+  position:relative;
+}
+section .title h2{
+  color:#f0f0f0;
+  font-size:2.2rem;
+  position: relative;
+  display: inline-block; 
+}
+section .title h2 span{
+  color:rgb(119, 119, 252);
+}
+section .title h2::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 4px;  /* 밑줄 두께 */
+  background: #4032ff; /* 밑줄 색상 */
+  border-radius: 4px;  /* 끝부분 둥글게 */
+  z-index: 0;         /* 글자 아래로 */
+}
+section .title p{
+  font-size:1.15rem;
+}
+
+section .context .introduction{
+  display:flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+section .context .introduction p{
+  color: #d3d3d3;
+  font-size:1.2rem;
+  margin-top: 1rem;
+  margin-left: 13rem;
+  margin-right:13rem;
+  margin-bottom:1rem;
+}
+
+.Activity .title{
+  margin-bottom: 4rem;
+}
+.Activity .introduction{
+  margin-bottom: 2rem;
+}
+
+
+
+
+
+
+
+
+/* Footer */
+footer {
+  background: #4032ff;
+  color: #fff;
+  font-family: "Pretendard Variable", Pretendard, sans-serif;
+  padding: 2.3rem 0 2rem 0;
+  /* margin-top: 5rem; */
+  font-size: 1rem;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-copyright {
+  font-size: 1rem;
+}
+
+.footer-social a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+.footer-social a:hover {
+  color: #ffe082;
+}
+
+footer hr {
+  border: none;
+  border-top: 1px solid #fff4;
+  margin: 1.3rem auto 2rem auto;
+  max-width: 1500px;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-info {
+  max-width: 50%;
+  min-width: 250px;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.footer-made b {
+  font-size: 1.8rem;
+}
+
+.footer-contacts {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 200px;
+  font-size: 1rem;
+}
+
+.footer-president b,
+.footer-vp b {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 1000px) {
+  .footer-main {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-info, .footer-contacts {
+    max-width: 100%;
+  }
+  .footer-top {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+}

@@ -1,0 +1,172 @@
+.Activity .title{
+  margin-bottom: 4rem;
+}
+.Activity .introduction{
+  margin-bottom: 2rem;
+}
+.Activity .actsScrpt{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.main-visual-bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.9) 35%,
+      rgba(0,0,0,0.3) 90%,
+      rgba(0,0,0,0.04) 100%
+    ),
+    url('../images/section_background.jpg') center center/cover no-repeat;
+  z-index: 1;
+  padding-top: 85px;
+}
+
+.main-visual-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-visual-content p{
+    margin-top: 1rem;
+}
+
+.doubleblue {
+  color: #2a1bff;
+  font-size: 2.4rem;
+  margin-left: 0.1em;
+}
+
+
+
+.section-cntct {
+  background-color: #111; /* 배경 어두운 톤 */
+  color: white; /* 전체 흰색 글씨 */
+  padding: 60px 20px; /* 위아래 여백 */
+  text-align: center; /* 가운데 정렬 */
+}
+
+.section-cntct .container {
+  display: flex;
+  justify-content: center;
+/* 각 그룹 사이 간격 */
+  flex-wrap: wrap; /* 화면 작아지면 줄바꿈 */
+}
+
+.cntct-group {
+  margin: 1rem;
+  width: 300px;
+}
+
+.cntct-group h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.cntct-group p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ddd; /* 살짝 연한 흰색 */
+}
+
+.cntct-group a {
+  color: white;
+  font-size: 2rem;
+  margin-top: 10px;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.cntct-group a:hover {
+  color: #4032ff; /* 호버 시 포인트 색 */
+}
+
+body .map .map-section{
+    padding:0 0;
+}
+
+.map-section{
+  max-width: 1040px;      /* 필요 시 1140 등으로 */
+  margin: 0 auto 3rem;
+  border-radius: 12px;
+  overflow: hidden;       /* 둥근 모서리 적용 */
+
+}
+
+/* 퍼가기 컨테이너를 가로 100%로 강제 (퍼가기의 width가 고정일 때 대비) */
+#daumRoughmapContainer1754733886688 { width: 100% !important; }
+#daumRoughmapContainer1754733886688 .wrap_map { width: 100% !important; height: 460px !important; }
+.root_daum_roughmap .cont {
+  display: none !important;
+}
+
+/* 파란 바 */
+.map-cta{
+  background: #1f57a8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.6rem 2rem;
+}
+
+/* 주소 표시 */
+.map-addr{
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.map-addr i{ font-size: 1.2rem; }
+
+/* 길찾기 폼 */
+.route-form{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 320px;
+  width: 48%;
+}
+.route-form input{
+  flex: 1;
+  background: transparent;
+  border: 0;
+  border-bottom: 3px solid rgba(255,255,255,.7);
+  color: #fff;
+  padding: .5rem .2rem .35rem;
+  outline: none;
+  font-size: 1rem;
+}
+.route-form input::placeholder{ color: rgba(255,255,255,.85); }
+
+.search-btn{
+  width: 36px; height: 36px;
+  border: 0; background: transparent; color: #fff;
+  cursor: pointer; position: relative;
+}
+
+
+/* 접근성용 숨김 라벨 */
+.visually-hidden{
+  position: absolute !important; width:1px; height:1px; margin:-1px;
+  padding:0; border:0; clip:rect(0,0,0,0); clip-path:inset(50%); overflow:hidden;
+}
+
+/* 반응형 */
+@media (max-width: 720px){
+  .map-cta{ flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .route-form{ width: 100%; min-width: 0; }
+}
+

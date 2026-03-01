@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarpeDiem : KAIST 팝밴드 까르페디엠</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/CarpeDiem/style.css">
+    <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="mainacts.css"> 
+    <link rel="stylesheet" href="/CarpeDiem/common.css">
+    <link rel="stylesheet" href="timeline.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1> 
+          <a href="../../index.html"><img class="logo" src="../../images/CARPELOGO_simple.png" alt="로고" style="height: 60px;"></a>
+        </h1>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
+              <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
+                <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
+                <span id="profile-name" style="font-weight: bold;"></span>
+                <button onclick="logout()" style=" cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i></button>
+              </div>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="about">About Us</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="gallery">Gallery</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="community">Community</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="recruit">Recruit</button>
+            </li>
+          </ul>
+        </nav>
+        <div class="hovermenu" id="megaDropdown">
+          <ul class="dropAbout">
+            <li><a href="../../about/introduction.html">소개</a></li>
+              <li><a href="../../ci/ci.html">CI</a></li>
+              <li><a href="../../contact/contact.html">Contact</a></li>
+          </ul>
+          <ul class="dropGal">
+            <li><a href="../mainActs/mainacts.html">주요활동</a></li>
+              <li><a href="../memberGal/mainacts.html">기수 갤러리</a></li>
+          </ul>
+          <ul class="dropCommu">
+            <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="/CarpeDiem/community/clubroom/club.html">동방 이용 시간표</a></li>
+              <!-- <li><a href="#">WhenToMeet</a></li> -->
+          </ul>
+          <ul class="dropRecr">
+            <li><a href="../../recruit/recruit.html">지원하기</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="main-visual-bg">
+        <div class="main-visual-content">
+            <h1><span class="doubleblue">『</span>주요활동<span class="doubleblue">』</span></h1>
+        </div>
+    </div>
+    <!-- //end Main -->
+    
+    
+    <div class="header">
+      <h1 id="mainTxt"></h1>
+      <div class="year-switch" id="yearSwitch">
+        <button class="year-toggle" id="yearToggle" aria-haspopup="true" aria-expanded="false">
+           <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="year-menu" id="yearMenu" >
+          <!-- button tag의 연도가 추가됨 -->
+        </div>
+      </div>
+      
+    </div>
+    <div class="activity-control">
+        <button id="toggle-btn" class="btn-toggle">
+            <span>업로드</span>
+        </button>
+    </div>
+
+    <div id="form-container" class="form-wrapper">
+        <form class="dark-form" id="uploadForm">
+            <div class="input-group">
+                <label>제목</label>
+                <input type="text" placeholder="활동 제목을 입력하세요" id="imageTitle" name="title">
+            </div>
+
+            <div class="row">
+                <div class="input-group half">
+                    <label>날짜</label>
+                    <input type="date" id="imageDate" name="date">
+                </div>
+                <div class="input-group half">
+                    <label>사진 첨부</label>
+                    <input type="file" class="file-input" id="imageFile" name="attachImage">
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img id="image-to-crop" src="">
+            </div>
+
+            <button type="submit" class="btn-submit">Upload Post</button>
+        </form>
+    </div>
+    <!-- <div class="upload">
+      <form id="uploadForm">
+        <input type="text" placeholder="제목을 입력해주세요" id="imageTitle" name="title"><br>
+        <input type="date" id="imageDate" name="date"><br>
+        <input type="file" id="imageFile" name="attachImage"><br>
+        <button type="submit">Upload</button>
+      </form>
+    </div> -->
+    <!-- <form>
+      <input type="text" placeholder="제목을 입력해주세요" id="title">
+      <input type="date" id="date">
+      <button type="submit">Upload</button>
+    </form> -->
+    <div class="timeline">
+      <div class="carousel carousel-main" data-flickity='{}' id="image-container">
+        <div class="carousel-cell"><time datetime="2025-01-01"><span>2025. 1. 23</span> 25' 신입생 영어캠프 공연</time>
+          <div class="img-wrapper"><img src="images/20250123_english.jpg"></div>
+        </div>
+
+        <div class="carousel-cell">
+          <time datetime="2025-02-08"><span>2025. 2. 8</span> CarpeDiem 20주년 공연</time>
+          <div class="img-wrapper"><img src="images/carpe20concert.png"></div>
+        </div>
+
+        <div class="carousel-cell"><time datetime="2025-02-19"><span>2025. 2. 19</span> 25' 새내기새로배움터</time>
+          <div class="img-wrapper"><img src="images/saenagi.jpg"></div>
+        </div>
+
+        <div class="carousel-cell"><time datetime="2025-02-21"><span>2025. 2. 21</span> 동아리 박람회</time>
+          <div class="img-wrapper"><img src="images/dongbak.jpg"></div>
+        </div>
+
+        <div class="carousel-cell"><time datetime="2025-02-25"><span>2025. 2. 25</span> KBU 신입생 환영 공연</time>
+          <div class="img-wrapper"><img src="images/KBU.jpg"></div>
+        </div>
+
+        <div class="carousel-cell"><time datetime="2025-03-12"><span>2025. 3. 12</span> 21기 리크루팅 종료/신환회</time>
+          <div class="img-wrapper"><img src="images/recruit.jpg"></div>
+        </div>
+        <div class="carousel-cell"><time datetime="2025-03-29"><span>2025. 3. 29</span> 봄 MT</time>
+          <div class="img-wrapper"><img src="images/mt_spring.jpg"></div>
+        </div>
+        <div class="carousel-cell"><time datetime="2025-04-01"><span>2025. 4. 1</span> 25' 딸기파티</time>
+          <div class="img-wrapper"><img src="images/strawberryParty.jpg"></div>
+        </div>
+        <div class="carousel-cell"><time datetime="2025-05-13"><span>2025. 5. 13</span> FRINGE</time>
+          <div class="img-wrapper"><img src="images/fringe.png"></div>
+        </div>
+        <div class="carousel-cell"><time datetime="2025-05-19"><span>2025. 5. 19</span> 봄 정기공연</time>
+          <div class="img-wrapper"><img src="images/springConcert.jpg"></div>
+        </div>
+        <div class="carousel-cell"><time datetime="2025-07-11"><span>2025. 7. 11</span> 여름 MT</time>
+          <div class="img-wrapper"><img src="images/mt_summer.jpg"></div>
+        </div>
+        <div class="carousel-cell"><time datetime="2025-08-15"><span>2025. 8. 15</span> 까르페 X 단풍 여름 합동공연</time>
+          <div class="img-wrapper"><img src="images/summerconcert.jpg"></div>
+        </div>
+        
+      </div>
+    </div>
+
+ 
+    
+
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-info">
+        <div class="footer-made">
+          <b>CarpeDiem <span style="font-size: 0.8rem;">Since 2004</span></b><br>
+          Released Version 0.1.0 | Developed by 이동민<br>
+          대전광역시 유성구 대학로 291, KAIST N12 B110호<br>
+          dongminyee@kaist.ac.kr
+        </div>
+      </div>
+      <div class="footer-contacts">
+        <div class="footer-president">
+          <b>회장</b><br>
+          최태훈 010-9374-8223
+        </div>
+        <div class="footer-vp">
+          <b>부회장</b><br>
+          임시현 010-9141-3722
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-top">
+      <div class="footer-copyright">
+        Copyright ⓒ CarpeDiem All Rights Reserved.
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/pop.carpediem/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/kaistcarpediem" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/channel/UCfKytZeHMKEU0sG6MtI4bgA" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- end Contact With Me -->
+  <!-- script 태그는 수정하지 않습니다. -->
+  <script src="../../script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js"></script>
+  <script src="mainacts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="crop.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/CarpeDiem/auth.js"></script>
+  </body>
+</html>
+

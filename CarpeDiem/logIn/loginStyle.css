@@ -1,0 +1,28 @@
+.Activity .title img{
+    width: 20%;
+}
+
+section.Activity .title{
+  margin-bottom: 2.5rem;
+}
+
+section .context .loginButton{
+    display:flex;
+    font-size: 1.2rem;
+    border:0.15rem solid rgb(190, 190, 190);
+    border-radius: 0.4rem;
+    padding: 0.4rem 5rem;
+    cursor:pointer;
+    transition: background 0.2s;
+}
+.loginButton:hover {
+  background-color: #b9b9b9;     /* 마우스 올릴 때 더 진하게 */
+}
+
+section .context .loginButton svg{
+    margin: 0rem 1rem;
+}
+
+section .context .introduction p{
+  font-size:0.8rem;
+}

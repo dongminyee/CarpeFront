@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarpeDiem : KAIST 팝밴드 까르페디엠</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="/CarpeDiem/style.css"> -->
+    <link rel="stylesheet" href="/CarpeDiem/common.css">
+    <link rel="stylesheet" href="loginStyle.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          <a href="../index.html"><img class="logo" src="../images/CARPELOGO_simple.png" alt="로고" style="height: 60px;"></a>
+        </h1>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
+              <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
+                <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
+                <span id="profile-name" style="font-weight: bold;"></span>
+                <button onclick="logout()" style=" cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i></button>
+              </div>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="about">About Us</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="gallery">Gallery</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="community">Community</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="recruit">Recruit</button>
+            </li>
+          </ul>
+        </nav>
+        <div class="hovermenu" id="megaDropdown">
+          <ul class="dropAbout">
+            <li><a href="../about/introduction.html">소개</a></li>
+              <li><a href="../ci/ci.html">CI</a></li>
+              <li><a href="../contact/contact.html">Contact</a></li>
+          </ul>
+          <ul class="dropGal">
+            <li><a href="../gallery/mainActs/mainacts.html">주요활동</a></li>
+              <li><a href="../gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+          </ul>
+          <ul class="dropCommu">
+            <li><a href="../community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="../community/clubroom/club.html">동방 이용 시간표</a></li>
+              <!-- <li><a href="#">WhenToMeet</a></li> -->
+          </ul>
+          <ul class="dropRecr">
+            <li><a href="../recruit/recruit.html">지원하기</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="main-visual-bg">
+        <div class="main-visual-content">
+            <h1><span class="doubleblue">『</span>Login<span class="doubleblue">』</span></h1>
+        </div>
+    </div>
+    <!-- //end Main -->
+  <!-- About Me -->
+  <!-- end About Us -->
+
+  <!-- Acts -->
+  <section id="Activity" class="Activity">
+    <div class="container">
+      <div class="title">
+        <img src="/CarpeDiem/images/CARPELOGO_simple.png">
+      </div>
+      <div class="context">
+        <div class="introduction">
+          <button class="loginButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" style="display:block;">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+              <path fill="none" d="M0 0h48v48H0z"/>
+            </svg> Google 계정으로 로그인
+          </button>
+          <p>까르페디엠 연락처 파일의 email을 구글 계정으로 수정해야 게시물 수정이 가능합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //end Acts -->
+  <footer>
+    <div class="footer-main">
+      <div class="footer-info">
+        <div class="footer-made">
+          <b>CarpeDiem <span style="font-size: 0.8rem;">Since 2004</span></b><br>
+          Released Version 0.1.0 | Developed by 이동민<br>
+          대전광역시 유성구 대학로 291, KAIST N12 B110호<br>
+          dongminyee@kaist.ac.kr
+        </div>
+      </div>
+      <div class="footer-contacts">
+        <div class="footer-president">
+          <b>회장</b><br>
+          최태훈 010-9374-8223
+        </div>
+        <div class="footer-vp">
+          <b>부회장</b><br>
+          임시현 010-9141-3722
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-top">
+      <div class="footer-copyright">
+        Copyright ⓒ CarpeDiem All Rights Reserved.
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/pop.carpediem/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/kaistcarpediem" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/channel/UCfKytZeHMKEU0sG6MtI4bgA" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- end Contact With Me -->
+  <!-- script 태그는 수정하지 않습니다. -->
+  <script src="../script.js"></script>
+  <script src="loginScript.js"></script>
+  <script src="/CarpeDiem/auth.js"></script>
+  </body>
+</html>
+

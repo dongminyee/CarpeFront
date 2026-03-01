@@ -1,0 +1,163 @@
+.notInDate{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+.notInDate h2{
+  color: rgb(238, 160, 160);
+}
+
+
+section.Activity{
+  padding-bottom:0;
+}
+
+.Activity .title{
+  margin-bottom: 0;
+}
+.Activity .introduction{
+  margin-bottom: 2rem;
+}
+.Activity .actsScrpt{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.main-visual-bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.9) 35%,
+      rgba(0,0,0,0.3) 90%,
+      rgba(0,0,0,0.04) 100%
+    ),
+    url('../images/section_background.jpg') center center/cover no-repeat;
+  z-index: 1;
+  padding-top: 85px;
+}
+
+.main-visual-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-visual-content p{
+    margin-top: 1rem;
+}
+
+.doubleblue {
+  color: #2a1bff;
+  font-size: 2.4rem;
+  margin-left: 0.1em;
+}
+
+
+
+.section-cntct {
+  background-color: #111; /* 배경 어두운 톤 */
+  color: white; /* 전체 흰색 글씨 */
+  padding: 60px 20px; /* 위아래 여백 */
+  text-align: center; /* 가운데 정렬 */
+}
+
+.section-cntct .container {
+  display: flex;
+  justify-content: center;
+  gap: 8rem; /* 각 그룹 사이 간격 */
+  flex-wrap: wrap; /* 화면 작아지면 줄바꿈 */
+}
+
+section .section-cntct .title h2{
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: white; 
+}
+
+.section-cntct .banner img{
+  max-width:100%;
+}
+
+.cntct-group {
+  width:100%;
+  max-width: 100%;
+}
+
+
+.cntct-group h3{
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.cntct-group p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #74efff; /* 살짝 연한 흰색 */
+}
+
+.cntct-group a {
+  color: white;
+  font-size: 2rem;
+  margin-top: 10px;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.cntct-group a:hover {
+  color: #4032ff; /* 호버 시 포인트 색 */
+}
+
+.section-cntct .dates{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-cntct .schedules{
+  width: 25%;
+  margin: 1rem;
+}
+
+.section-cntct .moreButton{
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  color:rgb(255, 200, 48);
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+
+.section-cntct .post{
+  width:32%;
+  margin: 0.5rem;
+}
+/* 인스타 포스트 */
+.insta-post {
+  max-width: 100%; /* 인스타 포스트 폭 */
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.carousel {
+  background: #000;
+}
+
+.carousel-cell {
+  width: 100%;
+}
+
+.carousel-cell img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

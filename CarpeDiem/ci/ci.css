@@ -1,0 +1,176 @@
+.Activity .title{
+  margin-bottom: 4rem;
+}
+.Activity .introduction{
+  margin-bottom: 2rem;
+}
+.Activity .actsScrpt{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.main-visual-bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.9) 35%,
+      rgba(0,0,0,0.3) 90%,
+      rgba(0,0,0,0.04) 100%
+    ),
+    url('../images/section_background.jpg') center center/cover no-repeat;
+  z-index: 1;
+  padding-top: 85px;
+}
+
+.main-visual-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-visual-content p{
+    margin-top: 1rem;
+}
+
+.doubleblue {
+  color: #2a1bff;
+  font-size: 2.4rem;
+  margin-left: 0.1em;
+}
+
+/* 로고 section */
+.section-logo {
+  background:rgb(17, 17, 17);
+  padding:4rem 0 5rem;
+  color:#e9e9e9;
+}
+.section-logo .container {
+  max-width:1140px;
+  margin:0 auto;
+}
+.logo-title {
+  text-align:center;
+  font-size:2rem;
+  margin-bottom:2.5rem;
+  position:relative;
+  display:inline-block;
+  left:50%;
+  transform:translateX(-50%);
+}
+.logo-title::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-10px;
+  width:100%;
+  height:3px;
+  background:#4032ff;
+  border-radius:3px;
+}
+
+.logo-row {
+  display:flex;
+  align-items:center;
+  gap:2rem;
+  padding:1rem 0;
+  border-bottom:1px solid #242424;
+}
+.logo-row:last-child {
+  border-bottom:none;
+}
+
+/* 로고 이미지 영역 */
+.logo-img {
+  min-width:260px;
+  display:flex;
+  align-items:flex-start;
+}
+.logo-img-wrapper {
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+}
+.logo-img .logo-img-wrapper p{
+    font-size: 1rem;
+}
+
+.logo-img-wrapper img {
+  margin-top: 3rem;
+  max-width:260px;
+  width:80%;
+  height:auto;
+  display:block;
+}
+.logo-label {
+  position:absolute;
+  top:10px;
+  color:white;
+  font-size:0.85rem;
+  margin-left:0;
+}
+.logo-caption {
+  margin-top:.5rem;
+  color:#9aa0a6;
+  letter-spacing:.2px;
+}
+
+/* 설명 */
+.logo-desc p {
+  line-height:1.9;
+  font-size:1.02rem;
+  color:#d8d8d8;
+  margin-bottom:1rem;
+}
+
+/* 버튼 */
+.logo-buttons {
+  display:flex;
+  gap:0.8rem;
+}
+.btn-download {
+  padding:0.6rem 1.2rem;
+  border:none;
+  border-radius:5px;
+  font-size:0.9rem;
+  font-weight:bold;
+  color:white;
+  text-decoration:none;
+  transition:background 0.2s;
+}
+.btn-download.ai {
+  background:#ff6a6a;
+}
+.btn-download.ai:hover {
+  background:#ff4b4b;
+}
+.btn-download.jpg {
+  background:#4032ff;
+}
+.btn-download.jpg:hover {
+  background:#2e1ffc;
+}
+
+/* 다크 배경에서 흰 로고 변환 */
+
+
+/* 반응형 */
+@media (max-width:820px) {
+  .logo-row {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .logo-img {
+    min-width:0;
+  }
+  .logo-title {
+    font-size:1.7rem;
+  }
+}

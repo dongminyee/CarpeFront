@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarpeDiem : KAIST 팝밴드 까르페디엠</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/CarpeDiem/style.css">
+    <link rel="stylesheet" href="/CarpeDiem/common.css">
+    <link rel="stylesheet" href="club.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>
+          <a href="/CarpeDiem/index.html"><img class="logo" src="/CarpeDiem/images/CARPELOGO_simple.png" alt="로고" style="height: 60px;"></a>
+        </h1>
+        <nav>
+          <ul class="gnb">
+            <li>
+              <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
+              <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
+                <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
+                <span id="profile-name" style="font-weight: bold;"></span>
+                <button onclick="logout()" style=" cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i></button>
+              </div>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="about">About Us</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="gallery">Gallery</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="community">Community</button>
+            </li>
+            <li>
+              <button class="menu-btn" data-menu="recruit">Recruit</button>
+            </li>
+          </ul>
+        </nav>
+        <div class="hovermenu" id="megaDropdown">
+          <ul class="dropAbout">
+            <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
+              <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
+              <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+          </ul>
+          <ul class="dropGal">
+            <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
+              <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+          </ul>
+          <ul class="dropCommu">
+            <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="club.html">동방 이용 시간표</a></li>
+              <!-- <li><a href="#">WhenToMeet</a></li> -->
+          </ul>
+          <ul class="dropRecr">
+            <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="main-visual-bg">
+        <div class="main-visual-content">
+            <h1><span class="doubleblue">『</span>동방 이용 시간표<span class="doubleblue">』</span></h1>
+        </div>
+    </div>
+    <!-- //end Main -->
+     
+    <section id="practice-schedule" class="schedule-section">
+      <div class="wrap">
+        <div id="scheduleGrid" class="schedule-grid"></div>
+        <p>Google Sheet 업데이트 후 새로고침해주세요</p>
+      </div>
+    </section>
+          
+
+    <footer>
+      <div class="footer-main">
+        <div class="footer-info">
+          <div class="footer-made">
+            <b>CarpeDiem <span style="font-size: 0.8rem;">Since 2004</span></b><br>
+            Released Version 0.1.0 | Developed by 이동민<br>
+            대전광역시 유성구 대학로 291, KAIST N12 B110호<br>
+            dongminyee@kaist.ac.kr
+          </div>
+        </div>
+        <div class="footer-contacts">
+          <div class="footer-president">
+            <b>회장</b><br>
+            최태훈 010-9374-8223
+          </div>
+          <div class="footer-vp">
+            <b>부회장</b><br>
+            임시현 010-9141-3722
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="footer-top">
+        <div class="footer-copyright">
+          Copyright ⓒ CarpeDiem All Rights Reserved.
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/pop.carpediem/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/kaistcarpediem" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/channel/UCfKytZeHMKEU0sG6MtI4bgA" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </footer>
+    <!-- end Contact With Me -->
+    <!-- script 태그는 수정하지 않습니다. -->
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="/CarpeDiem/script.js"></script>
+    <script src="club.js"></script>
+    <script src="/CarpeDiem/auth.js"></script>
+  </body>
+</html>
+

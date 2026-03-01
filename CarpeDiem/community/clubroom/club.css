@@ -1,0 +1,76 @@
+.Activity .title{
+  margin-bottom: 4rem;
+}
+.Activity .introduction{
+  margin-bottom: 2rem;
+}
+.Activity .actsScrpt{
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.main-visual-bg {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,0.9) 35%,
+      rgba(0,0,0,0.3) 90%,
+      rgba(0,0,0,0.04) 100%
+    ),
+    url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
+  z-index: 1;
+  padding-top: 85px;
+}
+
+.main-visual-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.main-visual-content p{
+    margin-top: 1rem;
+}
+
+.doubleblue {
+  color: #2a1bff;
+  font-size: 2.4rem;
+  margin-left: 0.1em;
+}
+
+
+/* 타임 테이블 */
+.schedule-section{ background:#111; color:#eaeaea; padding:32px 16px;}
+.wrap{max-width:60rem;margin:0 auto;}
+.schedule-grid{
+  display:grid;
+  grid-auto-rows:minmax(44px,auto);
+  gap:1px;
+  background:#2a2a2a;           /* 격자선 */
+  border:1px solid #2a2a2a;
+  overflow:auto;
+}
+.schedule-grid .cell{
+  background:#1b1b1b; padding:10px; font-size:14px; line-height:1.3;
+}
+.schedule-grid .head{
+  background:#171717; font-weight:700; text-align:center; position:sticky; top:0; z-index:2;
+}
+.schedule-grid .time{
+  background:#171717; font-weight:600; position:sticky; left:0; z-index:1; width:120px;
+}
+.schedule-grid .busy{ background:#23254a; }   /* 일정이 있는 칸의 기본색 */
+.schedule-grid .busy strong{ color:#aeb8ff; display:block; margin-bottom:2px; }
+.schedule-grid .empty{ color:#666; }
+@media (max-width: 800px){
+  .schedule-grid .time{ font-size:12px; width:88px;}
+  .schedule-grid .cell{ padding:8px; font-size:13px;}
+}
