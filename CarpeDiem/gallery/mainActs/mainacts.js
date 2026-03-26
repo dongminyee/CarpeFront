@@ -137,8 +137,8 @@ function notAuthed() {
 document.getElementById('uploadForm').addEventListener('submit', async function(event) {
     // 1. 폼의 기본 동작(페이지 이동)을 막습니다.
     event.preventDefault();
-    const rtn = await checkEditAuth();
-    if(!rtn) return;
+    // const rtn = await checkEditAuth();
+    // if(!rtn) return;
 
     // 2. 폼 데이터를 자동으로 가져옵니다. (이미지 파일 포함)
     let formData = new FormData();
@@ -154,6 +154,8 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
 
     formData.append("title", title);
     formData.append("date", date);
+    formData.append("category", "activity");
+    formData.append("generation", "none");
 
     cropper.getCroppedCanvas().toBlob(async (blob) => {
         try{
@@ -163,10 +165,10 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 return;
             }
 
-            formData.append("attachImage", blob, 'cropped.jpg');
+            formData.append("file", blob, 'cropped.jpg');
 
             // 서버 전송 로직 (fetch)
-            const response = await fetch('https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/new', {
+            const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/upload', {
                 method: 'POST',
                 // [중요!] body에 formData를 넣으면
                 // Content-Type 헤더는 브라우저가 알아서 'multipart/form-data'로 설정합니다.
@@ -188,7 +190,8 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 });
                 
                 // (선택) 타임라인 새로고침 로직 추가
-                location.reload(); 
+                document.getElementById("mainTxt").textContent=date.substring(0, 4);
+                fetchAndUpdateImages(date.substring(0, 4)); 
 
             } else {
                 // 실패 시 (403, 500 등)
@@ -252,7 +255,7 @@ function handleEdit(id) {
             const formData = new FormData();
             formData.append('title', data.title);
             formData.append('date', data.date);
-            fetch(`https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/patch/${id}`, {
+            fetch(`https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/patch/${id}`, {
                 method: 'PATCH',
                 // ⚠️ 주의: FormData를 보낼 때는 'Content-Type' 헤더를 직접 적지 마세요!
                 // 브라우저가 알아서 'multipart/form-data'로 설정해줍니다.
@@ -261,7 +264,7 @@ function handleEdit(id) {
             .then(response => {
                 if (response.ok) {
                     Swal.fire('수정 완료', `${data.title}(${data.date})`, 'success');
-                    fetchAndUpdateImages();
+                    fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
                 } else {
                     Swal.fire('수정 실패', '등록 중 오류가 발생했습니다.', 'error');
                 }
@@ -296,7 +299,7 @@ function handleDelete(id) {
 async function delOperation(id){
     try{
         // 실제 서버로 삭제 요청 (DELETE API)
-        const rst = await fetch(`${'https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/del'}/${id}`, { method: 'DELETE' });
+        const rst = await fetch(`${'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/delete'}/${id}`, { method: 'DELETE' });
         if(rst.ok){
             console.log(id);
             console.log('삭제 요청, ID:', id);
@@ -304,7 +307,7 @@ async function delOperation(id){
             // 삭제 성공 시 UI 업데이트 (예: 새로고침)
             
             Swal.fire('삭제됨!', '파일이 삭제되었습니다.', 'success');
-            fetchAndUpdateImages();
+            fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
         }
         else{
             Swal.fire('실패', '삭제에 실패했습니다.', 'error');
@@ -332,7 +335,7 @@ const imageContainer = document.getElementById('image-container');
 
 // 테스트용 API URL (10개의 사진 데이터를 요청)
 // 실제 사용 시에는 백엔드 API 주소를 넣으세요.
-const API_URL = 'https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/images';
+const API_URL = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos';
 
 /**
  * API를 호출하고 화면을 업데이트하는 함수
@@ -343,7 +346,7 @@ async function fetchAndUpdateImages(year) {
     
     try {
         //1. API로 데이터 요청
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL+"/activity?year="+year);
         if (!response.ok) {
             throw new Error(`API 요청 실패: ${response.status}`);
         }
@@ -405,13 +408,13 @@ async function fetchAndUpdateImages(year) {
             div.appendChild(imgMenuContainer);
 
             const time = document.createElement('time');
-            console.log(imageData.serverTitle);
+            console.log(imageData.imageUrl);
             time.setAttribute('datetime', imageData.date);
             time.innerHTML  = '<span>'+imageData.date+'</span> '+imageData.title;
 
             // <img> 태그 생성
             const img = document.createElement('img');
-            img.src = 'https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/gallery/'+imageData.serverTitle; // API 응답에 맞는 이미지 URL
+            img.src = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/gallery/'+imageData.imageUrl; // API 응답에 맞는 이미지 URL
             const div2 = document.createElement('div');
             div2.classList.add('img-wrapper');
             div2.appendChild(img);

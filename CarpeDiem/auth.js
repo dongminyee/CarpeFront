@@ -33,7 +33,7 @@ async function checkAuthAndUI() {
 
     try {
         // 1. 서버에 상태 확인 요청
-        const response = await fetch('https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/auth/status', {
+        const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
             method: 'GET',
             headers: {
             'accessToken': localStorage.getItem('accessToken'),
@@ -88,8 +88,15 @@ function updateLoginUI() {
     }
 }
 
-function logout() {
+async function logout() {
     // 저장소 비우기
+    await fetch('https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/auth/logout', {
+        method: 'DELETE',
+        headers: {
+        'username': localStorage.getItem('userName'), 
+        'Content-Type': 'application/json'
+    }
+    });
     localStorage.clear();
     const loginBtn = document.getElementById('login-btn');
     const userProfile = document.getElementById('user-profile');
