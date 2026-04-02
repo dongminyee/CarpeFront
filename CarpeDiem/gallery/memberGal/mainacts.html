@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/CarpeDiem/style.css">
     <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mainacts.css"> 
     <link rel="stylesheet" href="/CarpeDiem/common.css">
     <link rel="stylesheet" href="timeline.css">
@@ -72,22 +73,68 @@
      
     
     <div class="header">
-      <h1>20기</h1>
+      <h1 id="mainTxt"></h1>
       <div class="year-switch" id="yearSwitch">
         <button class="year-toggle" id="yearToggle" aria-haspopup="true" aria-expanded="false">
            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
         </button>
-        <ul class="year-menu" id="yearMenu" role="menu">
-          <!-- 원하는 연도/파일로 교체하세요 -->
-          <li role="none"><a role="menuitem" href="mainacts.html">20기</a></li>
-          <li role="none"><a role="menuitem" href="19th/19th.html">19기</a></li>
-        </ul>
+        <div class="year-menu" id="yearMenu" >
+          <!-- button tag의 연도가 추가됨 -->
+        </div>
       </div>
       
     </div>
 
+    <div class="activity-control">
+        <button id="toggle-btn" class="btn-toggle">
+            <span>업로드</span>
+        </button>
+    </div>
+
+    <div id="form-container" class="form-wrapper">
+        <form class="dark-form" id="uploadForm">
+            <div class="row">
+                <div class="input-group half">
+                    <label>제목</label>
+                    <input type="text" placeholder="활동 제목을 입력하세요" id="imageTitle" name="title">
+                </div>
+                <div class="input-group half">
+                    <label>기수</label>
+                    <div class="custom-select-wrapper" id="giSelectWrapper">
+                      <input type="hidden" name="gi" id="giInput" value="20">
+
+                      <div class="custom-select-trigger">
+                          <span id="giTriggerText">21기</span>
+                          <span class="arrow">▼</span>
+                      </div>
+
+                      <ul class="custom-options"> 
+                      </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group half">
+                    <label>날짜</label>
+                    <input type="date" id="imageDate" name="date">
+                </div>
+                <div class="input-group half">
+                    <label>사진 첨부</label>
+                    <input type="file" class="file-input" id="imageFile" name="attachImage">
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img id="image-to-crop" src="">
+            </div>
+
+            <button type="submit" class="btn-submit">Upload Post</button>
+        </form>
+    </div>
+
     <div class="timeline">
-      <div class="carousel carousel-main" data-flickity='{}'>
+      <div class="carousel carousel-main" data-flickity='{}' id="image-container">
         <div class="carousel-cell"><time datetime="2024-02-21"><span>2024. 2. 21</span> 19기 & 20기 단체사진</time>
           <div class="img-wrapper"><img src="images/1920photo.jpg"></div>
         </div>
@@ -132,8 +179,12 @@
   <!-- end Contact With Me -->
   <!-- script 태그는 수정하지 않습니다. -->
   <script src="../../script.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js"></script>
   <script src="mainacts.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+  <script src="crop.js"></script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/CarpeDiem/auth.js"></script>
   </body>
 </html>

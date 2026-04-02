@@ -45,3 +45,298 @@
   font-size: 2.4rem;
   margin-left: 0.1em;
 }
+
+/* 여기부터 이미지 메뉴 버튼 dropdown 구현 */
+
+/* 메뉴 컨테이너: 우측 상단 고정 */
+.img-menu-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100; /* 이미지보다 위에 오도록 */
+}
+
+/* 점 3개 버튼 스타일 */
+.img-menu-btn {
+    background: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.img-menu-btn:hover {
+    background: #fff;
+}
+
+/* 드롭다운 메뉴 (숨김 상태가 기본) */
+.img-menu-dropdown {
+    display: none; /* 평소에는 안 보임 */
+    position: absolute;
+    top: 35px;
+    right: 0;
+    background-color: white;
+    min-width: 80px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    z-index: 101;
+    overflow: hidden;
+}
+
+/* 드롭다운이 활성화되었을 때 */
+.img-menu-dropdown.show {
+    display: block;
+}
+
+/* 수정/삭제 버튼 스타일 */
+.img-menu-dropdown button {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.img-menu-dropdown button:hover {
+    background-color: #f1f1f1;
+}
+
+.img-menu-dropdown .delete-btn {
+    color: red; /* 삭제 버튼은 빨간색으로 강조 */
+}
+
+
+
+
+
+
+
+
+
+/* upload toggle stile 시작!*/
+/* 1. 토글 버튼 스타일 */
+.activity-control {
+    text-align: center; /* 가운데 정렬 */
+    margin: 30px 0;
+}
+
+.activity-control .btn-toggle {
+    background: #4032ff;
+    border: 2px solid #4032ff; /* 로고와 비슷한 블루 */
+    color: white;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-toggle:hover {
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 15px rgba(79, 105, 255, 0.301); /* 네온 효과 */
+}
+
+/* 2. 숨겨진 폼 컨테이너 (애니메이션용) */
+.form-wrapper {
+    color: #d3d3d3;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease;
+    opacity: 0;
+    width: 100%;
+    max-width: 600px; /* 폼 최대 넓이 제한 */
+    margin: 0 auto;   /* 가운데 정렬 */
+}
+
+/* 폼이 열렸을 때 적용될 클래스 */
+.form-wrapper.open {
+    max-height: 1000px; /* 충분한 높이 지정 */
+    opacity: 1;
+    margin-bottom: 50px;
+}
+
+/* 3. 폼 내부 디자인 (Dark Theme) */
+.dark-form {
+    background: #1a1a1a; /* 아주 어두운 회색 배경 */
+    padding: 30px;
+    border-radius: 0.9rem;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group label {
+    color: #d3d3d3;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* 인풋 창 스타일 */
+.dark-form input[type="text"],
+.dark-form input[type="date"]{
+    background: #2d2d2d;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 8px;
+    color: #d3d3d3;
+    outline: none;
+    font-size: 14px;
+}
+.dark-form input[type="file"]{
+    background: #2d2d2d;
+    border: 1px solid #444;
+    padding: 12px;
+    border-radius: 8px;
+    color: #d3d3d3;
+    outline: none;
+    font-size: 11px;
+}
+
+.dark-form input:focus {
+    border-color: #4032ff; /* 포커스 시 파란색 강조 */
+}
+
+/* 가로 배치용 */
+.row {
+    display: flex;
+    gap: 20px;
+}
+.half {
+    flex: 1;
+}
+
+/* 업로드 버튼 */
+.btn-submit {
+    background: #4032ff;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background: #4032ff;
+}
+
+
+/* 이미지를 감싸는 컨테이너 스타일 (크기 제한) */
+.img-container {
+    max-width: 500px; /* 원하는 크기로 조절 */
+    max-height: 500px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* 영역 확인용 테두리 */
+}
+/* 이미지가 컨테이너를 넘어가지 않도록 설정 */
+#image-to-crop {
+    display: block;
+    max-width: 100%;
+}
+/* 초기에는 자르기 버튼 숨김 */
+#btn-crop-upload {
+    display: none;
+}
+
+
+
+
+
+label, input{
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* 부모 기준점 설정 */
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+    user-select: none; /* 드래그 방지 */
+}
+
+/* 화면에 보이는 클릭 버튼 */
+.custom-select-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #2e2e2e;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.custom-select-trigger .arrow {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+/* 촤르륵 떨어지는 목록 창 */
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    background-color: #2e2e2e; /* 다크 테마 배경 */
+    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* 그림자 효과 */
+    z-index: 100; /* 사진 같은 거 위에 뜨도록 */
+    display: none; /* 평소엔 숨김 */
+
+    max-height: 200px; /* 옵션 1개 높이(약 40px) × 5개 = 200px */
+    overflow-y: auto;  /* 200px을 넘어가면 자동으로 세로 스크롤 생성 */
+}
+
+/* 드롭다운이 열렸을 때 (JS로 open 클래스 추가) */
+.custom-select-wrapper.open .custom-options {
+    display: block;
+}
+
+/* 개별 옵션 디자인 */
+.custom-option {
+    padding: 10px 12px;
+    color: #ddd;
+    cursor: pointer;
+    transition: background 0.2s; /* 부드러운 색상 전환 */
+}
+
+/* 드디어! 마우스 올렸을 때 배경색 변경 */
+.custom-option:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+/* 선택된 항목 표시 */
+.custom-option.selected {
+    color: #4032ff;
+    font-weight: bold;
+}

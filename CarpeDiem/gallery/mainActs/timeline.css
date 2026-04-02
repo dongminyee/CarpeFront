@@ -73,6 +73,10 @@ body{
   transform: translateY(-6px);
   pointer-events: none;
   transition: opacity .18s ease, transform .18s ease;
+
+  max-height: 200px; /* 옵션 1개 높이(약 40px) × 5개 = 200px */
+  overflow-y: auto;  /* 200px을 넘어가면 자동으로 세로 스크롤 생성 */
+
 }
 
 .year-switch.open .year-menu{

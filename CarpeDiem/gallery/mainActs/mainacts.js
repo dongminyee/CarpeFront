@@ -57,7 +57,7 @@ toggleBtn.addEventListener('click', () => {
 }
 
 // 로그인 상태 확인
-{
+
 async function checkEditAuth() {
     const accessToken = localStorage.getItem('accessToken');
     
@@ -69,7 +69,7 @@ async function checkEditAuth() {
 
     try {
         // 1. 서버에 상태 확인 요청
-        const response = await fetch('https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/auth/status', {
+        const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
             method: 'GET',
             headers: {
             'accessToken': localStorage.getItem('accessToken'),
@@ -80,12 +80,14 @@ async function checkEditAuth() {
 
         const result = await response.json();
         console.log("인증 상태:", result.status);
+        let role = result.role;
+        console.log(role);
 
         // 2. 상태별 분기 처리 (Switch-Case)
         switch (result.status) {
             case 'LOGIN_SUCCESS':
                 // [상태 1] 정상 -> UI만 업데이트
-                return true;
+                if(role=="ROLE_ADMIN") return true;
                 break;
 
             case 'TOKEN_REFRESHED':
@@ -95,7 +97,7 @@ async function checkEditAuth() {
                     localStorage.setItem('refreshToken', result.refreshToken);
                     console.log("토큰이 갱신되었습니다.");
                 }
-                return true;
+                if(role=="ROLE_ADMIN") return true;
                 break;
 
             case 'LOGOUT_REQUIRED':
@@ -105,6 +107,8 @@ async function checkEditAuth() {
                 return false;
                 break;
         }
+        notAuthed();
+        return false;
 
     } catch (error) {
         console.error("인증 체크 중 서버 에러:", error);
@@ -131,14 +135,14 @@ function notAuthed() {
     if(loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
     if(userProfile) userProfile.style.display = 'none'; 
 }
-}
+
 
 
 document.getElementById('uploadForm').addEventListener('submit', async function(event) {
     // 1. 폼의 기본 동작(페이지 이동)을 막습니다.
     event.preventDefault();
-    // const rtn = await checkEditAuth();
-    // if(!rtn) return;
+    const rtn = await checkEditAuth();
+    if(!rtn) return;
 
     // 2. 폼 데이터를 자동으로 가져옵니다. (이미지 파일 포함)
     let formData = new FormData();
@@ -191,7 +195,18 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 
                 // (선택) 타임라인 새로고침 로직 추가
                 document.getElementById("mainTxt").textContent=date.substring(0, 4);
-                fetchAndUpdateImages(date.substring(0, 4)); 
+                fetchAndUpdateImages(date.substring(0, 4));
+                
+                // 버튼 toggle
+                const toggleBtn = document.getElementById('toggle-btn');
+                const formContainer = document.getElementById('form-container');
+                formContainer.classList.toggle('open');
+                const span = toggleBtn.querySelector('span');
+    
+                span.innerText = '업로드';
+                toggleBtn.style.borderColor = '#4032ff'; // 다시 파란색
+                toggleBtn.style.backgroundColor = '#4032ff';
+                
 
             } else {
                 // 실패 시 (403, 500 등)
@@ -221,10 +236,14 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
  * 수정 버튼 클릭 핸들러
  * @param {number} id - 이미지 ID
  */
-function handleEdit(id) {
+async function handleEdit(id) {
     console.log('수정 요청, ID:', id);
     // 예: 수정 팝업 띄우기 또는 수정 페이지로 이동
     // Swal.fire(...) 등을 사용해서 제목 수정 입력창을 띄울 수 있습니다.
+
+    const rtn = await checkEditAuth();
+    if(!rtn) return;
+
     Swal.fire({
        title: '활동 내역 수정',
        html: `
@@ -278,7 +297,11 @@ function handleEdit(id) {
  * 삭제 버튼 클릭 핸들러
  * @param {number} id - 이미지 ID
  */
-function handleDelete(id) {
+async function handleDelete(id) {
+
+    const rtn = await checkEditAuth();
+    if(!rtn) return;
+
     Swal.fire({
         title: '정말 삭제하시겠습니까?',
         text: "삭제하면 복구할 수 없습니다!",
@@ -452,7 +475,7 @@ const initButtons = ()=>{
     const container = document.getElementById("yearMenu");
     const mainTxt = document.getElementById("mainTxt");
 
-    for(let i=2026;i>=2023;i--){
+    for(let i=2026;i>=2021;i--){
         const btn = document.createElement("button");
         btn.textContent = `${i}`;
 

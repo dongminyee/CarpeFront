@@ -9,6 +9,7 @@ window.addEventListener('message', (event) => {
         localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('userName', data.name);
         localStorage.setItem('userPicture', data.picture);
+        localStorage.setItem('email', data.username);
 
         window.location.replace('/CarpeDiem/index.html');
 
@@ -56,7 +57,7 @@ async function checkAuthAndUI() {
                 // [상태 2] 갱신됨 -> 로컬스토리지 갈아끼우기 + UI 업데이트
                 if (result.newAccessToken) {
                     localStorage.setItem('accessToken', result.newAccessToken);
-                    localStorage.setItem('refreshToken', result.refreshToken);
+                    localStorage.setItem('refreshToken', result.newRefreshToken);
                     console.log("토큰이 갱신되었습니다.");
                 }
                 updateLoginUI();
@@ -90,10 +91,10 @@ function updateLoginUI() {
 
 async function logout() {
     // 저장소 비우기
-    await fetch('https://obscure-memory-9wpr7vp5wg5377xj-8080.app.github.dev/api/auth/logout', {
+    await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/logout', {
         method: 'DELETE',
         headers: {
-        'username': localStorage.getItem('userName'), 
+        'username': localStorage.getItem('email'), 
         'Content-Type': 'application/json'
     }
     });
