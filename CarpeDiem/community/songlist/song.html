@@ -72,43 +72,13 @@
     <div class="wrap">
 
       <div class="toolbar" >
-        <!-- TODO: 서버 만들어서 클라이언트 데이터 저장하기 -->
-        <form id="addForm" class="add-form" style="display: none;">
-          <fieldset>
-            <legend>행 추가</legend>
 
-            <label>
-              영상(ID/URL)
-              <input type="text" id="fVideo" placeholder="예: https://youtu.be/AoLbQFrqeXk 또는 AoLbQFrqeXk">
-            </label>
-            <label>
-              곡
-              <input type="text" id="fTitle" placeholder="곡명">
-            </label>
-            <label>
-              아티스트
-              <input type="text" id="fArtist" placeholder="아티스트">
-            </label>
-            <label>
-              기수
-              <input type="text" id="fGen" placeholder="예: 23">
-            </label>
-            <label>
-              키
-              <input type="text" id="fKey" placeholder="예: C, Bm">
-            </label>
-            <label>
-              공연
-              <input type="text" id="fStage" placeholder="예: 봄 정기">
-            </label>
-            <label>
-              연도
-              <input type="number" id="fYear" placeholder="예: 2024" min="1900" max="2100" step="1">
-            </label>
+        <div class="search-bar">
+          <input type="text" id="keyword" placeholder="제목 또는 아티스트 검색">
+          <button onclick="fetchSongs(0)">검색</button>
+        </div>
 
-            <button type="submit" class="btn-add">추가</button>
-          </fieldset>
-        </form>
+        <div class="info" id="info"></div>
 
         <div class="rows">
           <label for="rowsPerPage">한 페이지:</label>
@@ -140,11 +110,9 @@
               </th>
               <th class="sortable" data-key="artist" data-type="text">아티스트
               </th>
-              <th class="sortable" data-key="gen"    data-type="text">기수
+              <th class="sortable" data-key="generation" data-type="text">기수
               </th>
-              <!-- <th class="sortable" data-key="key"    data-type="text">키
-              </th> -->
-              <th class="sortable" data-key="stage"  data-type="text">공연
+              <th class="sortable" data-key="concert"  data-type="text">공연
               </th>
               <th class="sortable" data-key="year"   data-type="number">연도
               </th>
@@ -154,21 +122,12 @@
                 </button>
               </th>
             </tr>
-            <tr id="filterRow" style="display:none">
-              <td></td>
-              <td><input data-col="title"  placeholder="곡"></td>
-              <td><input data-col="artist" placeholder="아티스트"></td>
-              <td><input data-col="gen"    placeholder="기수"></td>
-              <!-- <td><input data-col="key"  placeholder="키"></td> -->
-              <td><input data-col="stage"  placeholder="공연명"></td>
-              <td><input data-col="year"  placeholder="연도"></td>
-              <td></td>
-            </tr>
+
           </thead>
-          <tbody>
+          <tbody id="song-list">
             <!-- 초기 더미 데이터(20행). 실제에선 서버/CSV로 채워짐 -->
             <!-- video는 유튜브 URL 또는 ID 가능 -->
-            <tr>
+            <tr data-status="pending">
               <td>
                 <a class="thumb" href="https://www.youtube.com/watch?v=jfJSJdVcu00" target="_blank" rel="noopener">
                   <img src="https://img.youtube.com/vi/jfJSJdVcu00/mqdefault.jpg" alt=""><span class="play">▶</span>
@@ -180,61 +139,21 @@
               <!-- <td data-key="key">C</td> -->
               <td data-key="stage">봄 정기공연</td>
               <td data-key="year">2025</td>
+              <td class="action-col">
+                <button class="btn-edit" onclick="editSong(this, 'jfJSJdVcu00')">수정</button>
+              </td>
             </tr>
             <!-- 같은 포맷으로 여러 줄 복제 -->
 
-            <!-- 16개 더미 빠르게 추가 -->
-            <script>
-              const more = [
-                ["ohOKJkmz1m4","오디션","윤하","21","봄 정기공연","2025"],
-                ["nY9MH-yI2rc","Ling Ling","검정치마","21","봄 정기공연","2025"],
-                ["mUabjpmKe1I","각자의 밤","나상현씨밴드","21","봄 정기공연","2025"],
-                ["eqqv-mGHbmQ","좋다","데이브레이크","20","봄 정기공연","2025"],
-                ["b-ohtdviqEw","새벽별","터치드","20","봄 정기공연","2025"],
-                ["Ii00C90nW2g","스물다섯, 스물하나","자우림","20","봄 정기공연","2025"],
-                ["z-DLAgM6Exs","유영","카더가든","20","봄 정기공연","2025"],
-                ["damj8Auwe8U","청춘만화","이무진","20","봄 정기공연","2025"],
-                ["y_Lu9RI0a4s","고속도로 로맨스","윤종신","20","봄 정기공연","2025"],
-                ["Ib1WC0xEwwI","21세기의 어떤 날","페퍼톤스","20","봄 정기공연","2025"],
-                ["-3jqvnAeQIk","고속도로 로맨스","윤종신","20","KBU","2025"],
-                ["1jg0kAj93Gk","21세기의 어떤 날","페퍼톤스","20","KBU","2025"],
-                ["F0TXqqw9XJo","찬란","나상현씨밴드","20","KBU","2025"],
-                ["blgs1u93I-k","붉은 노을","이문세","19","전기 새내기새로배움터 공연","2025"],
-                ["S-8453lfamU","이 밤이 지나면","임재범","19","전기 새내기새로배움터 공연","2025"],
-                ["7rA2y20gSKg","하늘을 달리다","이적","19","전기 새내기새로배움터 공연","2025"],
-                ["DOXd8N87nlc","야경","터치드","19","전기 새내기새로배움터 공연","2025"],
-                ["j_Lk7JG8TrA","붉은 노을","이문세","19","20주년 공연","2025"],
-                ["TT_UaOpuk3k","이 밤이 지나면","임재범","19","20주년 공연","2025"],
-                ["jHL9-uhxjDE","관객이 될게","아이유","19","20주년 공연","2025"],
-                ["pyYbHMmOf7M","하늘을 달리다","이적","19","20주년 공연","2025"],
-                ["awrNnYxcdZA","ㅈㅣㅂ","한로로","19","20주년 공연","2025"],
-                ["uqG3jM2HRI4","야경","터치드","19","20주년 공연","2025"],
-                ["RGAmHP2ZeOQ","스물다섯 스물하나","자우림","20","20주년 공연","2025"],
-                ["pT4sqpdw3Rg","21세기의 어떤 날","페퍼톤스","20","20주년 공연","2025"],
-                ["3PfEHjHIatU","고속도로 로맨스","윤종신","20","20주년 공연","2025"],
-                ["-YXqS2pSGG8","비와 카푸치노","요루시카","20","20주년 공연","2025"]
-              ];
-              document.currentScript.insertAdjacentHTML('beforebegin', more.map(([id,title,artist,gen,stage,year])=>`
-                <tr>
-                  <td>
-                    <a class="thumb" href="https://youtu.be/${id}" target="_blank" rel="noopener">
-                      <img src="https://img.youtube.com/vi/${id}/mqdefault.jpg" alt=""><span class="play">▶</span>
-                    </a>
-                  </td>
-                  <td data-key="title">${title}</td>
-                  <td data-key="artist">${artist}</td>
-                  <td data-key="gen">${gen}</td>
-                  <td data-key="stage">${stage}</td>
-                  <td data-key="year">${year}</td>
-                </tr>
-              `).join(''));
-            </script>
+
           </tbody>
         </table>
         <div id="pagination"></div>
       </div>
 
     </div>
+
+    
       
     <footer>
       <div class="footer-main">
@@ -274,6 +193,7 @@
   <!-- CSV 파싱 라이브러리(가벼움): PapaParse -->
     <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
     <script src="/CarpeDiem/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="song.js"></script>
     <script src="/CarpeDiem/auth.js"></script>
   </body>

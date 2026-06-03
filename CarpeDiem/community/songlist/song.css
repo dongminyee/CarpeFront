@@ -61,8 +61,12 @@
 body{
   background:var(--bg);
   color:var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height:100vh;
 }
 .wrap{
+  flex:1;
   max-width:1140px;
   margin:2rem auto;
 }
@@ -165,16 +169,54 @@ thead th.sortable.desc::after{
   box-sizing: border-box;
 }
 
-/* 필터 행 */
-#filterRow{display:none;}
-#filterRow td{ background:#151515; border-bottom:1px solid var(--line); padding:10px 12px }
-#filterRow input, #filterRow select{
-  width:100%; background:#202020; color:#fff; border:1px solid #333; border-radius:8px; padding:8px 10px;
-}
 tbody td{
-  border-bottom:1px solid var(--line); padding:12px 12px; vertical-align:middle;
+  border-bottom:1px solid var(--line); padding:12px 10px; vertical-align:middle;
 }
 tbody tr:hover{ background:#181818 }
+
+/* 1. 검색창 전체를 감싸는 컨테이너 */
+.search-bar {
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center;
+  gap: 10px; /* 입력창과 버튼 사이의 간격 */
+}
+
+/* 2. 검색어 입력창 (Input) */
+.search-bar input[type="text"] {
+  width: 300px; /* 입력창 너비 */
+  padding: 10px 16px; /* 안쪽 여백 */
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 16px; /* 글자 크기 */
+  border: 2px solid #e0e0e0; /* 옅은 회색 테두리 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  outline: none; /* 클릭 시 생기는 기본 파란 테두리 제거 */
+  transition: border-color 0.3s ease; /* 색상 변경 시 부드러운 애니메이션 */
+}
+
+/* 입력창을 클릭(포커스)했을 때의 스타일 */
+.search-bar input[type="text"]:focus {
+  border-color: #333333; /* 포커스 시 진한 색으로 변경 */
+}
+
+/* 3. 검색 버튼 (Button) */
+.search-bar button {
+  padding: 10px 24px;
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff; /* 글자색 흰색 */
+  background-color: #333333; /* 배경색 진한 회색 (CarpeDiem 톤에 맞게 수정 가능) */
+  border: none; /* 기본 테두리 제거 */
+  border-radius: 8px; /* 모서리 둥글게 (입력창과 통일) */
+  cursor: pointer; /* 마우스 올렸을 때 손가락 모양 */
+  transition: background-color 0.3s ease; /* 색상 변경 시 부드러운 애니메이션 */
+}
+
+/* 버튼에 마우스를 올렸을 때(Hover)의 스타일 */
+.search-bar button:hover {
+  background-color: #555555; /* 호버 시 약간 밝은 회색으로 변경 */
+}
 
 /* 썸네일 */
 a.thumb{ display:inline-flex; align-items:center; gap:10px; position:relative; }
@@ -197,3 +239,79 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 }
 #pagination button.active{ background:var(--brand) }
 #pagination button[disabled]{ opacity:.5; cursor:default; }
+
+/* 수정 버튼을 담고 있는 테이블 칸 (가운데 정렬) */
+.action-col {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* 관리자용 수정 버튼 스타일 */
+.btn-edit {
+  padding: 5px 5px;         /* 아담한 버튼 사이즈 */
+  font-size: 15px;           /* 작고 깔끔한 폰트 */
+  font-weight: 500;
+  color: #ffffff;            /* 글자색 흰색 */
+  background-color: #4032ff; /* 눈에 잘 띄는 차분한 파란색 */
+  border: none;
+  border-radius: 4px;        /* 살짝 둥근 모서리 */
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease; /* 호버/클릭 애니메이션 */
+}
+
+/* 버튼에 마우스를 올렸을 때 */
+.btn-edit:hover {
+  background-color: #2e1fff; /* 더 진한 파란색으로 변경 */
+}
+
+/* 버튼을 클릭할 때 살짝 눌리는 느낌 */
+.btn-edit:active {
+  transform: scale(0.95);
+}
+
+/* 1. 폼 전체를 감싸는 컨테이너 */
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* 각 항목(라벨+입력창) 사이의 세로 간격 */
+  text-align: left; /* 모달 안에서 글자들이 왼쪽부터 예쁘게 정렬되도록 함 */
+  margin-top: 15px;
+}
+
+/* 2. 각 항목의 이름표(Label) 스타일 */
+.edit-form-container label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555555;
+  margin-bottom: -6px; /* 라벨과 입력창 사이를 살짝 좁혀서 한 세트처럼 보이게 함 */
+  padding-left: 4px;
+}
+
+/* 3. Input과 Select 통일된 디자인 */
+.edit-form-container .swal2-input,
+.edit-form-container .custom-select {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0; /* SweetAlert 기본 마진 덮어쓰기 */
+  height: 45px; /* 입력창 높이 통일 */
+  padding: 0 12px;
+  font-size: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 6px; /* 모서리 부드럽게 */
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 4. 클릭(포커스) 했을 때 강조 효과 */
+.edit-form-container .swal2-input:focus,
+.edit-form-container .custom-select:focus {
+  border-color: #4A90E2; /* 선택 시 파란색 테두리 */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15); /* 은은한 파란색 그림자 (Glow 효과) */
+}
+
+/* 5. Select 요소만 갖는 특징 추가 */
+.edit-form-container .custom-select {
+  cursor: pointer; /* 마우스 올리면 손가락 모양으로 변경 */
+  appearance: auto; /* 브라우저 기본 화살표 사용 */
+}
