@@ -1,4 +1,7 @@
-  
+document.addEventListener("DOMContentLoaded", () => {
+  // ==========================================
+  // 1. 데스크톱 메가 드롭다운 로직
+  // ==========================================
   const menuBtns = document.querySelectorAll('.menu-btn');
   const hovermenu = document.getElementById('megaDropdown');
   const headerContainer = document.querySelector('header .container');
@@ -22,112 +25,136 @@
   function hideDropdown() {
     dropdownTimeout = setTimeout(() => {
       hovermenu.classList.remove('active');
-    }, 120); // 0.12초 뒤에 닫힘
+    }, 120); 
   }
 
-  const clubroomBtn = document.querySelector('.dropCommu li:nth-child(2) a');
-  clubroomBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
+  // ==========================================
+  // 2. 모바일 햄버거 메뉴 애니메이션 로직
+  // ==========================================
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileNav = document.getElementById('mobile-nav');
+  const closeBtn = document.getElementById('mobile-close-btn');
 
-    // 🚨 [핵심 해결책] 비동기 작업(await)을 시작하기 전에, 목적지 주소를 미리 안전한 변수에 저장해 둡니다!
-    const targetUrl = e.currentTarget.href; 
-    // (또는 const targetUrl = clubroomBtn.href; 도 좋습니다)
+  if (hamburgerBtn && mobileNav && closeBtn) {
+    hamburgerBtn.addEventListener('click', () => {
+      mobileNav.classList.add('open');
+      document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+    });
 
-    try {
-        // 2. then 대신 await를 써서 코드를 깔끔하게 만듭니다.
+    closeBtn.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = ''; 
+    });
+
+    // 배경 클릭 시 닫기
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // ==========================================
+  // 3. 통합 권한 체크 로직 (데스크톱 & 모바일 모두 적용)
+  // ==========================================
+  // 🚨 querySelectorAll을 써서 requires-auth 클래스를 가진 모든 버튼을 잡아옵니다.
+  const authRequiredBtns = document.querySelectorAll('.requires-auth');
+  
+  authRequiredBtns.forEach(btn => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      const targetUrl = e.currentTarget.href; 
+      
+      try {
         const isAuthorized = await checkEditAuth();
         console.log("권한 확인 결과:", isAuthorized);
 
-        // 3. 권한이 있을 때(true) 이동하도록 로직 수정
         if (isAuthorized) {
-            window.location.href = targetUrl; // 아까 미리 저장해 둔 주소 사용!
+          window.location.href = targetUrl;
         } else {
-            // 권한이 없을 때
-            console.log("권한이 없어서 이동을 차단합니다.");
-            // Swal.fire('권한이 없습니다!'); // (선택) 아까 배운 SweetAlert2 띄우기
+          console.log("권한이 없어서 이동을 차단합니다.");
+          // 권한 없을 때 모바일 메뉴가 열려있다면 닫아주는 센스!
+          if (mobileNav.classList.contains('open')) {
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+          }
         }
-    } catch (error) {
+      } catch (error) {
         console.error("인증 체크 중 에러 발생:", error);
-    }
+      }
+    });
+  });
 });
 
-
-// 로그인 상태 확인
-
+// ==========================================
+// 4. JWT 인증 함수 (기존 로직 유지)
+// ==========================================
 async function checkEditAuth() {
-    const accessToken = localStorage.getItem('accessToken');
-    
-    // 토큰 없으면 바로 로그아웃 처리
-    if (accessToken==null) {
+  const accessToken = localStorage.getItem('accessToken');
+  
+  if (accessToken == null) {
+    notAuthed();
+    return false;
+  }
+
+  try {
+    const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
+      method: 'GET',
+      headers: {
+        'accessToken': localStorage.getItem('accessToken'),
+        'refreshToken': localStorage.getItem('refreshToken'), 
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const result = await response.json();
+    let role = result.role;
+
+    switch (result.status) {
+      case 'LOGIN_SUCCESS':
+        if(role == "ROLE_ADMIN") return true;
+        break;
+
+      case 'TOKEN_REFRESHED':
+        if (result.newAccessToken) {
+          localStorage.setItem('accessToken', result.newAccessToken);
+          localStorage.setItem('refreshToken', result.refreshToken);
+        }
+        if(role == "ROLE_ADMIN") return true;
+        break;
+
+      case 'LOGOUT_REQUIRED':
+      default:
         notAuthed();
         return false;
     }
+    notAuthed();
+    return false;
 
-    try {
-        // 1. 서버에 상태 확인 요청
-        const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
-            method: 'GET',
-            headers: {
-            'accessToken': localStorage.getItem('accessToken'),
-            'refreshToken': localStorage.getItem('refreshToken'), 
-            'Content-Type': 'application/json'
-        }
-        });
-
-        const result = await response.json();
-        console.log("인증 상태:", result.status);
-        let role = result.role;
-        console.log(role);
-
-        // 2. 상태별 분기 처리 (Switch-Case)
-        switch (result.status) {
-            case 'LOGIN_SUCCESS':
-                // [상태 1] 정상 -> UI만 업데이트
-                if(role=="ROLE_ADMIN") return true;
-                break;
-
-            case 'TOKEN_REFRESHED':
-                // [상태 2] 갱신됨 -> 로컬스토리지 갈아끼우기 + UI 업데이트
-                if (result.newAccessToken) {
-                    localStorage.setItem('accessToken', result.newAccessToken);
-                    localStorage.setItem('refreshToken', result.refreshToken);
-                    console.log("토큰이 갱신되었습니다.");
-                }
-                if(role=="ROLE_ADMIN") return true;
-                break;
-
-            case 'LOGOUT_REQUIRED':
-            default:
-                // [상태 3] 만료/비정상 -> 데이터 날리고 로그아웃 화면
-                notAuthed();
-                return false;
-                break;
-        }
-        notAuthed();
-        return false;
-
-    } catch (error) {
-        console.error("인증 체크 중 서버 에러:", error);
-        Swal.fire({
-            icon: 'error',
-            title: '로그인 실패',
-            text: `인증 중 서버 에러`
-        }); // 에러 나면 안전하게 로그아웃
-        return false;
-    }
+  } catch (error) {
+    console.error("인증 체크 중 서버 에러:", error);
+    Swal.fire({
+      icon: 'error',
+      title: '로그인 실패',
+      text: `인증 중 서버 에러`
+    });
+    return false;
+  }
 }
 
 function notAuthed() {
-    // 저장소 비우기
-    localStorage.clear();
-    const loginBtn = document.getElementById('login-btn');
-    const userProfile = document.getElementById('user-profile');
-    Swal.fire({
-        icon: 'error',
-        title: '접근 권한 없음',
-        text: `사용자의 게시물 접근 권한이 없음`
-    });
-    // 프로필 숨기고 버튼 보이기
-    if(loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
-    if(userProfile) userProfile.style.display = 'none'; 
+  localStorage.clear();
+  const loginBtn = document.getElementById('login-btn');
+  const userProfile = document.getElementById('user-profile');
+  
+  Swal.fire({
+    icon: 'error',
+    title: '접근 권한 없음',
+    text: `사용자의 게시물 접근 권한이 없음`
+  });
+  
+  if(loginBtn) loginBtn.style.display = 'block'; 
+  if(userProfile) userProfile.style.display = 'none'; 
 }
