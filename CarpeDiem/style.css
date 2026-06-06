@@ -18,7 +18,7 @@ li {
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0;
 }
 
 body {
@@ -54,7 +54,11 @@ header nav ul {
   display: flex;
 }
 header nav ul li {
-  padding: 0 2.5rem;
+  width: 140px; /* 모든 메뉴가 140px이라는 동일한 지분을 가짐 */
+  padding: 0;   /* 들쭉날쭉하던 패딩 싹 삭제! */
+  display: flex;
+  justify-content: center; /* 글자를 칸의 정중앙에 예쁘게 배치 */
+  align-items: center;
 }
 header nav ul .login-btn {
   padding: 0 0rem;
@@ -122,7 +126,12 @@ header nav ul li button {
 
   z-index: 200;
   flex-direction: column;
-  justify-content: center;
+  /* 🚨 1. center를 지우고 flex-start(위에서부터 정렬)로 바꿉니다 */
+  justify-content: flex-start; 
+  /* 🚨 2. 내용이 화면보다 길어지면 세로 스크롤을 생성합니다 */
+  overflow-y: auto; 
+  /* 🚨 3. 위쪽 X 버튼(닫기)을 가리지 않도록 넉넉한 패딩을 줍니다 */
+  padding: 5rem 0 3rem 0;
   align-items: center;
 
   /* 🚨 1. 화면 오른쪽 바깥으로 100% 밀어내서 숨겨둡니다 */
@@ -147,7 +156,7 @@ header nav ul li button {
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 2rem; /* 버튼을 좀 더 시원하게 키움 */
+  font-size: 1.5rem; /* 버튼을 좀 더 시원하게 키움 */
   cursor: pointer;
   padding: 0.5rem;
   transition: transform 0.2s;
@@ -231,7 +240,7 @@ header nav ul li button {
   display: flex;
   justify-content: flex-end; /* 상단 nav 메뉴들과 우측 정렬 */
   gap: 0rem; /* 각 카테고리별 간격을 동일하게 설정 */
-  padding-right: 1rem; /* 전체 메뉴 우측 여백 맞춤 */
+  padding-right: 0rem; /* 전체 메뉴 우측 여백 맞춤 */
   
   /* 애니메이션 초기 상태 (살짝 위로 숨어있음) */
   opacity: 0;
@@ -239,7 +248,7 @@ header nav ul li button {
   overflow: hidden;
   pointer-events: none;
   transform: translateY(-10px); 
-  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
   z-index: 99;
 }
 /* 기존 불필요한 마진 싹 제거 */
@@ -259,10 +268,11 @@ header nav ul li button {
 }
 /* 개별 카테고리 (About, Gal 등) */
 .hovermenu ul {
-  width: 160px; /* 모든 컬럼의 너비를 동일하게 줘서 삐뚤어짐 방지 */
+  width: 140px; /* 상단 메뉴(li)와 소름 돋게 똑같은 너비 부여! (핵심 ⭐) */
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
 }
 /* 서브 메뉴(li) 디자인 */
 header .hovermenu li {
@@ -347,7 +357,7 @@ section .title h2 {
   position: relative;
   display: inline-block;
 }
-section .title h2 span { color: rgb(119, 119, 252); }
+
 section .title h2::after {
   content: '';
   display: block;
@@ -518,8 +528,9 @@ footer a {
     margin-left: 1rem;
   }
 
-  header nav ul li {
-    padding: 0 1.2rem;
+  header nav ul li,
+  .hovermenu ul {
+    width: 105px; 
   }
 
   header nav ul li button {

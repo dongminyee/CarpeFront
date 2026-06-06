@@ -62,7 +62,7 @@
 
   // 6) 렌더링
   const container = document.getElementById('scheduleGrid');
-  container.style.gridTemplateColumns = `120px repeat(${dayCols.length}, 1fr)`;
+  container.style.gridTemplateColumns = `var(--time-width, 120px) repeat(${dayCols.length}, 1fr)`;
 
   // 좌상단 빈칸
   const emptyHead = document.createElement('div');
