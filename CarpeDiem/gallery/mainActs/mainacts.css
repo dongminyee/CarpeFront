@@ -1,17 +1,10 @@
-.Activity .title{
-  margin-bottom: 4rem;
-}
-.Activity .introduction{
-  margin-bottom: 2rem;
-}
-.Activity .actsScrpt{
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-}
+/* =========================================
+   상단 히어로 배너 (Main Visual) - 테마 통일
+========================================= */
 .main-visual-bg {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 350px; /* 시원하게 높이 확장 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,14 +13,13 @@
   background:
     linear-gradient(
       to bottom,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.9) 35%,
-      rgba(0,0,0,0.3) 90%,
-      rgba(0,0,0,0.04) 100%
+      rgba(0,0,0,0.7) 0%,
+      rgba(0,0,0,0.5) 60%,
+      rgba(17,17,17,1) 100% /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
     ),
-    url('../../images/section_background.jpg') center center/cover no-repeat;
+    url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
-  padding-top: 85px;
+  padding-top: 70px;
 }
 
 .main-visual-content {
@@ -35,220 +27,181 @@
   max-width: 900px;
   margin: 0 auto;
 }
-
-.main-visual-content p{
-    margin-top: 1rem;
-}
+.main-visual-content p { margin-top: 1rem; }
 
 .doubleblue {
-  color: #2a1bff;
+  color: #5a73fd; /* 블루 포인트 컬러 매칭 */
   font-size: 2.4rem;
   margin-left: 0.1em;
 }
 
-/* 여기부터 이미지 메뉴 버튼 dropdown 구현 */
-
-/* 메뉴 컨테이너: 우측 상단 고정 */
+/* =========================================
+   2. 이미지 카드 내부 메뉴 버튼 (점 3개 & 드롭다운 다크화)
+========================================= */
 .img-menu-container {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 100; /* 이미지보다 위에 오도록 */
+    top: 15px;
+    right: 15px;
+    z-index: 100;
 }
 
-/* 점 3개 버튼 스타일 */
+/* 점 3개 버튼을 투명한 다크 서클 칩으로 변경 */
 .img-menu-btn {
-    background: rgba(255, 255, 255, 0.8); /* 반투명 흰색 배경 */
-    border: none;
+    background: rgba(0, 0, 0, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    line-height: 1;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #333;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: #fff;
+    transition: all 0.2s;
 }
-
 .img-menu-btn:hover {
-    background: #fff;
+    background: #4032ff; /* 호버 시 블루 팝업 */
+    border-color: #4032ff;
 }
 
-/* 드롭다운 메뉴 (숨김 상태가 기본) */
+/* 라이트 모드였던 드롭다운 메뉴 완벽 다크화 🚨 */
 .img-menu-dropdown {
-    display: none; /* 평소에는 안 보임 */
+    display: none;
     position: absolute;
-    top: 35px;
+    top: 38px;
     right: 0;
-    background-color: white;
-    min-width: 80px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 5px;
+    background-color: #222222;
+    min-width: 90px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
     z-index: 101;
     overflow: hidden;
 }
+.img-menu-dropdown.show { display: block; }
 
-/* 드롭다운이 활성화되었을 때 */
-.img-menu-dropdown.show {
-    display: block;
-}
-
-/* 수정/삭제 버튼 스타일 */
 .img-menu-dropdown button {
-    color: black;
-    padding: 8px 12px;
-    text-decoration: none;
+    color: #eee;
+    padding: 10px 14px;
     display: block;
     width: 100%;
     text-align: left;
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 13px;
+    transition: background 0.2s;
 }
-
 .img-menu-dropdown button:hover {
-    background-color: #f1f1f1;
+    background-color: rgba(255, 255, 255, 0.05);
 }
-
 .img-menu-dropdown .delete-btn {
-    color: red; /* 삭제 버튼은 빨간색으로 강조 */
+    color: #ff4d4d; /* 삭제 버튼 경고 색상 유지 */
+    font-weight: 600;
 }
 
-
-
-
-
-
-
-
-
-/* upload toggle stile 시작!*/
-/* 1. 토글 버튼 스타일 */
+/* =========================================
+   3. 업로드 제어 토글 버튼 (Upload Control)
+========================================= */
 .activity-control {
-    text-align: center; /* 가운데 정렬 */
-    margin: 30px 0;
+    text-align: center;
+    margin: 40px 0 20px;
 }
-
 .activity-control .btn-toggle {
     background: #4032ff;
-    border: 2px solid #4032ff; /* 로고와 비슷한 블루 */
+    border: 2px solid #4032ff;
     color: white;
-    padding: 10px 25px;
+    padding: 10px 28px;
     border-radius: 30px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(64, 50, 255, 0.2);
 }
-
 .btn-toggle:hover {
-    color: rgb(255, 255, 255);
-    box-shadow: 0 0 15px rgba(79, 105, 255, 0.301); /* 네온 효과 */
+    box-shadow: 0 0 20px rgba(64, 50, 255, 0.4);
+    transform: translateY(-2px);
 }
 
-/* 2. 숨겨진 폼 컨테이너 (애니메이션용) */
+/* =========================================
+   4. 업로드 폼 디자인 (Dark Form)
+========================================= */
 .form-wrapper {
-    color: #d3d3d3;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-out, opacity 0.4s ease;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     opacity: 0;
     width: 100%;
-    max-width: 600px; /* 폼 최대 넓이 제한 */
-    margin: 0 auto;   /* 가운데 정렬 */
+    max-width: 600px;
+    margin: 0 auto;
 }
-
-/* 폼이 열렸을 때 적용될 클래스 */
 .form-wrapper.open {
-    max-height: 1000px; /* 충분한 높이 지정 */
+    max-height: 1200px; /* 크로퍼 공간을 위해 맥스 높이 확장 */
     opacity: 1;
     margin-bottom: 50px;
+    padding: 0 1rem;
 }
 
-/* 3. 폼 내부 디자인 (Dark Theme) */
 .dark-form {
-    background: #1a1a1a; /* 아주 어두운 회색 배경 */
+    background: #1a1a1a;
     padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #333;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
+.input-group { display: flex; flex-direction: column; text-align: left; }
+.input-group label { color: #aaa; font-size: 13px; font-weight: 600; margin-bottom: 8px; padding-left: 2px; }
 
-.input-group label {
-    color: #d3d3d3;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-/* 인풋 창 스타일 */
 .dark-form input[type="text"],
 .dark-form input[type="date"],
 .dark-form input[type="file"] {
-    background: #2d2d2d;
-    border: 1px solid #444;
+    background: #252525;
+    border: 1px solid #333;
     padding: 12px;
     border-radius: 8px;
-    color: #d3d3d3;
+    color: #e5e5e5;
     outline: none;
     font-size: 14px;
+    transition: border-color 0.2s;
 }
+.dark-form input:focus { border-color: #4032ff; }
 
-.dark-form input:focus {
-    border-color: #4032ff; /* 포커스 시 파란색 강조 */
-}
+/* 레이아웃 가로 배치용 정렬 엔진 */
+.row { display: flex; gap: 20px; }
+.half { flex: 1; }
 
-/* 가로 배치용 */
-.row {
-    display: flex;
-    gap: 20px;
-}
-.half {
-    flex: 1;
-}
-
-/* 업로드 버튼 */
 .btn-submit {
-    background: #4032ff;
-    color: white;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
+    background: #4032ff; color: white; border: none; padding: 14px;
+    border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer;
+    transition: all 0.2s; margin-top: 10px;
 }
+.btn-submit:hover { background: #2e1ffc; }
 
-.btn-submit:hover {
-    background: #2563eb;
-}
-
-
-/* 이미지를 감싸는 컨테이너 스타일 (크기 제한) */
+/* 크로퍼 내부 이미지 핏팅 보정 */
 .img-container {
-    max-width: 500px; /* 원하는 크기로 조절 */
-    max-height: 500px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd; /* 영역 확인용 테두리 */
-}
-/* 이미지가 컨테이너를 넘어가지 않도록 설정 */
-#image-to-crop {
-    display: block;
+    width: 100%;
     max-width: 100%;
+    aspect-ratio: 1/1; /* 정사각형 크롭 컨테이너 유도 */
+    background: #000;
+    margin: 10px 0;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
 }
-/* 초기에는 자르기 버튼 숨김 */
-#btn-crop-upload {
-    display: none;
+#image-to-crop { display: block; max-width: 100%; height: 100%; object-fit: contain; }
+
+/* =========================================
+   📱 모바일 반응형 폼 (Form Mobile)
+========================================= */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; /* 🚨 모바일분기 시 가로 배열 인풋을 세로로 안전하게 스택 */
+    gap: 20px;
+  }
 }

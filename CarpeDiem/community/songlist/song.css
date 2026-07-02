@@ -1,17 +1,10 @@
-.Activity .title{
-  margin-bottom: 4rem;
-}
-.Activity .introduction{
-  margin-bottom: 2rem;
-}
-.Activity .actsScrpt{
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-}
+/* =========================================
+   상단 히어로 배너 (Main Visual) - 테마 통일
+========================================= */
 .main-visual-bg {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 350px; /* 시원하게 높이 확장 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,31 +13,36 @@
   background:
     linear-gradient(
       to bottom,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.9) 35%,
-      rgba(0,0,0,0.3) 90%,
-      rgba(0,0,0,0.04) 100%
+      rgba(0,0,0,0.7) 0%,
+      rgba(0,0,0,0.5) 60%,
+      rgba(17,17,17,1) 100% /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
     ),
     url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
-  padding-top: 85px;
+  padding-top: 70px;
 }
 
 .main-visual-content {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
-.main-visual-content p{
-    margin-top: 1rem;
+.main-visual-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 5px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
 .doubleblue {
-  color: #2a1bff;
-  font-size: 2.4rem;
-  margin-left: 0.1em;
+  color: #5a73fd;
+  font-weight: 300;
+  opacity: 0.8;
 }
+
+
 
 
 /* 테이블 css */
@@ -69,6 +67,7 @@ body{
   flex:1;
   max-width:1140px;
   margin:2rem auto;
+  padding: 0 0.5rem;
 }
 
 h1{font-size:28px;margin-bottom:16px}
@@ -174,20 +173,43 @@ tbody td{
 }
 tbody tr:hover{ background:#181818 }
 
-/* 1. 검색창 전체를 감싸는 컨테이너 */
+
+/* =========================================
+   🚨 툴바 & 검색창 배치 수정 (HTML 순서 변경 없이 CSS로 해결)
+========================================= */
+.toolbar{
+  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+/* JS에서 주입하는 "총 00개"를 맨 왼쪽으로 밀어냅니다 */
+#info {
+  order: 2;
+  font-size: 14px;
+  color: #eaeaea;
+}
+
+/* 검색창을 두 번째 위치로 당겨옵니다 */
 .search-bar {
+  order: 2;
   display: flex;
-  justify-content: center; /* 가운데 정렬 */
   align-items: center;
-  gap: 10px; /* 입력창과 버튼 사이의 간격 */
+  gap: 8px; /* 버튼과 인풋 사이 간격 살짝 좁힘 */
+}
+
+/* 드롭다운을 맨 오른쪽(검색창 바로 옆)으로 붙입니다 */
+.toolbar .rows{
+  order: 3;
+  display:flex; align-items:center; gap:8px;
+  color:var(--muted); font-size:14px;
 }
 
 /* 2. 검색어 입력창 (Input) */
 .search-bar input[type="text"] {
-  width: 300px; /* 입력창 너비 */
-  padding: 10px 16px; /* 안쪽 여백 */
+  width: 180px; /* 입력창 너비 */
+  padding: 8px 12px; /* 안쪽 여백 */
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  font-size: 16px; /* 글자 크기 */
+  font-size: 14px; /* 글자 크기 */
   border: 2px solid #e0e0e0; /* 옅은 회색 테두리 */
   border-radius: 8px; /* 모서리 둥글게 */
   outline: none; /* 클릭 시 생기는 기본 파란 테두리 제거 */
@@ -201,9 +223,9 @@ tbody tr:hover{ background:#181818 }
 
 /* 3. 검색 버튼 (Button) */
 .search-bar button {
-  padding: 10px 24px;
+  padding: 8px 16px;
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #ffffff; /* 글자색 흰색 */
   background-color: #333333; /* 배경색 진한 회색 (CarpeDiem 톤에 맞게 수정 가능) */
@@ -314,4 +336,97 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 .edit-form-container .custom-select {
   cursor: pointer; /* 마우스 올리면 손가락 모양으로 변경 */
   appearance: auto; /* 브라우저 기본 화살표 사용 */
+}
+
+/* =========================================
+   모바일 반응형 (스마트폰 크기 완벽 최적화)
+========================================= */
+@media (max-width: 768px) {
+  .main-visual-bg {
+    height: 240px;
+  }
+  .main-visual-content h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* =========================================
+   🚨 모바일 반응형 (표 비율만 완벽하게 조정)
+========================================= */
+@media (max-width: 820px){
+  .add-form { grid-template-columns: 1fr 1fr; }
+  
+  
+  /* 좁은 화면에서 검색창 너비를 조금 더 줄임 */
+  .search-bar input[type="text"] {
+    width: 140px;
+  }
+
+  table {
+    min-width: 100%; 
+  }
+
+  table td{
+    padding: 12px 5px;
+  }
+
+  table th{
+    padding: 12px 5px;
+  }
+
+  .search-bar input[type="text"] {
+  font-size: 11px;
+}
+
+}
+
+/* 초소형 폰 화면 대응 */
+@media (max-width: 700px) {
+  .toolbar {
+    gap: 10px;
+  }
+  .toolbar #info {
+    order:1;
+    width: 100%; /* 총 개수가 위로 올라가고 검색창+셀렉트박스가 밑으로 오게 됨 */
+    margin-bottom: 5px;
+  }
+  .search-bar input[type="text"] {
+    width: 140px;
+    font-size:10.5px;
+  }
+  
+
+  /* 🚨 1. th, td 뿐만 아니라 뼈대인 <col> 자체를 숨겨야 빈 공간이 생기지 않습니다! */
+  table col:nth-child(4), table th:nth-child(4), table td:nth-child(4),
+  table col:nth-child(6), table th:nth-child(6), table td:nth-child(6) {
+    display: none;
+  }
+
+  /* 🚨 2. 남은 열들이 100% 빈 공간 없이 꽉 채우도록 비율을 재분배합니다 (!important로 HTML 덮어쓰기) */
+  table col:nth-child(1) { width: 80px !important; } /* 썸네일 공간 살짝 축소 */
+  table col:nth-child(2) { width: 31% !important; }  /* 곡명 (가장 넓게) */
+  table col:nth-child(3) { width: 30% !important; }  /* 아티스트 */
+  table col:nth-child(5) { width: 25% !important; }  /* 공연 */
+  table col:nth-child(7) { width: 14% !important; }  /* 버튼/돋보기 */
+
+  /* 🚨 1. 글자가 '...'으로 잘리지 않고 두 줄로 예쁘게 보이도록 수정 */
+  tbody td {
+    white-space: normal; /* 한 줄 고정 해제! 이제 아래로 자연스럽게 넘어갑니다 */
+    word-break: keep-all; /* 단어가 중간에 찢어지지 않게 보호 */
+    line-height: 1.4; /* 두 줄이 되었을 때 답답하지 않게 줄간격 추가 */
+    font-size: 13px; /* 글자 크기도 조금 더 또렷하게 */
+  }
+
+  thead th{
+    font-size: 13px;
+  }
+
+  tbody td button.btn-edit{
+    font-size:12px;
+  }
+
+  a.thumb img {
+    width: 65px; 
+    height: 42px;
+  }
 }

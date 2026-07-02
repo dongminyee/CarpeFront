@@ -81,7 +81,7 @@
   border-radius: 12px; /* 모서리 둥글게 */
   overflow: auto; /* 내용이 넘치면 스크롤 생성 */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* 붕 떠보이는 고급 그림자 */
-  max-height: 600px;
+  max-height: 550px;
 }
 
 /* 🚨 커스텀 스크롤바 (PC에서 스크롤바 예쁘게 만들기) */
