@@ -9,8 +9,8 @@
 
 /* 🚨 반응형 동적 스케일 변수 세팅 */
 :root {
-	--img-width: 300px;
-	--img-height: 300px;
+	--img-width: 250px;
+	--img-height: 250px;
 	--img-padding: 20px;
 }
 
@@ -77,10 +77,10 @@ body { background-color: rgb(20, 20, 20); }
 	color: white;
 	background: #1a1a1a;
 	border-radius: 12px;
-	width: calc(var(--img-width) + calc(var(--img-padding) * 2));
+	width: calc(var(--img-width) + calc(var(--img-padding) * 4));
 	/* 🚨 원래 340px 수동 지정을 지우고, 이미지 높이 + 상단 텍스트 방(100px) 제공 */
 	height: calc(var(--img-height) + 100px); 
-	margin: 0 20px;
+	margin: 5px 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -142,7 +142,7 @@ body { background-color: rgb(20, 20, 20); }
 	background: rgba(64, 50, 255, 0.8) !important;
 	border-radius: 50% !important;
 	/* 🚨 상단 텍스트 공간(100px)을 계산하여 정확히 '사진의 세로 중앙'에 화살표를 꽂아넣음 */
-	top: calc(50% + 40px) !important; 
+	top: calc(50%) !important; 
 	transform: translateY(-50%) !important;
 	transition: all 0.2s ease;
 }
@@ -165,35 +165,35 @@ html, body { max-width: 100vw; overflow-x: hidden; }
   :root {
     --img-width: 200px;
     --img-height: 200px;
-    --img-padding: 12px;
+    --img-padding: 10px;
   }
   
   .header { font-size: 1.8rem; margin: 2rem 0 1rem; }
   
-  /* 모바일 바구니 높이 자동으로 연동 */
+  /* 🚨 1. 바구니(캐러셀) 높이는 카드 높이 + 마진 + 그림자까지 넉넉하게 품어야 안 잘립니다! */
   .timeline .carousel { 
     width: 100%; 
-    height: calc(var(--img-height) + 60px);
+    height: calc(var(--img-height) + 100px); 
   }
   
-  /* 모바일 카드 비율 패치 */
+  /* 🚨 2. 카드 높이는 '이미지(200px) + 상단 글자 공간 + 하단 여백'을 충분히 확보해야 합니다 */
   .timeline .carousel-cell {
     margin: 10px 10px;
-    height: calc(var(--img-height) + 55px);
-
+    height: calc(var(--img-height) + 80px); /* 글씨가 숨 쉴 80px 공간 확보 */
+    padding-bottom: 15px; /* 이미지를 바닥에서 살짝 띄움 */
   }
   
-  /* 모바일 텍스트 정렬 */
+  /* 🚨 3. 모바일 텍스트 정렬 */
   .timeline .carousel-cell time {
     font-size: 1.1rem;
-    top: 5px;
+    top: 15px; /* 글씨가 카드 윗면 테두리에 딱 붙지 않게 여백을 줌 */
   }
-  .timeline .carousel-cell time span { font-size: 0.8rem; }
+  .timeline .carousel-cell time span { font-size: 0.8rem; margin-bottom: 3px; }
   
-  /* 🚨 모바일 화살표 위치도 사진 중앙에 딱 맞게 정정 */
+  /* 🚨 4. 화살표 위치도 사진 영역의 정중앙에 오도록 보정 */
   .flickity-prev-next-button {
     width: 38px;
     height: 38px;
-    top: calc(50% + 30px) !important;
+    top: calc(50%) !important;
   }
 }

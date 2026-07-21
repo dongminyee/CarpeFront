@@ -35,22 +35,18 @@ document.addEventListener('keydown', (e)=>{
 const toggleBtn = document.getElementById('toggle-btn');
 const formContainer = document.getElementById('form-container');
 
+// 1. 업로드 버튼 클릭 시 모달 열기
 toggleBtn.addEventListener('click', () => {
-    // 1. 폼 열고 닫기 (클래스 토글)
-    formContainer.classList.toggle('open');
-    
-    // 2. 버튼 텍스트 변경 (+ 활동 추가 <-> - 닫기)
-    const isOpen = formContainer.classList.contains('open');
-    const span = toggleBtn.querySelector('span');
-    
-    if (isOpen) {
-        span.innerText = '닫기';
-        toggleBtn.style.borderColor = '#ff4d4d'; // 닫을 땐 빨간색 계열로 변경 (선택사항)
-        toggleBtn.style.backgroundColor = '#ff4d4d';
-    } else {
-        span.innerText = '업로드';
-        toggleBtn.style.borderColor = '#4032ff'; // 다시 파란색
-        toggleBtn.style.backgroundColor = '#4032ff';
+    formContainer.classList.add('open');
+    document.body.style.overflow = 'hidden'; // 🚨 뒤쪽 배경 스크롤 꽉 잠금!
+});
+
+// 2. 모달 닫기 기능 (어두운 배경 클릭 or X 버튼 클릭)
+formContainer.addEventListener('click', (e) => {
+    // 클릭한 타겟이 모달 배경(formContainer) 자체이거나, 닫기 버튼 내부일 때
+    if (e.target === formContainer || e.target.closest('#close-modal-btn')) {
+        formContainer.classList.remove('open');
+        document.body.style.overflow = ''; // 🚨 배경 스크롤 다시 해제
     }
 });
 
@@ -142,7 +138,23 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     // 1. 폼의 기본 동작(페이지 이동)을 막습니다.
     event.preventDefault();
     const rtn = await checkEditAuth();
-    if(!rtn) return;
+    if(!rtn){
+        // 🚨 폼 닫기 및 스크롤 해제
+        const formContainer = document.getElementById('form-container');
+        formContainer.classList.remove('open');
+        document.body.style.overflow = ''; 
+        // (선택) 폼 내부 입력값 초기화
+        document.getElementById('uploadForm').reset();
+        // 3. 이미지 미리보기 태그 비우기
+        document.getElementById('image-to-crop').src = '';
+
+        // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+        if (typeof cropper !== 'undefined' && cropper !== null) {
+            cropper.destroy();
+            cropper = null; // 다음 렌더링을 위해 완전히 비움
+        }
+        return;
+    }
 
     // 2. 폼 데이터를 자동으로 가져옵니다. (이미지 파일 포함)
     let formData = new FormData();
@@ -150,6 +162,20 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     const date = document.getElementById('imageDate').value;
     if (!(title) || !(date)||!(cropper)){
         console.log("?");
+        // 🚨 폼 닫기 및 스크롤 해제
+        const formContainer = document.getElementById('form-container');
+        formContainer.classList.remove('open');
+        document.body.style.overflow = ''; 
+        // (선택) 폼 내부 입력값 초기화
+        document.getElementById('uploadForm').reset();
+        // 3. 이미지 미리보기 태그 비우기
+        document.getElementById('image-to-crop').src = '';
+
+        // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+        if (typeof cropper !== 'undefined' && cropper !== null) {
+            cropper.destroy();
+            cropper = null; // 다음 렌더링을 위해 완전히 비움
+        }
         Swal.fire({text: '내용을 모두 입력해주세요!', icon:'error', confirmButtonColor: '#4032ff'});
         return;
     }
@@ -197,20 +223,42 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 document.getElementById("mainTxt").textContent=date.substring(0, 4);
                 fetchAndUpdateImages(date.substring(0, 4));
                 
-                // 버튼 toggle
-                const toggleBtn = document.getElementById('toggle-btn');
+                // 🚨 폼 닫기 및 스크롤 해제
                 const formContainer = document.getElementById('form-container');
-                formContainer.classList.toggle('open');
-                const span = toggleBtn.querySelector('span');
-    
-                span.innerText = '업로드';
-                toggleBtn.style.borderColor = '#4032ff'; // 다시 파란색
-                toggleBtn.style.backgroundColor = '#4032ff';
+                formContainer.classList.remove('open');
+                document.body.style.overflow = ''; 
+
+                // (선택) 폼 내부 입력값 초기화
+                document.getElementById('uploadForm').reset();
+                // 3. 이미지 미리보기 태그 비우기
+                document.getElementById('image-to-crop').src = '';
+
+                // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+                if (typeof cropper !== 'undefined' && cropper !== null) {
+                    cropper.destroy();
+                    cropper = null; // 다음 렌더링을 위해 완전히 비움
+                }
                 
 
             } else {
                 // 실패 시 (403, 500 등)
                 console.error('실패 상태 코드:', response.status);
+
+                // 🚨 폼 닫기 및 스크롤 해제
+                const formContainer = document.getElementById('form-container');
+                formContainer.classList.remove('open');
+                document.body.style.overflow = ''; 
+                // (선택) 폼 내부 입력값 초기화
+                document.getElementById('uploadForm').reset();
+
+                // 3. 이미지 미리보기 태그 비우기
+                document.getElementById('image-to-crop').src = '';
+
+                // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+                if (typeof cropper !== 'undefined' && cropper !== null) {
+                    cropper.destroy();
+                    cropper = null; // 다음 렌더링을 위해 완전히 비움
+                }
                 
                 Swal.fire({
                     icon: 'error',
@@ -303,8 +351,9 @@ async function handleDelete(id) {
     if(!rtn) return;
 
     Swal.fire({
-        title: '정말 삭제하시겠습니까?',
-        text: "삭제하면 복구할 수 없습니다!",
+        html: `
+        <h1 id="del-title">정말 삭제하시겠습니까?</h1>
+        <p id="del-text">삭제하면 복구할 수 없습니다!</p>`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
