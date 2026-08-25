@@ -142,7 +142,23 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     // 1. 폼의 기본 동작(페이지 이동)을 막습니다.
     event.preventDefault();
     const rtn = await checkEditAuth();
-    if(!rtn) return;
+    if(!rtn){
+        // 🚨 폼 닫기 및 스크롤 해제
+        const formContainer = document.getElementById('form-container');
+        formContainer.classList.remove('open');
+        document.body.style.overflow = ''; 
+        // (선택) 폼 내부 입력값 초기화
+        document.getElementById('uploadForm').reset();
+        // 3. 이미지 미리보기 태그 비우기
+        document.getElementById('image-to-crop').src = '';
+
+        // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+        if (typeof cropper !== 'undefined' && cropper !== null) {
+            cropper.destroy();
+            cropper = null; // 다음 렌더링을 위해 완전히 비움
+        }
+        return;
+    }
 
     // 2. 폼 데이터를 자동으로 가져옵니다. (이미지 파일 포함)
     let formData = new FormData();
@@ -150,6 +166,20 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     const date = document.getElementById('imageDate').value;
     if (!(title) || !(date)||!(cropper)){
         console.log("?");
+        // 🚨 폼 닫기 및 스크롤 해제
+        const formContainer = document.getElementById('form-container');
+        formContainer.classList.remove('open');
+        document.body.style.overflow = ''; 
+        // (선택) 폼 내부 입력값 초기화
+        document.getElementById('uploadForm').reset();
+        // 3. 이미지 미리보기 태그 비우기
+        document.getElementById('image-to-crop').src = '';
+
+        // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+        if (typeof cropper !== 'undefined' && cropper !== null) {
+            cropper.destroy();
+            cropper = null; // 다음 렌더링을 위해 완전히 비움
+        }
         Swal.fire({text: '내용을 모두 입력해주세요!', icon:'error', confirmButtonColor: '#4032ff'});
         return;
     }
@@ -197,20 +227,42 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 document.getElementById("mainTxt").textContent=document.getElementById("giInput").value + "기";
                 fetchAndUpdateImages(document.getElementById("giInput").value);
                 
-                // 버튼 toggle
-                const toggleBtn = document.getElementById('toggle-btn');
+                // 🚨 폼 닫기 및 스크롤 해제
                 const formContainer = document.getElementById('form-container');
-                formContainer.classList.toggle('open');
-                const span = toggleBtn.querySelector('span');
-    
-                span.innerText = '업로드';
-                toggleBtn.style.borderColor = '#4032ff'; // 다시 파란색
-                toggleBtn.style.backgroundColor = '#4032ff';
+                formContainer.classList.remove('open');
+                document.body.style.overflow = ''; 
+
+                // (선택) 폼 내부 입력값 초기화
+                document.getElementById('uploadForm').reset();
+                // 3. 이미지 미리보기 태그 비우기
+                document.getElementById('image-to-crop').src = '';
+
+                // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+                if (typeof cropper !== 'undefined' && cropper !== null) {
+                    cropper.destroy();
+                    cropper = null; // 다음 렌더링을 위해 완전히 비움
+                }
                 
 
             } else {
                 // 실패 시 (403, 500 등)
                 console.error('실패 상태 코드:', response.status);
+
+                // 🚨 폼 닫기 및 스크롤 해제
+                const formContainer = document.getElementById('form-container');
+                formContainer.classList.remove('open');
+                document.body.style.overflow = ''; 
+                // (선택) 폼 내부 입력값 초기화
+                document.getElementById('uploadForm').reset();
+
+                // 3. 이미지 미리보기 태그 비우기
+                document.getElementById('image-to-crop').src = '';
+
+                // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+                if (typeof cropper !== 'undefined' && cropper !== null) {
+                    cropper.destroy();
+                    cropper = null; // 다음 렌더링을 위해 완전히 비움
+                }
                 
                 Swal.fire({
                     icon: 'error',

@@ -43,6 +43,52 @@
             </li>
           </ul>
         </nav>
+        <button class="hamburger" id="hamburger-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="mobile-nav-overlay" id="mobile-nav">
+          <button class="mobile-nav-close" id="mobile-close-btn"><i class="fa-solid fa-xmark"></i></button>
+          
+          <div class="mobile-nav-menu">
+            <div class="mobile-nav-section">
+              <span>About Us</span>
+              <ul>
+                <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
+                <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
+                <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+              </ul>
+            </div>
+            
+            <div class="mobile-nav-section">
+              <span>Gallery</span>
+              <ul>
+                <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
+                <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+              </ul>
+            </div>
+
+            <div class="mobile-nav-section">
+              <span>Community</span>
+              <ul>
+                <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
+                <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+              </ul>
+            </div>
+            <div class="mobile-nav-section">
+              <span>Recruit</span>
+              <ul>
+                <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+              </ul>
+            </div>
+
+            <div class="mobile-nav-login">
+              <a href="/CarpeDiem/logIn/index.html">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+            </div>
+          </div>
+        </div>
         <div class="hovermenu" id="megaDropdown">
           <ul class="dropAbout">
             <li><a href="../../about/introduction.html">소개</a></li>
@@ -93,6 +139,7 @@
 
     <div id="form-container" class="form-wrapper">
         <form class="dark-form" id="uploadForm">
+            <button type="button" id="close-modal-btn" class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
             <div class="row">
                 <div class="input-group half">
                     <label>제목</label>
