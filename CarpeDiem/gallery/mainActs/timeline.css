@@ -14,11 +14,16 @@
 	--img-padding: 20px;
 }
 
-body { background-color: rgb(20, 20, 20); display: flex; flex-direction: column; min-height:100vh;}
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
 
-footer{
+footer {
 	margin-top: auto;
 }
+
 /* 중앙 연도 디스플레이 헤더 */
 .header {
 	color: white;
@@ -32,30 +37,78 @@ footer{
 }
 
 /* 연도별 전환 드롭다운 */
-.year-switch { position: relative; display: inline-block; margin-left: 0.8rem; }
-.year-toggle {
-  display: inline-flex; align-items: center; gap: .5rem; padding: .45rem .8rem;
-  border: 1px solid #ffffff22; border-radius: .6rem; background: #191919;
-  color: #fff; font: inherit; cursor: pointer;
+.year-switch {
+	position: relative;
+	display: inline-block;
+	margin-left: 0.8rem;
 }
-.year-toggle i { transition: transform .18s ease; }
-.year-switch.open .year-toggle i { transform: rotate(180deg); }
+
+.year-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	padding: .45rem .8rem;
+	border: 1px solid #ffffff22;
+	border-radius: .6rem;
+	background: #191919;
+	color: #fff;
+	font: inherit;
+	cursor: pointer;
+}
+
+.year-toggle i {
+	transition: transform .18s ease;
+}
+
+.year-switch.open .year-toggle i {
+	transform: rotate(180deg);
+}
 
 .year-menu {
-  position: absolute; top: calc(100% + 6px); left: 0; min-width: 120px;
-  padding: .4rem; margin: 0; background: #111; border: 1px solid #ffffff22;
-  border-radius: .6rem; box-shadow: 0 10px 24px rgba(0,0,0,.4); z-index: 1000;
-  opacity: 0; transform: translateY(-6px); pointer-events: none;
-  transition: opacity .18s ease, transform .18s ease;
-  max-height: 200px; overflow-y: auto;
+	position: absolute;
+	top: calc(100% + 6px);
+	left: 0;
+	min-width: 120px;
+	padding: .4rem;
+	margin: 0;
+	background: #111;
+	border: 1px solid #ffffff22;
+	border-radius: .6rem;
+	box-shadow: 0 10px 24px rgba(0, 0, 0, .4);
+	z-index: 1000;
+	opacity: 0;
+	transform: translateY(-6px);
+	pointer-events: none;
+	transition: opacity .18s ease, transform .18s ease;
+	max-height: 200px;
+	overflow-y: auto;
 }
-.year-switch.open .year-menu { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.year-switch.open .year-menu {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
 
 .year-menu button {
-  display: block; padding: .6rem .8rem; color: #fff; text-decoration: none; border-radius: .45rem; font-size: .95rem;
-  background: transparent; border: none; cursor: pointer; font-family: inherit; text-align: center; width: 100%;
+	display: block;
+	padding: .6rem .8rem;
+	color: #fff;
+	text-decoration: none;
+	border-radius: .45rem;
+	font-size: .95rem;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+	text-align: center;
+	width: 100%;
 }
-.year-menu button:hover { background: #222; color: #5a73fd; }
+
+.year-menu button:hover {
+	background: #222;
+	color: #5a73fd;
+}
 
 /* =========================================
    Flickity 타임라인 트랙 구조 스케일링 (최적화 완결판)
@@ -72,7 +125,7 @@ footer{
 .timeline .carousel {
 	width: 85%;
 	/* 🚨 카드가 세로로 커진 만큼 바구니 높이를 딱 맞춤 */
-	height: calc(var(--img-height) + 140px); 
+	height: calc(var(--img-height) + 140px);
 }
 
 /* 🚨 [구조 개편] 카드 높이를 늘려서 텍스트가 안쪽 상단에 살도록 만듭니다 */
@@ -82,14 +135,16 @@ footer{
 	border-radius: 12px;
 	width: calc(var(--img-width) + calc(var(--img-padding) * 4));
 	/* 🚨 원래 340px 수동 지정을 지우고, 이미지 높이 + 상단 텍스트 방(100px) 제공 */
-	height: calc(var(--img-height) + 100px); 
+	height: calc(var(--img-height) + 100px);
 	margin: 5px 20px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-end; /* 이미지를 무조건 카드 바닥에 밀착 */
-	padding-bottom: 20px; /* 바닥 여백 */
-	box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+	justify-content: flex-end;
+	/* 이미지를 무조건 카드 바닥에 밀착 */
+	padding-bottom: 20px;
+	/* 바닥 여백 */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 	position: relative;
 }
 
@@ -99,15 +154,16 @@ footer{
 	position: relative;
 	overflow: hidden;
 }
+
 .timeline .carousel-cell .img-wrapper img {
 	display: block;
 	width: var(--img-width);
 	height: var(--img-height);
 	object-fit: cover;
 	border-radius: 6px;
-	pointer-events: none;     
-	-webkit-user-drag: none;  
-	user-select: none;        
+	pointer-events: none;
+	-webkit-user-drag: none;
+	user-select: none;
 }
 
 /* 🚨 [위치 정정] 카드 밖 허공(-62px)에 있던 날짜를 카드 내부 상단(+20px)으로 소환! */
@@ -120,11 +176,13 @@ footer{
 	align-items: center;
 	line-height: 1.3;
 	position: absolute;
-	top: 22px; /* 🚨 카드 박스 내부 상단에 안전하게 안착 (절대 안 잘림) */
+	top: 22px;
+	/* 🚨 카드 박스 내부 상단에 안전하게 안착 (절대 안 잘림) */
 	width: 100%;
 	text-align: center;
 	white-space: nowrap;
 }
+
 .timeline .carousel-cell time span {
 	color: #5a73fd;
 	font-size: 0.95rem;
@@ -145,58 +203,91 @@ footer{
 	background: rgba(64, 50, 255, 0.8) !important;
 	border-radius: 50% !important;
 	/* 🚨 상단 텍스트 공간(100px)을 계산하여 정확히 '사진의 세로 중앙'에 화살표를 꽂아넣음 */
-	top: calc(50%) !important; 
+	top: calc(50%) !important;
 	transform: translateY(-50%) !important;
 	transition: all 0.2s ease;
 }
-.flickity-prev-next-button:hover { background: #4032ff !important; transform: translateY(-50%) scale(1.1) !important; }
 
-.flickity-prev-next-button.previous { left: 10px !important; }
-.flickity-prev-next-button.next { right: 10px !important; }
-.flickity-prev-next-button .flickity-button-icon { fill: white; }
+.flickity-prev-next-button:hover {
+	background: #4032ff !important;
+	transform: translateY(-50%) scale(1.1) !important;
+}
+
+.flickity-prev-next-button.previous {
+	left: 10px !important;
+}
+
+.flickity-prev-next-button.next {
+	right: 10px !important;
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+	fill: white;
+}
 
 /* 전역 레이아웃 가드 (Flickity 순정 상태로 원복하여 버그 차단) */
-html, body { max-width: 100vw; overflow-x: hidden; }
-.flickity-viewport { overflow: hidden !important; } /* 🚨 순정 hidden으로 원복! */
-.timeline { overflow: hidden; }
+html,
+body {
+	max-width: 100vw;
+	overflow-x: hidden;
+}
+
+.flickity-viewport {
+	overflow: hidden !important;
+}
+
+/* 🚨 순정 hidden으로 원복! */
+.timeline {
+	overflow: hidden;
+}
 
 
 /* =========================================
    📱 3. 모바일 반응형 카드 스케일 조절 (완벽 핏 보정)
 ========================================= */
 @media (max-width: 768px) {
-  :root {
-    --img-width: 200px;
-    --img-height: 200px;
-    --img-padding: 10px;
-  }
-  
-  .header { font-size: 1.8rem; margin: 2rem 0 1rem; }
-  
-  /* 🚨 1. 바구니(캐러셀) 높이는 카드 높이 + 마진 + 그림자까지 넉넉하게 품어야 안 잘립니다! */
-  .timeline .carousel { 
-    width: 100%; 
-    height: calc(var(--img-height) + 100px); 
-  }
-  
-  /* 🚨 2. 카드 높이는 '이미지(200px) + 상단 글자 공간 + 하단 여백'을 충분히 확보해야 합니다 */
-  .timeline .carousel-cell {
-    margin: 10px 10px;
-    height: calc(var(--img-height) + 80px); /* 글씨가 숨 쉴 80px 공간 확보 */
-    padding-bottom: 15px; /* 이미지를 바닥에서 살짝 띄움 */
-  }
-  
-  /* 🚨 3. 모바일 텍스트 정렬 */
-  .timeline .carousel-cell time {
-    font-size: 1.1rem;
-    top: 15px; /* 글씨가 카드 윗면 테두리에 딱 붙지 않게 여백을 줌 */
-  }
-  .timeline .carousel-cell time span { font-size: 0.8rem; margin-bottom: 3px; }
-  
-  /* 🚨 4. 화살표 위치도 사진 영역의 정중앙에 오도록 보정 */
-  .flickity-prev-next-button {
-    width: 38px;
-    height: 38px;
-    top: calc(50%) !important;
-  }
+	:root {
+		--img-width: 200px;
+		--img-height: 200px;
+		--img-padding: 10px;
+	}
+
+	.header {
+		font-size: 1.8rem;
+		margin: 2rem 0 1rem;
+	}
+
+	/* 🚨 1. 바구니(캐러셀) 높이는 카드 높이 + 마진 + 그림자까지 넉넉하게 품어야 안 잘립니다! */
+	.timeline .carousel {
+		width: 100%;
+		height: calc(var(--img-height) + 100px);
+	}
+
+	/* 🚨 2. 카드 높이는 '이미지(200px) + 상단 글자 공간 + 하단 여백'을 충분히 확보해야 합니다 */
+	.timeline .carousel-cell {
+		margin: 10px 10px;
+		height: calc(var(--img-height) + 80px);
+		/* 글씨가 숨 쉴 80px 공간 확보 */
+		padding-bottom: 15px;
+		/* 이미지를 바닥에서 살짝 띄움 */
+	}
+
+	/* 🚨 3. 모바일 텍스트 정렬 */
+	.timeline .carousel-cell time {
+		font-size: 1.1rem;
+		top: 15px;
+		/* 글씨가 카드 윗면 테두리에 딱 붙지 않게 여백을 줌 */
+	}
+
+	.timeline .carousel-cell time span {
+		font-size: 0.8rem;
+		margin-bottom: 3px;
+	}
+
+	/* 🚨 4. 화살표 위치도 사진 영역의 정중앙에 오도록 보정 */
+	.flickity-prev-next-button {
+		width: 38px;
+		height: 38px;
+		top: calc(50%) !important;
+	}
 }

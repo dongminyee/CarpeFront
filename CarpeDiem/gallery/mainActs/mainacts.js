@@ -1,64 +1,63 @@
 // 연도 토글
 {
-const wrap = document.getElementById('yearSwitch');
-const btn  = document.getElementById('yearToggle');
-const menu = document.getElementById('yearMenu');
+    const wrap = document.getElementById('yearSwitch');
+    const btn = document.getElementById('yearToggle');
+    const menu = document.getElementById('yearMenu');
 
-function openMenu() {
-    wrap.classList.add('open');
-    btn.setAttribute('aria-expanded', 'true');
-}
-function closeMenu() {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-}
-
-btn.addEventListener('click', (e)=>{
-    e.stopPropagation();
-    wrap.classList.contains('open') ? closeMenu() : openMenu();
-});
-
-// 메뉴 클릭 시 자동 닫기 (이동 전/후 상관없이)
-menu.addEventListener('click', ()=> closeMenu());
-
-// 바깥 클릭 시 닫기
-document.addEventListener('click', (e)=>{
-    if(!wrap.contains(e.target)) closeMenu();
-});
-
-// ESC 닫기
-document.addEventListener('keydown', (e)=>{
-    if(e.key === 'Escape') closeMenu();
-});
-
-
-const toggleBtn = document.getElementById('toggle-btn');
-const formContainer = document.getElementById('form-container');
-
-// 1. 업로드 버튼 클릭 시 모달 열기
-toggleBtn.addEventListener('click', () => {
-    formContainer.classList.add('open');
-    document.body.style.overflow = 'hidden'; // 🚨 뒤쪽 배경 스크롤 꽉 잠금!
-});
-
-// 2. 모달 닫기 기능 (어두운 배경 클릭 or X 버튼 클릭)
-formContainer.addEventListener('click', (e) => {
-    // 클릭한 타겟이 모달 배경(formContainer) 자체이거나, 닫기 버튼 내부일 때
-    if (e.target === formContainer || e.target.closest('#close-modal-btn')) {
-        formContainer.classList.remove('open');
-        document.body.style.overflow = ''; // 🚨 배경 스크롤 다시 해제
+    function openMenu() {
+        wrap.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
     }
-});
+    function closeMenu() {
+        wrap.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        wrap.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    // 메뉴 클릭 시 자동 닫기 (이동 전/후 상관없이)
+    menu.addEventListener('click', () => closeMenu());
+
+    // 바깥 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) closeMenu();
+    });
+
+    // ESC 닫기
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+    });
+
+
+    const toggleBtn = document.getElementById('toggle-btn');
+    const formContainer = document.getElementById('form-container');
+
+    // 1. 업로드 버튼 클릭 시 모달 열기
+    toggleBtn.addEventListener('click', () => {
+        formContainer.classList.add('open');
+        document.body.style.overflow = 'hidden'; // 🚨 뒤쪽 배경 스크롤 꽉 잠금!
+    });
+
+    // 2. 모달 닫기 기능 (어두운 배경 클릭 or X 버튼 클릭)
+    formContainer.addEventListener('click', (e) => {
+        // 클릭한 타겟이 모달 배경(formContainer) 자체이거나, 닫기 버튼 내부일 때
+        if (e.target === formContainer || e.target.closest('#close-modal-btn')) {
+            formContainer.classList.remove('open');
+            document.body.style.overflow = ''; // 🚨 배경 스크롤 다시 해제
+        }
+    });
 
 }
 
 // 로그인 상태 확인
-
 async function checkEditAuth() {
     const accessToken = localStorage.getItem('accessToken');
-    
+
     // 토큰 없으면 바로 로그아웃 처리
-    if (accessToken==null) {
+    if (accessToken == null) {
         notAuthed();
         return false;
     }
@@ -68,10 +67,10 @@ async function checkEditAuth() {
         const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
             method: 'GET',
             headers: {
-            'accessToken': localStorage.getItem('accessToken'),
-            'refreshToken': localStorage.getItem('refreshToken'), 
-            'Content-Type': 'application/json'
-        }
+                'accessToken': localStorage.getItem('accessToken'),
+                'refreshToken': localStorage.getItem('refreshToken'),
+                'Content-Type': 'application/json'
+            }
         });
 
         const result = await response.json();
@@ -83,7 +82,7 @@ async function checkEditAuth() {
         switch (result.status) {
             case 'LOGIN_SUCCESS':
                 // [상태 1] 정상 -> UI만 업데이트
-                if(role=="ROLE_ADMIN") return true;
+                if (role == "ROLE_ADMIN") return true;
                 break;
 
             case 'TOKEN_REFRESHED':
@@ -93,7 +92,7 @@ async function checkEditAuth() {
                     localStorage.setItem('refreshToken', result.refreshToken);
                     console.log("토큰이 갱신되었습니다.");
                 }
-                if(role=="ROLE_ADMIN") return true;
+                if (role == "ROLE_ADMIN") return true;
                 break;
 
             case 'LOGOUT_REQUIRED':
@@ -128,21 +127,21 @@ function notAuthed() {
         text: `사용자의 게시물 수정 권한이 없음`
     });
     // 프로필 숨기고 버튼 보이기
-    if(loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
-    if(userProfile) userProfile.style.display = 'none'; 
+    if (loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
+    if (userProfile) userProfile.style.display = 'none';
 }
 
 
 
-document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+document.getElementById('uploadForm').addEventListener('submit', async function (event) {
     // 1. 폼의 기본 동작(페이지 이동)을 막습니다.
     event.preventDefault();
     const rtn = await checkEditAuth();
-    if(!rtn){
+    if (!rtn) {
         // 🚨 폼 닫기 및 스크롤 해제
         const formContainer = document.getElementById('form-container');
         formContainer.classList.remove('open');
-        document.body.style.overflow = ''; 
+        document.body.style.overflow = '';
         // (선택) 폼 내부 입력값 초기화
         document.getElementById('uploadForm').reset();
         // 3. 이미지 미리보기 태그 비우기
@@ -160,12 +159,12 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     let formData = new FormData();
     const title = document.getElementById('imageTitle').value;
     const date = document.getElementById('imageDate').value;
-    if (!(title) || !(date)||!(cropper)){
+    if (!(title) || !(date) || !(cropper)) {
         console.log("?");
         // 🚨 폼 닫기 및 스크롤 해제
         const formContainer = document.getElementById('form-container');
         formContainer.classList.remove('open');
-        document.body.style.overflow = ''; 
+        document.body.style.overflow = '';
         // (선택) 폼 내부 입력값 초기화
         document.getElementById('uploadForm').reset();
         // 3. 이미지 미리보기 태그 비우기
@@ -176,10 +175,10 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
             cropper.destroy();
             cropper = null; // 다음 렌더링을 위해 완전히 비움
         }
-        Swal.fire({text: '내용을 모두 입력해주세요!', icon:'error', confirmButtonColor: '#4032ff'});
+        Swal.fire({ text: '내용을 모두 입력해주세요!', icon: 'error', confirmButtonColor: '#4032ff' });
         return;
     }
-    
+
 
 
     formData.append("title", title);
@@ -188,7 +187,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
     formData.append("generation", "none");
 
     cropper.getCroppedCanvas().toBlob(async (blob) => {
-        try{
+        try {
             // 혹시 모를 변환 실패 대비 (드문 경우)
             if (!blob) {
                 Swal.fire('오류', '이미지 변환에 실패했습니다.', 'error');
@@ -211,22 +210,22 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 // 성공 시 (200 OK)
                 const data = await response.json(); // 백엔드가 반환한 이미지 데이터
                 console.log('성공:', data);
-                
+
                 // 성공 알림창
                 Swal.fire({
                     icon: 'success',
                     title: '업로드 성공!',
                     text: '이미지가 저장되었습니다.'
                 });
-                
+
                 // (선택) 타임라인 새로고침 로직 추가
-                document.getElementById("mainTxt").textContent=date.substring(0, 4);
+                document.getElementById("mainTxt").textContent = date.substring(0, 4);
                 fetchAndUpdateImages(date.substring(0, 4));
-                
+
                 // 🚨 폼 닫기 및 스크롤 해제
                 const formContainer = document.getElementById('form-container');
                 formContainer.classList.remove('open');
-                document.body.style.overflow = ''; 
+                document.body.style.overflow = '';
 
                 // (선택) 폼 내부 입력값 초기화
                 document.getElementById('uploadForm').reset();
@@ -238,7 +237,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                     cropper.destroy();
                     cropper = null; // 다음 렌더링을 위해 완전히 비움
                 }
-                
+
 
             } else {
                 // 실패 시 (403, 500 등)
@@ -247,7 +246,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                 // 🚨 폼 닫기 및 스크롤 해제
                 const formContainer = document.getElementById('form-container');
                 formContainer.classList.remove('open');
-                document.body.style.overflow = ''; 
+                document.body.style.overflow = '';
                 // (선택) 폼 내부 입력값 초기화
                 document.getElementById('uploadForm').reset();
 
@@ -259,7 +258,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function(
                     cropper.destroy();
                     cropper = null; // 다음 렌더링을 위해 완전히 비움
                 }
-                
+
                 Swal.fire({
                     icon: 'error',
                     title: '업로드 실패',
@@ -290,32 +289,32 @@ async function handleEdit(id) {
     // Swal.fire(...) 등을 사용해서 제목 수정 입력창을 띄울 수 있습니다.
 
     const rtn = await checkEditAuth();
-    if(!rtn) return;
+    if (!rtn) return;
 
     Swal.fire({
-       title: '활동 내역 수정',
-       html: `
+        title: '활동 내역 수정',
+        html: `
             <input id="edit-input-title" class="swal2-input" placeholder="활동 제목">
             <input id="edit-input-date" type="date" class="swal2-input" >
        `,
-       focusConfirm: false,
-       showCancelButton: true,
-       cancelButtonText: '취소',
+        focusConfirm: false,
+        showCancelButton: true,
+        cancelButtonText: '취소',
         preConfirm: () => {
-        const title = document.getElementById('edit-input-title').value;
-        const date = document.getElementById('edit-input-date').value;
+            const title = document.getElementById('edit-input-title').value;
+            const date = document.getElementById('edit-input-date').value;
 
-        if (!title || !date) {
-            Swal.showValidationMessage('제목과 날짜를 모두 입력해주세요.');
-            return false;
+            if (!title || !date) {
+                Swal.showValidationMessage('제목과 날짜를 모두 입력해주세요.');
+                return false;
+            }
+
+            return { title: title, date: date };
         }
-
-        return { title: title, date: date };
-    }
     }).then((result) => {
         if (result.isConfirmed) {
             const data = result.value;
-            
+
             // 날짜는 "YYYY-MM-DD" 형태의 문자열로 반환됩니다 (예: "2025-11-23")
             console.log('제목:', data.title);
             console.log('날짜:', data.date);
@@ -326,20 +325,20 @@ async function handleEdit(id) {
                 method: 'PATCH',
                 // ⚠️ 주의: FormData를 보낼 때는 'Content-Type' 헤더를 직접 적지 마세요!
                 // 브라우저가 알아서 'multipart/form-data'로 설정해줍니다.
-                body: formData 
+                body: formData
             })
-            .then(response => {
-                if (response.ok) {
-                    Swal.fire('수정 완료', `${data.title}(${data.date})`, 'success');
-                    fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
-                } else {
-                    Swal.fire('수정 실패', '등록 중 오류가 발생했습니다.', 'error');
-                }
-            });
+                .then(response => {
+                    if (response.ok) {
+                        Swal.fire('수정 완료', `${data.title}(${data.date})`, 'success');
+                        fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
+                    } else {
+                        Swal.fire('수정 실패', '등록 중 오류가 발생했습니다.', 'error');
+                    }
+                });
         }
 
     });
-}   
+}
 
 /**
  * 삭제 버튼 클릭 핸들러
@@ -348,7 +347,7 @@ async function handleEdit(id) {
 async function handleDelete(id) {
 
     const rtn = await checkEditAuth();
-    if(!rtn) return;
+    if (!rtn) return;
 
     Swal.fire({
         html: `
@@ -362,29 +361,29 @@ async function handleDelete(id) {
         cancelButtonText: '취소'
     }).then((result) => {
         if (result.isConfirmed) {
-                delOperation(id);        
+            delOperation(id);
         }
     });
-    
+
 }
 
-async function delOperation(id){
-    try{
+async function delOperation(id) {
+    try {
         // 실제 서버로 삭제 요청 (DELETE API)
         const rst = await fetch(`${'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/delete'}/${id}`, { method: 'DELETE' });
-        if(rst.ok){
+        if (rst.ok) {
             console.log(id);
             console.log('삭제 요청, ID:', id);
-            
+
             // 삭제 성공 시 UI 업데이트 (예: 새로고침)
-            
+
             Swal.fire('삭제됨!', '파일이 삭제되었습니다.', 'success');
             fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
         }
-        else{
+        else {
             Swal.fire('실패', '삭제에 실패했습니다.', 'error');
         }
-    } catch(err){
+    } catch (err) {
         console.error('에러 발생:', err);
     }
 }
@@ -415,21 +414,21 @@ const API_URL = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github
 async function fetchAndUpdateImages(year) {
     console.log('이미지 업데이트 중...');
     const flkty = Flickity.data(imageContainer);
-    
+
     try {
         //1. API로 데이터 요청
-        const response = await fetch(API_URL+"/activity?year="+year);
+        const response = await fetch(API_URL + "/activity?year=" + year);
         if (!response.ok) {
             throw new Error(`API 요청 실패: ${response.status}`);
         }
         const images = await response.json(); // JSON 데이터를 JS 객체로 변환
 
         //2. 기존 이미지 목록 삭제 (화면 클리어)
-        
-        
+
+
         const currentCells = flkty.getCellElements();
         flkty.remove(currentCells);
- 
+
 
         //3. 받아온 데이터로 새 <div>와 <img> 생성
         const newCellList = images.map(imageData => {
@@ -453,7 +452,7 @@ async function fetchAndUpdateImages(year) {
                 e.stopPropagation(); // 클릭 이벤트가 부모로 전파되는 것 방지 (중요)
                 // 현재 열려있는 다른 모든 메뉴 닫기 (선택사항)
                 document.querySelectorAll('.img-menu-dropdown').forEach(el => {
-                    if(el !== dropdown) el.classList.remove('show');
+                    if (el !== dropdown) el.classList.remove('show');
                 });
                 dropdown.classList.toggle('show');
             });
@@ -475,26 +474,26 @@ async function fetchAndUpdateImages(year) {
             dropdown.appendChild(imgDeleteBtn);
             imgMenuContainer.appendChild(imgMenuBtn);
             imgMenuContainer.appendChild(dropdown);
-            
+
             // 최종적으로 카드(div)에 메뉴 추가
             div.appendChild(imgMenuContainer);
 
             const time = document.createElement('time');
             console.log(imageData.imageUrl);
             time.setAttribute('datetime', imageData.date);
-            time.innerHTML  = '<span>'+imageData.date+'</span> '+imageData.title;
+            time.innerHTML = '<span>' + imageData.date + '</span> ' + imageData.title;
 
             // <img> 태그 생성
             const img = document.createElement('img');
-            img.src = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/gallery/'+imageData.imageUrl; // API 응답에 맞는 이미지 URL
+            img.src = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/gallery/' + imageData.imageUrl; // API 응답에 맞는 이미지 URL
             const div2 = document.createElement('div');
             div2.classList.add('img-wrapper');
             div2.appendChild(img);
 
             // div에 img를 자식으로 추가
-            div.appendChild(time);           
+            div.appendChild(time);
             div.appendChild(div2);
-            
+
             // 컨테이너에 최종 div를 추가
             return div;
         });
@@ -509,27 +508,29 @@ async function fetchAndUpdateImages(year) {
         console.error('이미지 로딩 중 오류 발생:', error);
         imageContainer.innerHTML = '<p>이미지를 불러오는 데 실패했습니다.</p>';
     }
-    
-    
+
+
 }
 
 // 페이지가 처음 로드될 때 즉시 한 번 실행
-document.addEventListener('DOMContentLoaded', ()=>{
-    mainTxt.textContent = "2025";
-    fetchAndUpdateImages(2025);
+document.addEventListener('DOMContentLoaded', () => {
+    let currentYear = new Date().getFullYear();
+    currentYear--;
+    mainTxt.textContent = currentYear;
+    fetchAndUpdateImages(currentYear);
     initButtons();
 });
 
-const initButtons = ()=>{
+const initButtons = () => {
     const container = document.getElementById("yearMenu");
     const mainTxt = document.getElementById("mainTxt");
-
-    for(let i=2026;i>=2021;i--){
+    let currentYear = new Date().getFullYear();
+    for (let i = currentYear; i >= 2021; i--) {
         const btn = document.createElement("button");
         btn.textContent = `${i}`;
 
-        btn.onclick = ()=>{
-            mainTxt.textContent=`${i}`;
+        btn.onclick = () => {
+            mainTxt.textContent = `${i}`;
             fetchAndUpdateImages(i);
         }
 

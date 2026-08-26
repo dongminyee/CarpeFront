@@ -4,18 +4,19 @@
 .main-visual-bg {
   position: relative;
   width: 100%;
-  height: 350px; /* 시원하게 높이 확장 */
+  height: 350px;
+  /* 시원하게 높이 확장 */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.7) 0%,
-      rgba(0,0,0,0.5) 60%,
-      rgba(17,17,17,1) 100% /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 60%,
+      rgba(17, 17, 17, 1) 100%
+      /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
     ),
     url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
@@ -46,15 +47,17 @@
    동방 시간표 영역 (Schedule Section)
 ========================================= */
 .schedule-section {
-  background: rgb(17, 17, 17); /* 전체 다크 배경 */
+  background: rgb(17, 17, 17);
+  /* 전체 다크 배경 */
   color: #eaeaea;
   padding: 4rem 0 6rem;
 }
 
 .schedule-section .wrap {
-  max-width: 1040px; 
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 0 1.5rem; /* 모바일에서 짤리지 않게 여백 추가 */
+  padding: 0 1.5rem;
+  /* 모바일에서 짤리지 않게 여백 추가 */
 }
 
 /* 안내 문구 (구글 시트 업데이트) 고급화 */
@@ -74,13 +77,19 @@
 ========================================= */
 .schedule-grid {
   display: grid;
-  grid-auto-rows: minmax(55px, auto); /* 높이를 조금 더 여유롭게 줘서 숨통 틔움 */
-  gap: 1px; /* 1px의 틈새를 줘서 테두리처럼 보이게 함 */
-  background: rgba(255, 255, 255, 0.1); /* 이 색이 틈새로 보여서 격자선 역할을 함 */
+  grid-auto-rows: minmax(55px, auto);
+  /* 높이를 조금 더 여유롭게 줘서 숨통 틔움 */
+  gap: 1px;
+  /* 1px의 틈새를 줘서 테두리처럼 보이게 함 */
+  background: rgba(255, 255, 255, 0.1);
+  /* 이 색이 틈새로 보여서 격자선 역할을 함 */
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px; /* 모서리 둥글게 */
-  overflow: auto; /* 내용이 넘치면 스크롤 생성 */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* 붕 떠보이는 고급 그림자 */
+  border-radius: 12px;
+  /* 모서리 둥글게 */
+  overflow: auto;
+  /* 내용이 넘치면 스크롤 생성 */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  /* 붕 떠보이는 고급 그림자 */
   max-height: 550px;
 }
 
@@ -89,16 +98,20 @@
   width: 8px;
   height: 8px;
 }
+
 .schedule-grid::-webkit-scrollbar-track {
   background: #1a1a1a;
   border-radius: 8px;
 }
+
 .schedule-grid::-webkit-scrollbar-thumb {
   background: #444;
   border-radius: 8px;
 }
+
 .schedule-grid::-webkit-scrollbar-thumb:hover {
-  background: #5a73fd; /* 호버 시 블루 포인트 */
+  background: #5a73fd;
+  /* 호버 시 블루 포인트 */
 }
 
 /* =========================================
@@ -106,23 +119,28 @@
 ========================================= */
 /* 기본 셀 (빈 칸) */
 .schedule-grid .cell {
-  background: #222222; 
+  background: #222222;
   padding: 12px 8px;
   font-size: 0.9rem;
   line-height: 1.4;
-  transition: filter 0.2s; /* 호버 애니메이션용 */
-  word-break: keep-all; /* 단어 단위 줄바꿈 */
+  transition: filter 0.2s;
+  /* 호버 애니메이션용 */
+  word-break: keep-all;
+  /* 단어 단위 줄바꿈 */
 }
 
 /* 🚨 JS가 파스텔톤 배경색을 입혀주는 '일정 있는 셀' */
 .schedule-grid .cell:not(.empty):not(.head):not(.time) {
-  color: #ffffff; /* 배경이 파스텔톤(밝음)이므로, 글씨를 진한 까만색으로 확 바꿈! */
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* 미세한 테두리 입체감 */
+  color: #ffffff;
+  /* 배경이 파스텔톤(밝음)이므로, 글씨를 진한 까만색으로 확 바꿈! */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  /* 미세한 테두리 입체감 */
 }
 
 .schedule-grid .cell:not(.empty):not(.head):not(.time) strong {
   display: block;
-  color: #ffffff; /* 제목(팀명 등)은 완전 까맣게 강렬하게! */
+  color: #ffffff;
+  /* 제목(팀명 등)은 완전 까맣게 강렬하게! */
   font-size: 0.95rem;
   margin-bottom: 4px;
   font-weight: 800;
@@ -135,13 +153,15 @@
   color: #ffffff;
   font-weight: 700;
   text-align: center;
-  position: sticky; /* 스크롤 내려도 상단에 고정! */
+  position: sticky;
+  /* 스크롤 내려도 상단에 고정! */
   top: 0;
-  z-index: 3; 
+  z-index: 3;
   padding: 15px 10px;
   font-size: 1.05rem;
-  border-bottom: 2px solid #4032ff; /* 헤더 아래쪽 블루 포인트 라인 */
-  
+  border-bottom: 2px solid #4032ff;
+  /* 헤더 아래쪽 블루 포인트 라인 */
+
 }
 
 /* 좌측 시간 표시열 (09:00 - 10:00) */
@@ -149,7 +169,8 @@
   background: #111111;
   color: #a0a0a0;
   font-weight: 600;
-  position: sticky; /* 스크롤 넘겨도 좌측에 고정! */
+  position: sticky;
+  /* 스크롤 넘겨도 좌측에 고정! */
   left: 0;
   z-index: 2;
   width: 120px;
@@ -161,14 +182,75 @@
 
 /* 🚨 좌상단 빈 칸 (스크롤 대참사 방지용 초핵심 코드) */
 .schedule-grid .cell.head:first-child {
-  z-index: 4; /* 위쪽(head)과 왼쪽(time)이 겹치는 곳이라 제일 높아야 함! */
+  z-index: 4;
+  /* 위쪽(head)과 왼쪽(time)이 겹치는 곳이라 제일 높아야 함! */
   border-bottom: 2px solid #4032ff;
   border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* 마우스 호버 시 일정 칸 살짝 밝아지기 */
 .schedule-grid .cell:hover:not(.head):not(.time) {
-  filter: brightness(1.15); 
+  filter: brightness(1.15);
+}
+
+/* 1. 흰 화면 노출 방지 & 100vh flex 컨테이너 설정 */
+html,
+body {
+  min-height: 100vh;
+  background-color: rgb(20, 20, 20);
+  /* 다크 테마 배경색 */
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. 메인 컨텐츠 영역이 남는 화면 공간을 모두 차지하도록 확장 */
+main,
+.schedule-section,
+#timetable-container {
+  flex: 1;
+  min-height: 450px;
+  /* 로딩 중에도 형태가 유지되도록 최소 높이 지정 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 3. 푸터를 항상 브라우저 최하단에 자석처럼 고정 */
+footer {
+  margin-top: auto;
+}
+
+/* 4. 세련된 다크 테마 로딩 스피너 UI */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #4032ff;
+  /* 브랜드 블루 컬러 */
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* =========================================
@@ -178,45 +260,51 @@
   .main-visual-bg {
     height: 240px;
   }
+
   .main-visual-content h1 {
     font-size: 2.2rem;
   }
+
   .schedule-section {
     padding: 2rem 0 4rem;
   }
-  
+
   /* 🚨 1. 유령 컬럼 제거: JS에 신호를 보내 모바일에서는 75px만 쓰게 만듭니다! */
   .schedule-grid {
-    --time-width: 75px; 
+    --time-width: 75px;
     grid-auto-rows: minmax(50px, auto);
     border-radius: 8px;
     -webkit-overflow-scrolling: touch;
     background: #1a1a1a;
   }
-  
+
   /* 🚨 2. 시간대 줄바꿈 통일 (절대 안 꺾임) */
   .schedule-grid .time {
     width: 100% !important;
     min-width: 0 !important;
-    font-size: 0.7rem;       /* 글자를 살짝 작게 */
-    letter-spacing: -0.5px;  /* 자간을 좁혀서 압축 */
-    white-space: nowrap;     /* ⭐ 어떤 일이 있어도 줄바꿈 원천 차단! */
+    font-size: 0.7rem;
+    /* 글자를 살짝 작게 */
+    letter-spacing: -0.5px;
+    /* 자간을 좁혀서 압축 */
+    white-space: nowrap;
+    /* ⭐ 어떤 일이 있어도 줄바꿈 원천 차단! */
     padding: 8px 2px;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
   }
-  
+
   .schedule-grid .cell.head:first-child {
     width: 100% !important;
     min-width: 0 !important;
   }
-  
+
   /* 🚨 3. 요일 더 많이 보이게 너비 다이어트 (95px -> 60px) */
   .schedule-grid .cell:not(.time) {
-    min-width: 60px; /* 👉 너비를 확 줄여서 한 화면에 약 4~5일이 들어오게 핏을 맞춤! */
+    min-width: 60px;
+    /* 👉 너비를 확 줄여서 한 화면에 약 4~5일이 들어오게 핏을 맞춤! */
     font-size: 0.75rem;
     padding: 6px 4px;
   }
-  
+
   /* 둥근 플로팅 카드 스타일 (유지) */
   .schedule-grid .cell:not(.empty):not(.head):not(.time) {
     border-radius: 6px !important;
@@ -226,12 +314,12 @@
     flex-direction: column;
     justify-content: center;
   }
-  
+
   .schedule-grid .cell:not(.empty):not(.head):not(.time) strong {
     font-size: 0.8rem;
     margin-bottom: 2px;
   }
-  
+
   .schedule-grid .head {
     padding: 12px 2px;
     font-size: 0.8rem;

@@ -1,38 +1,59 @@
 /* =========================================
-   상단 히어로 배너 (Main Visual) - 테마 통일
+   1. 테마 변수 & 기본 세팅 (공통 테마 유지)
+========================================= */
+:root {
+    --bg: #111111;
+    --panel: #1b1b1b;
+    --muted: #9aa0a6;
+    --text: #eaeaea;
+    --brand: #4032ff;
+    --brand-light: #5a73fd;
+    --line: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* =========================================
+   2. 상단 히어로 배너 (Main Visual)
 ========================================= */
 .main-visual-bg {
-  position: relative;
-  width: 100%;
-  height: 350px; /* 시원하게 높이 확장 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.7) 0%,
-      rgba(0,0,0,0.5) 60%,
-      rgba(17,17,17,1) 100% /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
-    ),
-    url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
-  z-index: 1;
-  padding-top: 70px;
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    background:
+        linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.5) 60%,
+            rgba(17, 17, 17, 1) 100%),
+        url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
+    z-index: 1;
+    padding-top: 70px;
 }
 
-.main-visual-content {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+.main-visual-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 5px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    margin: 0;
 }
-.main-visual-content p { margin-top: 1rem; }
 
 .doubleblue {
-  color: #5a73fd; /* 블루 포인트 컬러 매칭 */
-  font-size: 2.4rem;
-  margin-left: 0.1em;
+    color: var(--brand-light);
+    font-weight: 300;
+    opacity: 0.8;
 }
 
 /* =========================================
@@ -44,12 +65,14 @@
     position: absolute;
     top: 15px;
     right: 15px;
-    z-index: 100; /* 이미지나 글씨보다 무조건 위에 오도록 설정 */
+    z-index: 100;
+    /* 이미지나 글씨보다 무조건 위에 오도록 설정 */
 }
 
 /* 2. 점 3개 버튼 (다크 테마 칩 디자인) */
 .img-menu-btn {
-    background: rgba(0, 0, 0, 0.6); /* 뒷배경이 살짝 비치는 고급스러운 블랙 */
+    background: rgba(0, 0, 0, 0.6);
+    /* 뒷배경이 살짝 비치는 고급스러운 블랙 */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     width: 32px;
@@ -61,24 +84,27 @@
     justify-content: center;
     color: #ffffff;
     transition: all 0.2s ease;
-    padding-bottom: 4px; /* HTML 엔티티 &#8942; 의 시각적 중앙 정렬을 위한 미세 보정 */
+    padding-bottom: 4px;
+    /* HTML 엔티티 &#8942; 의 시각적 중앙 정렬을 위한 미세 보정 */
 }
 
 /* 마우스를 올렸을 때 브랜드 컬러(블루)로 발광 */
 .img-menu-btn:hover {
-    background: #4032ff; 
+    background: #4032ff;
     border-color: #4032ff;
 }
 
 /* 3. 드롭다운 메뉴 창 */
 .img-menu-dropdown {
-    display: none; /* JS에서 .show 클래스가 붙기 전까지는 완벽히 숨김 */
+    display: none;
+    /* JS에서 .show 클래스가 붙기 전까지는 완벽히 숨김 */
     position: absolute;
     top: 38px;
     right: 0;
     background-color: #222222;
     min-width: 90px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* 붕 떠 보이게 만드는 깊은 그림자 */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    /* 붕 떠 보이게 만드는 깊은 그림자 */
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     z-index: 101;
@@ -86,8 +112,8 @@
 }
 
 /* JS의 dropdown.classList.toggle('show')에 의해 활성화되는 클래스 */
-.img-menu-dropdown.show { 
-    display: block; 
+.img-menu-dropdown.show {
+    display: block;
 }
 
 /* 4. 드롭다운 내부 개별 버튼 (수정, 삭제) */
@@ -111,7 +137,8 @@
 
 /* 5. 삭제 버튼 전용 강조 스타일 (JS에서 추가한 .delete-btn 클래스) */
 .img-menu-dropdown .delete-btn {
-    color: #ff4d4d; /* 위험을 알리는 빨간색 */
+    color: #ff4d4d;
+    /* 위험을 알리는 빨간색 */
     font-weight: 600;
 }
 
@@ -122,6 +149,7 @@
     text-align: center;
     margin: 40px 0 20px;
 }
+
 .activity-control .btn-toggle {
     background: #4032ff;
     border: 2px solid #4032ff;
@@ -134,6 +162,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 4px 15px rgba(64, 50, 255, 0.2);
 }
+
 .btn-toggle:hover {
     box-shadow: 0 0 20px rgba(64, 50, 255, 0.4);
     transform: translateY(-2px);
@@ -150,12 +179,13 @@
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(5px); /* 배경 흐림 효과 */
+    backdrop-filter: blur(5px);
+    /* 배경 흐림 효과 */
     z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     /* 숨김 상태 */
     opacity: 0;
     visibility: hidden;
@@ -173,22 +203,25 @@
     background: #1a1a1a;
     width: 90%;
     max-width: 600px;
-    max-height: 90vh; /* 화면 밖으로 안 나가게 제한 */
-    overflow-y: auto; /* 내용이 길면 내부 스크롤 */
+    max-height: 90vh;
+    /* 화면 밖으로 안 나가게 제한 */
+    overflow-y: auto;
+    /* 내용이 길면 내부 스크롤 */
     padding: 40px 30px 30px;
     border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
     gap: 20px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
     position: relative;
     box-sizing: border-box;
-    
+
     /* 등장 애니메이션 (살짝 커지면서 뚜렷해짐) */
     transform: scale(0.95) translateY(10px);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .form-wrapper.open .dark-form {
     transform: scale(1) translateY(0);
 }
@@ -198,6 +231,7 @@
     display: flex;
     gap: 20px;
 }
+
 .half {
     flex: 1;
 }
@@ -215,11 +249,25 @@
     cursor: pointer;
     transition: color 0.2s;
 }
-.modal-close-btn:hover { color: #fff; }
+
+.modal-close-btn:hover {
+    color: #fff;
+}
 
 /* (기존 input 스타일 유지) */
-.input-group { display: flex; flex-direction: column; text-align: left; }
-.input-group label { color: #aaa; font-size: 13px; font-weight: 600; margin-bottom: 8px; padding-left: 2px; }
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group label {
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-left: 2px;
+}
 
 .dark-form input[type="text"],
 .dark-form input[type="date"],
@@ -230,22 +278,41 @@
     border-radius: 8px;
     color: #e5e5e5;
     outline: none;
-    font-size: 16px; 
+    font-size: 16px;
     transition: border-color 0.2s;
     box-sizing: border-box;
     width: 100%;
 }
-.dark-form input:focus { border-color: #4032ff; }
 
-.row { display: flex; gap: 20px; }
-.half { flex: 1; }
+.dark-form input:focus {
+    border-color: #4032ff;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.half {
+    flex: 1;
+}
 
 .btn-submit {
-    background: #4032ff; color: white; border: none; padding: 14px;
-    border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer;
-    transition: all 0.2s; margin-top: 10px;
+    background: #4032ff;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
 }
-.btn-submit:hover { background: #2e1ffc; }
+
+.btn-submit:hover {
+    background: #2e1ffc;
+}
 
 /* 크로퍼 내부 이미지 핏팅 보정 */
 .img-container {
@@ -260,44 +327,86 @@
     border-radius: 8px;
     overflow: hidden;
 }
-#image-to-crop { display: block; max-width: 100%; height: 100%; object-fit: contain; }
+
+#image-to-crop {
+    display: block;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
 /* 레이아웃 가로 배치용 정렬 엔진 */
-.row { display: flex; gap: 20px; }
-.half { flex: 1; }
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.half {
+    flex: 1;
+}
 
 .btn-submit {
-    background: #4032ff; color: white; border: none; padding: 14px;
-    border-radius: 8px; font-weight: bold; font-size: 15px; cursor: pointer;
-    transition: all 0.2s; margin-top: 10px;
+    background: #4032ff;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 10px;
 }
-.btn-submit:hover { background: #2e1ffc; }
+
+.btn-submit:hover {
+    background: #2e1ffc;
+}
 
 /* 크로퍼 내부 이미지 핏팅 보정 */
 .img-container {
     width: 100%;
     max-width: 100%;
-    aspect-ratio: 1/1; /* 정사각형 크롭 컨테이너 유도 */
+    aspect-ratio: 1/1;
+    /* 정사각형 크롭 컨테이너 유도 */
     background: #000;
     margin: 10px 0;
     border: 1px solid #333;
     border-radius: 8px;
     overflow: hidden;
 }
-#image-to-crop { display: block; max-width: 100%; height: 100%; object-fit: contain; }
+
+#image-to-crop {
+    display: block;
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 
 
 
 /* =========================================
    📱 모바일 반응형 폼 (Form Mobile)
 ========================================= */
-@media (max-width: 720px) {
-  .row {
-    flex-direction: column; /* 🚨 모바일분기 시 가로 배열 인풋을 세로로 안전하게 스택 */
-    gap: 20px;
-  }
+@media (max-width: 768px) {
+    .main-visual-bg {
+        height: 280px;
+    }
 
-  /* 1. 모바일에서는 손가락으로 누르기 쉽게 점 3개 버튼 크기 확장 */
+    .main-visual-content h1 {
+        font-size: 2.2rem;
+    }
+
+    .main-visual-content p {
+        font-size: 1rem;
+    }
+
+    .row {
+        flex-direction: column;
+        /* 🚨 모바일분기 시 가로 배열 인풋을 세로로 안전하게 스택 */
+        gap: 20px;
+    }
+
+    /* 1. 모바일에서는 손가락으로 누르기 쉽게 점 3개 버튼 크기 확장 */
     .img-menu-btn {
         width: 38px;
         height: 38px;
@@ -312,7 +421,8 @@
 
     /* 3. 모바일 스윗얼럿 팝업이 너무 작아지지 않도록 화면 규격에 맞춤 */
     div:where(.swal2-container) div:where(.swal2-popup) {
-        width: 88% !important; /* 스마트폰 가로폭에 꽉 차게 */
+        width: 88% !important;
+        /* 스마트폰 가로폭에 꽉 차게 */
         padding: 1.5em 1em;
     }
 
@@ -321,16 +431,19 @@
     #edit-input-date {
         width: 95%;
         padding: 12px;
-        font-size: 15px; /* 모바일에서 글자 입력 시 브라우저 강제 줌 방지 */
-        width: 100% !important; 
+        font-size: 15px;
+        /* 모바일에서 글자 입력 시 브라우저 강제 줌 방지 */
+        width: 100% !important;
         max-width: 100%;
         margin: 10px 0;
         box-sizing: border-box !important;
     }
-    .swal2-html-container{
+
+    .swal2-html-container {
         padding: 12px;
     }
-    .swal2-html-container #del-title{
+
+    .swal2-html-container #del-title {
         font-size: 28px;
         margin: 5px;
     }
@@ -339,27 +452,34 @@
         모바일: 인스타그램 스타일 전체화면 모달 (Slide up)
     ========================================= */
     .form-wrapper {
-        align-items: flex-end; /* 팝업을 바닥에 붙임 */
+        align-items: flex-end;
+        /* 팝업을 바닥에 붙임 */
     }
+
     .dark-form {
         width: 100%;
         max-width: 100%;
-        height: 95vh; /* 화면 거의 꽉 차게 */
+        height: 95vh;
+        /* 화면 거의 꽉 차게 */
         max-height: 100vh;
-        border-radius: 20px 20px 0 0; /* 윗부분만 둥글게 */
-        padding: 50px 20px 30px; /* 상단 닫기 버튼 공간 확보 */
-        
+        border-radius: 20px 20px 0 0;
+        /* 윗부분만 둥글게 */
+        padding: 50px 20px 30px;
+        /* 상단 닫기 버튼 공간 확보 */
+
         /* 밑에서 위로 올라오는 애니메이션 */
-        transform: translateY(100%); 
+        transform: translateY(100%);
     }
+
     .form-wrapper.open .dark-form {
         transform: translateY(0);
-    }   
+    }
 }
 
 
 
-label, input{
+label,
+input {
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
@@ -367,7 +487,8 @@ label, input{
 .custom-select-wrapper {
     position: relative;
     width: 100%;
-    user-select: none; /* 드래그 방지 */
+    user-select: none;
+    /* 드래그 방지 */
 }
 
 /* 화면에 보이는 클릭 버튼 */
@@ -399,15 +520,21 @@ label, input{
     margin-top: 5px;
     padding: 0;
     list-style: none;
-    background-color: #2e2e2e; /* 다크 테마 배경 */
+    background-color: #2e2e2e;
+    /* 다크 테마 배경 */
     border: 1px solid #444;
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* 그림자 효과 */
-    z-index: 100; /* 사진 같은 거 위에 뜨도록 */
-    display: none; /* 평소엔 숨김 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* 그림자 효과 */
+    z-index: 100;
+    /* 사진 같은 거 위에 뜨도록 */
+    display: none;
+    /* 평소엔 숨김 */
 
-    max-height: 200px; /* 옵션 1개 높이(약 40px) × 5개 = 200px */
-    overflow-y: auto;  /* 200px을 넘어가면 자동으로 세로 스크롤 생성 */
+    max-height: 200px;
+    /* 옵션 1개 높이(약 40px) × 5개 = 200px */
+    overflow-y: auto;
+    /* 200px을 넘어가면 자동으로 세로 스크롤 생성 */
 }
 
 /* 드롭다운이 열렸을 때 (JS로 open 클래스 추가) */
@@ -420,7 +547,8 @@ label, input{
     padding: 10px 12px;
     color: #ddd;
     cursor: pointer;
-    transition: background 0.2s; /* 부드러운 색상 전환 */
+    transition: background 0.2s;
+    /* 부드러운 색상 전환 */
 }
 
 /* 드디어! 마우스 올렸을 때 배경색 변경 */

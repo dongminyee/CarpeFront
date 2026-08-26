@@ -4,18 +4,19 @@
 .main-visual-bg {
   position: relative;
   width: 100%;
-  height: 350px; /* 조금 더 시원하게 높이를 키웠습니다 */
+  height: 350px;
+  /* 조금 더 시원하게 높이를 키웠습니다 */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   background:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       rgba(0, 0, 0, 0.7) 0%,
       rgba(0, 0, 0, 0.5) 60%,
-      rgba(17, 17, 17, 1) 100% /* 🚨 마법의 그라데이션: 아래쪽 배경색(17,17,17)과 스르륵 이어지게 블렌딩! */
+      rgba(17, 17, 17, 1) 100%
+      /* 🚨 마법의 그라데이션: 아래쪽 배경색(17,17,17)과 스르륵 이어지게 블렌딩! */
     ),
     url('../images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
@@ -26,19 +27,31 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 2rem;
+  /* 모바일에서 글자가 끝에 닿지 않도록 방어막 */
 }
 
 .main-visual-content h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  letter-spacing: 5px; /* 글자 사이를 띄워서 고급스럽게 */
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6); /* 글씨가 배경에 묻히지 않게 그림자 추가 */
+  letter-spacing: 5px;
+  /* 글자 사이를 띄워서 고급스럽게 */
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  /* 글씨가 배경에 묻히지 않게 그림자 추가 */
+}
+
+.main-visual-content p {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  color: #cccccc;
+  word-break: keep-all;
+  /* 단어 단위 줄바꿈 유지 */
 }
 
 /* 괄호 색상을 조금 더 트렌디한 네온 블루로 변경 */
 .doubleblue {
   color: #5a73fd;
-  font-weight: 300; 
+  font-weight: 300;
   opacity: 0.8;
 }
 
@@ -58,8 +71,8 @@
   letter-spacing: 1px;
 
   /* 🚨 2. 혹시 모바일에서 두 줄로 바뀔 때를 대비해 위아래 줄간격도 살짝 벌려줍니다 */
-  line-height: 1.4;      
-  
+  line-height: 1.4;
+
   /* 🚨 3. 타이틀도 단어 단위로 예쁘게 줄바꿈되도록 보호막 추가 */
   word-break: keep-all;
 }
@@ -70,8 +83,10 @@
 
 .highlight-text {
   position: relative;
-  display: inline-block; /* 캡슐 크기를 글자 너비에 아주 딱 맞춤! */
-  color: #ffffff; /* (보너스) 글자색도 살짝 네온 톤으로 튀게 해주면 훨씬 예쁩니다! */
+  display: inline-block;
+  /* 캡슐 크기를 글자 너비에 아주 딱 맞춤! */
+  color: #ffffff;
+  /* (보너스) 글자색도 살짝 네온 톤으로 튀게 해주면 훨씬 예쁩니다! */
 }
 
 /* CarpeDiem 글자 바로 아래에만 예쁜 밑줄을 긋습니다 */
@@ -80,8 +95,10 @@
   display: block;
   position: absolute;
   left: 0;
-  bottom: -4px; /* 글자와 겹치지 않게 살짝 아래로 내림 */
-  width: 100%;  /* 딱 'CarpeDiem' 글자 길이만큼만 100% 칠함! */
+  bottom: -4px;
+  /* 글자와 겹치지 않게 살짝 아래로 내림 */
+  width: 100%;
+  /* 딱 'CarpeDiem' 글자 길이만큼만 100% 칠함! */
   height: 4px;
   background: #4032ff;
   border-radius: 4px;
@@ -92,17 +109,21 @@
 /* 🚨 무식한 13rem 여백 대신, max-width로 똑똑하게 중앙 정렬! */
 .Activity .introduction,
 .Activity .actsScrpt {
-  max-width: 760px; /* 읽기 가장 편한 텍스트 폭 제한 */
+  max-width: 760px;
+  /* 읽기 가장 편한 텍스트 폭 제한 */
   margin: 0 auto 4rem auto;
   text-align: center;
 }
 
 .Activity .introduction p,
 .Activity .actsScrpt p {
-  color: #cccccc; /* 완전 흰색보다 눈이 편안한 밝은 회색 */
+  color: #cccccc;
+  /* 완전 흰색보다 눈이 편안한 밝은 회색 */
   font-size: 1.15rem;
-  line-height: 1.8; /* 🚨 가독성을 확 올려주는 마법의 줄간격 */
-  word-break: keep-all; /* 🚨 한국어 단어가 중간에 쪼개지지 않게 보호! (초핵심) */
+  line-height: 1.8;
+  /* 🚨 가독성을 확 올려주는 마법의 줄간격 */
+  word-break: keep-all;
+  /* 🚨 한국어 단어가 중간에 쪼개지지 않게 보호! (초핵심) */
   margin-bottom: 1rem;
 }
 
@@ -113,15 +134,19 @@
   .main-visual-bg {
     height: 280px;
   }
+
   .main-visual-content h1 {
     font-size: 2.2rem;
   }
+
   .Activity .title h2 {
     font-size: 1.5rem;
   }
+
   .Activity .introduction p,
   .Activity .actsScrpt p {
     font-size: 1rem;
-    padding: 0 1rem; /* 모바일에서는 양옆에 살짝 여백만 줌 */
+    padding: 0 1rem;
+    /* 모바일에서는 양옆에 살짝 여백만 줌 */
   }
 }

@@ -1,99 +1,126 @@
-.notInDate{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-}
-.notInDate h2{
-  color: rgb(238, 160, 160);
-}
-
-
-section.Activity{
-  padding-bottom:0;
-}
-
-.Activity .title{
-  margin-bottom: 0;
-}
-.Activity .introduction{
-  margin-bottom: 2rem;
-}
-.Activity .actsScrpt{
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-}
+/* =========================================
+   상단 히어로 배너 (Main Visual)
+========================================= */
 .main-visual-bg {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 350px;
+  /* 조금 더 시원하게 높이를 키웠습니다 */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,1) 0%,
-      rgba(0,0,0,0.9) 35%,
-      rgba(0,0,0,0.3) 90%,
-      rgba(0,0,0,0.04) 100%
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 60%,
+      rgba(17, 17, 17, 1) 100%
+      /* 🚨 마법의 그라데이션: 아래쪽 배경색(17,17,17)과 스르륵 이어지게 블렌딩! */
     ),
     url('../images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
-  padding-top: 85px;
+  padding-top: 70px;
 }
 
 .main-visual-content {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
+  padding: 0 2rem;
+  /* 모바일에서 글자가 끝에 닿지 않도록 방어막 */
 }
 
-.main-visual-content p{
-    margin-top: 1rem;
+.main-visual-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  /* 글자 사이를 띄워서 고급스럽게 */
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  /* 글씨가 배경에 묻히지 않게 그림자 추가 */
 }
 
+.main-visual-content p {
+  margin-top: 1.5rem;
+  font-size: 1.15rem;
+  color: #cccccc;
+  word-break: keep-all;
+  /* 단어 단위 줄바꿈 유지 */
+}
+
+/* 괄호 색상을 조금 더 트렌디한 네온 블루로 변경 */
 .doubleblue {
-  color: #2a1bff;
-  font-size: 2.4rem;
-  margin-left: 0.1em;
+  color: #5a73fd;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.notInDate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.notInDate h2 {
+  color: rgb(238, 160, 160);
 }
 
 
+section.Activity {
+  padding-bottom: 0;
+}
+
+.Activity .title {
+  margin-bottom: 0;
+}
+
+.Activity .introduction {
+  margin-bottom: 2rem;
+}
+
+.Activity .actsScrpt {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
 
 .section-cntct {
-  background-color: #111; /* 배경 어두운 톤 */
-  color: white; /* 전체 흰색 글씨 */
-  padding: 60px 20px; /* 위아래 여백 */
-  text-align: center; /* 가운데 정렬 */
+  background-color: #111;
+  /* 배경 어두운 톤 */
+  color: white;
+  /* 전체 흰색 글씨 */
+  padding: 60px 20px;
+  /* 위아래 여백 */
+  text-align: center;
+  /* 가운데 정렬 */
 }
 
 .section-cntct .container {
   display: flex;
   justify-content: center;
-  gap: 8rem; /* 각 그룹 사이 간격 */
-  flex-wrap: wrap; /* 화면 작아지면 줄바꿈 */
+  gap: 8rem;
+  /* 각 그룹 사이 간격 */
+  flex-wrap: wrap;
+  /* 화면 작아지면 줄바꿈 */
 }
 
-section .section-cntct .title h2{
+section .section-cntct .title h2 {
   font-size: 1.8rem;
   margin-bottom: 2rem;
-  color: white; 
+  color: white;
 }
 
-.section-cntct .banner img{
-  max-width:100%;
+.section-cntct .banner img {
+  max-width: 100%;
 }
 
 .cntct-group {
-  width:100%;
+  width: 100%;
   max-width: 100%;
 }
 
 
-.cntct-group h3{
+.cntct-group h3 {
   font-size: 1.5rem;
   margin-bottom: 0.3rem;
 }
@@ -101,7 +128,8 @@ section .section-cntct .title h2{
 .cntct-group p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #74efff; /* 살짝 연한 흰색 */
+  color: #74efff;
+  /* 살짝 연한 흰색 */
 }
 
 .cntct-group a {
@@ -113,35 +141,38 @@ section .section-cntct .title h2{
 }
 
 .cntct-group a:hover {
-  color: #4032ff; /* 호버 시 포인트 색 */
+  color: #4032ff;
+  /* 호버 시 포인트 색 */
 }
 
-.section-cntct .dates{
+.section-cntct .dates {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.section-cntct .schedules{
+.section-cntct .schedules {
   width: 25%;
   margin: 1rem;
 }
 
-.section-cntct .moreButton{
+.section-cntct .moreButton {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  color:rgb(255, 200, 48);
+  color: rgb(255, 200, 48);
   margin: 1rem;
   font-size: 1rem;
 }
 
 
-.section-cntct .post{
-  width:32%;
+.section-cntct .post {
+  width: 32%;
   margin: 0.5rem;
 }
+
 /* 인스타 포스트 */
 .insta-post {
-  max-width: 100%; /* 인스타 포스트 폭 */
+  max-width: 100%;
+  /* 인스타 포스트 폭 */
   margin: 0 auto;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -160,4 +191,64 @@ section .section-cntct .title h2{
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* =========================================
+   📱 모바일 반응형 디자인 (화면 가로 768px 이하)
+========================================= */
+@media (max-width: 768px) {
+
+  /* 1. 상단 히어로 배너 (높이와 글씨 크기 축소) */
+  .main-visual-bg {
+    height: 280px;
+  }
+
+  .main-visual-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .main-visual-content p {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
+
+  /* 2. 섹션 여백 및 컨테이너 간격 최적화 */
+  .section-cntct {
+    padding: 40px 15px;
+    /* 모바일은 좌우 여백을 조금 더 줄임 */
+  }
+
+  .section-cntct .container {
+    flex-direction: column;
+    /* 🚨 가로 정렬을 세로 정렬(위아래)로 강제 변경 */
+    gap: 3.5rem;
+    /* 8rem의 거대한 간격을 모바일에 맞게 축소 */
+  }
+
+  /* 3. 스케줄 및 인스타 포스트 100% 확장 (세로 쌓기) */
+  .section-cntct .dates {
+    flex-direction: column;
+    /* 내부 항목들도 세로로 쌓이도록 변경 */
+    gap: 2rem;
+    /* 세로로 쌓인 항목 간의 여백 */
+  }
+
+  .section-cntct .schedules,
+  .section-cntct .post {
+    width: 100%;
+    /* 🚨 25%, 32%로 쪼개져 있던 너비를 화면 100%로 꽉 채움 */
+    max-width: 400px;
+    /* 너무 커지지 않도록 최대치 제한 */
+    margin: 0 auto;
+    /* 정중앙 배치 */
+  }
+
+  .section-cntct .title h2 {
+    font-size: 2.2rem;
+    margin-bottom: 0rem;
+  }
+
+  .cntct-group h3 {
+    font-size: 1.3rem;
+  }
 }
