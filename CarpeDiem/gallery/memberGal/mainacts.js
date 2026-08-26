@@ -65,7 +65,7 @@ async function checkEditAuth() {
 
     try {
         // 1. 서버에 상태 확인 요청
-        const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
+        const response = await fetch('http://localhost:8080/api/auth/status', {
             method: 'GET',
             headers: {
                 'accessToken': localStorage.getItem('accessToken'),
@@ -198,7 +198,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
             formData.append("file", blob, 'cropped.jpg');
 
             // 서버 전송 로직 (fetch)
-            const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/upload', {
+            const response = await fetch('http://localhost:8080/api/photos/upload', {
                 method: 'POST',
                 // [중요!] body에 formData를 넣으면
                 // Content-Type 헤더는 브라우저가 알아서 'multipart/form-data'로 설정합니다.
@@ -322,7 +322,7 @@ async function handleEdit(id) {
             const formData = new FormData();
             formData.append('title', data.title);
             formData.append('date', data.date);
-            fetch(`https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/patch/${id}`, {
+            fetch(`http://localhost:8080/api/photos/patch/${id}`, {
                 method: 'PATCH',
                 // ⚠️ 주의: FormData를 보낼 때는 'Content-Type' 헤더를 직접 적지 마세요!
                 // 브라우저가 알아서 'multipart/form-data'로 설정해줍니다.
@@ -370,7 +370,7 @@ async function handleDelete(id) {
 async function delOperation(id) {
     try {
         // 실제 서버로 삭제 요청 (DELETE API)
-        const rst = await fetch(`${'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos/delete'}/${id}`, { method: 'DELETE' });
+        const rst = await fetch(`${'http://localhost:8080/api/photos/delete'}/${id}`, { method: 'DELETE' });
         if (rst.ok) {
             console.log(id);
             console.log('삭제 요청, ID:', id);
@@ -406,7 +406,7 @@ const imageContainer = document.getElementById('image-container');
 
 // 테스트용 API URL (10개의 사진 데이터를 요청)
 // 실제 사용 시에는 백엔드 API 주소를 넣으세요.
-const API_URL = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/photos';
+const API_URL = 'http://localhost:8080/api/photos';
 
 /**
  * API를 호출하고 화면을 업데이트하는 함수
@@ -502,7 +502,7 @@ async function fetchAndUpdateImages(gen) {
 
             // <img> 태그 생성
             const img = document.createElement('img');
-            img.src = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/gallery/' + imageData.imageUrl; // API 응답에 맞는 이미지 URL
+            img.src = 'http://localhost:8080/gallery/' + imageData.imageUrl; // API 응답에 맞는 이미지 URL
             const div2 = document.createElement('div');
             div2.classList.add('img-wrapper');
             div2.appendChild(img);

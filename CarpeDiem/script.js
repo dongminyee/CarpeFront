@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function hideDropdown() {
     dropdownTimeout = setTimeout(() => {
       hovermenu.classList.remove('active');
-    }, 120); 
+    }, 120);
   }
 
   // ==========================================
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeBtn.addEventListener('click', () => {
       mobileNav.classList.remove('open');
-      document.body.style.overflow = ''; 
+      document.body.style.overflow = '';
     });
 
     // 배경 클릭 시 닫기
@@ -60,13 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 🚨 querySelectorAll을 써서 requires-auth 클래스를 가진 모든 버튼을 잡아옵니다.
   const authRequiredBtns = document.querySelectorAll('.requires-auth');
-  
+
   authRequiredBtns.forEach(btn => {
     btn.addEventListener("click", async (e) => {
       e.preventDefault();
 
-      const targetUrl = e.currentTarget.href; 
-      
+      const targetUrl = e.currentTarget.href;
+
       try {
         const isAuthorized = await checkEditAuth();
         console.log("권한 확인 결과:", isAuthorized);
@@ -93,18 +93,18 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 async function checkEditAuth() {
   const accessToken = localStorage.getItem('accessToken');
-  
+
   if (accessToken == null) {
     notAuthed();
     return false;
   }
 
   try {
-    const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
+    const response = await fetch('http://localhost:8080/api/auth/status', {
       method: 'GET',
       headers: {
         'accessToken': localStorage.getItem('accessToken'),
-        'refreshToken': localStorage.getItem('refreshToken'), 
+        'refreshToken': localStorage.getItem('refreshToken'),
         'Content-Type': 'application/json'
       }
     });
@@ -114,7 +114,7 @@ async function checkEditAuth() {
 
     switch (result.status) {
       case 'LOGIN_SUCCESS':
-        if(role == "ROLE_ADMIN") return true;
+        if (role == "ROLE_ADMIN") return true;
         break;
 
       case 'TOKEN_REFRESHED':
@@ -122,7 +122,7 @@ async function checkEditAuth() {
           localStorage.setItem('accessToken', result.newAccessToken);
           localStorage.setItem('refreshToken', result.refreshToken);
         }
-        if(role == "ROLE_ADMIN") return true;
+        if (role == "ROLE_ADMIN") return true;
         break;
 
       case 'LOGOUT_REQUIRED':
@@ -148,13 +148,13 @@ function notAuthed() {
   localStorage.clear();
   const loginBtn = document.getElementById('login-btn');
   const userProfile = document.getElementById('user-profile');
-  
+
   Swal.fire({
     icon: 'error',
     title: '접근 권한 없음',
     text: `사용자의 게시물 접근 권한이 없음`
   });
-  
-  if(loginBtn) loginBtn.style.display = 'block'; 
-  if(userProfile) userProfile.style.display = 'none'; 
+
+  if (loginBtn) loginBtn.style.display = 'block';
+  if (userProfile) userProfile.style.display = 'none';
 }

@@ -18,29 +18,29 @@ window.addEventListener('message', (event) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
     checkAuthAndUI();
 });
 
 async function checkAuthAndUI() {
     const accessToken = localStorage.getItem('accessToken');
-    
+
     // 토큰 없으면 바로 로그아웃 처리
-    if (accessToken==null) {
+    if (accessToken == null) {
         const loginBtn = document.getElementById('login-btn');
-        if(loginBtn.style.display=='none') logout();
+        if (loginBtn.style.display == 'none') logout();
         return;
     }
 
     try {
         // 1. 서버에 상태 확인 요청
-        const response = await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/status', {
+        const response = await fetch('http://localhost:8080/api/auth/status', {
             method: 'GET',
             headers: {
-            'accessToken': localStorage.getItem('accessToken'),
-            'refreshToken': localStorage.getItem('refreshToken'), 
-            'Content-Type': 'application/json'
-        }
+                'accessToken': localStorage.getItem('accessToken'),
+                'refreshToken': localStorage.getItem('refreshToken'),
+                'Content-Type': 'application/json'
+            }
         });
 
         const result = await response.json();
@@ -50,7 +50,7 @@ async function checkAuthAndUI() {
         switch (result.status) {
             case 'LOGIN_SUCCESS':
                 // [상태 1] 정상 -> UI만 업데이트
-                updateLoginUI(); 
+                updateLoginUI();
                 break;
 
             case 'TOKEN_REFRESHED':
@@ -79,10 +79,10 @@ async function checkAuthAndUI() {
 function updateLoginUI() {
     const loginBtn = document.getElementById('login-btn');
     const userProfile = document.getElementById('user-profile');
-    
+
     // 버튼 숨기고 프로필 보이기
-    if(loginBtn) loginBtn.style.display = 'none';
-    if(userProfile) {
+    if (loginBtn) loginBtn.style.display = 'none';
+    if (userProfile) {
         userProfile.style.display = 'flex';
         document.getElementById('profile-name').textContent = localStorage.getItem("userName");
         document.getElementById('profile-img').src = localStorage.getItem("userPicture");
@@ -91,20 +91,20 @@ function updateLoginUI() {
 
 async function logout() {
     // 저장소 비우기
-    await fetch('https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/api/auth/logout', {
+    await fetch('http://localhost:8080/api/auth/logout', {
         method: 'DELETE',
         headers: {
-        'username': localStorage.getItem('email'), 
-        'Content-Type': 'application/json'
-    }
+            'username': localStorage.getItem('email'),
+            'Content-Type': 'application/json'
+        }
     });
     localStorage.clear();
     const loginBtn = document.getElementById('login-btn');
     const userProfile = document.getElementById('user-profile');
     location.reload();
     // 프로필 숨기고 버튼 보이기
-    if(loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
-    if(userProfile) userProfile.style.display = 'none'; 
+    if (loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
+    if (userProfile) userProfile.style.display = 'none';
 }
 
 
@@ -121,8 +121,8 @@ function updateProfileUI(name, picture) {
     if (loginArea && userProfile) {
         loginArea.style.display = 'none';
         userProfile.style.display = 'flex';
-        if(profileName) profileName.textContent = name;
-        if(profileImg) profileImg.src = picture;
+        if (profileName) profileName.textContent = name;
+        if (profileImg) profileImg.src = picture;
     }
 }
 
@@ -135,7 +135,7 @@ window.addEventListener('storage', (event) => {
         // 누가 토큰을 저장했네? 나도 UI 업데이트 해야지!
         const name = localStorage.getItem('userName');
         const picture = localStorage.getItem('userPicture');
-        
+
         if (event.newValue) { // 로그인 됨
             updateProfileUI(name, picture);
         } else { // 로그아웃 됨 (값이 null이 됨)

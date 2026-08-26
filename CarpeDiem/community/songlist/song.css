@@ -4,18 +4,19 @@
 .main-visual-bg {
   position: relative;
   width: 100%;
-  height: 350px; /* 시원하게 높이 확장 */
+  height: 350px;
+  /* 시원하게 높이 확장 */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
   background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.7) 0%,
-      rgba(0,0,0,0.5) 60%,
-      rgba(17,17,17,1) 100% /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 60%,
+      rgba(17, 17, 17, 1) 100%
+      /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
     ),
     url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
@@ -47,139 +48,230 @@
 
 /* 테이블 css */
 
-:root{
-  --bg:#111;
-  --panel:#1b1b1b;
-  --muted:#9aa0a6;
-  --text:#eaeaea;
-  --brand:#4032ff;
-  --brand-2:#2e1ffc;
-  --line:#2a2a2a;
+:root {
+  --bg: #111;
+  --panel: #1b1b1b;
+  --muted: #9aa0a6;
+  --text: #eaeaea;
+  --brand: #4032ff;
+  --brand-2: #2e1ffc;
+  --line: #2a2a2a;
 }
-body{
-  background:var(--bg);
-  color:var(--text);
+
+body {
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
-  min-height:100vh;
+  min-height: 100vh;
 }
-.wrap{
-  flex:1;
-  max-width:1140px;
-  margin:2rem auto;
+
+.wrap {
+  flex: 1;
+  max-width: 1140px;
+  margin: 2rem auto;
   padding: 0 0.5rem;
 }
 
-h1{font-size:28px;margin-bottom:16px}
-.toolbar{
-  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
-  margin-bottom:12px;
-}
-.toolbar .rows{
-  margin-left:auto; display:flex; align-items:center; gap:8px;
-  color:var(--muted); font-size:14px;
-}
-select, input[type="file"]{
-  background:#222; color:#fff; border:1px solid #333; border-radius:8px;
-  padding:6px 10px; font-size:14px;
-}
-input[type="file"]{ padding:6px; }
 
-.table-card{
-  background:var(--panel); border:1px solid var(--line);
-  border-radius:14px; overflow:hidden;
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
 }
-table{
-  width:100%; 
-  border-collapse:separate; 
-  border-spacing:0;
+
+.toolbar .rows {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+select,
+input[type="file"] {
+  background: #222;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+input[type="file"] {
+  padding: 6px;
+}
+
+.table-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   table-layout: fixed;
 }
+
 /* 헤더/셀 내용이 넘칠 때 말줄임 */
-thead th, tbody td {
+thead th,
+tbody td {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 /* 정렬 화살표 공간 확보(헤더 폭 흔들림 방지) */
-thead th.sortable { padding-right: 26px; }
+thead th.sortable {
+  padding-right: 26px;
+}
+
 /* 이미 있으신 ::after 화살표는 그대로 사용 */
 
-thead th{
-  background:#191919; border-bottom:1px solid var(--line);
-  padding:14px 12px; font-weight:600; text-align:left; position:relative;
-  white-space:nowrap;
+thead th {
+  background: #191919;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 12px;
+  font-weight: 600;
+  text-align: left;
+  position: relative;
+  white-space: nowrap;
 }
-thead th.sortable{cursor:pointer;}
-thead th.sortable::after{
-  content:""; border:6px solid transparent; border-top-color:#666;
-  position:absolute; right:10px; top:50%; transform:translateY(-20%);
-  opacity:.7;
+
+thead th.sortable {
+  cursor: pointer;
 }
-thead th.sortable.asc::after{
-  border-top-color:transparent; border-bottom-color:#2962ff; transform:translateY(-80%);
+
+thead th.sortable::after {
+  content: "";
+  border: 6px solid transparent;
+  border-top-color: #666;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-20%);
+  opacity: .7;
 }
-thead th.sortable.desc::after{
-  border-top-color:#2962ff;
+
+thead th.sortable.asc::after {
+  border-top-color: transparent;
+  border-bottom-color: #2962ff;
+  transform: translateY(-80%);
+}
+
+thead th.sortable.desc::after {
+  border-top-color: #2962ff;
 }
 
 .add-form {
-  display:flex;
+  display: flex;
   margin: 14px 0 18px;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 12px;
 }
-.add-form fieldset { border:0; padding:0; margin:0; }
-.add-form legend { font-size:14px; color:var(--muted); margin-bottom:8px; }
+
+.add-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.add-form legend {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
 .add-form label {
-  display:flex; flex-direction:column; gap:6px;
-  color:#ddd; font-size:13px; margin:8px 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #ddd;
+  font-size: 13px;
+  margin: 8px 8px 8px 0;
 }
+
 .add-form input {
-  background:#202020; color:#fff; border:1px solid #333;
-  border-radius:8px; padding:8px 10px; font-size:14px;
+  background: #202020;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
 }
-.add-form { display:grid; grid-template-columns: repeat(4, 1fr) 120px; gap:10px; align-items:end; }
+
+.add-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) 120px;
+  gap: 10px;
+  align-items: end;
+}
+
 .add-form .btn-add {
-  height:40px; background:var(--brand); color:#fff; border:0; border-radius:8px; cursor:pointer;
+  height: 40px;
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
 }
-.add-form .btn-add:hover { background:var(--brand-2); }
+
+.add-form .btn-add:hover {
+  background: var(--brand-2);
+}
 
 /* 좁은 화면 대응 */
-@media (max-width: 820px){
-  .add-form { grid-template-columns: 1fr 1fr; }
+@media (max-width: 820px) {
+  .add-form {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 
 .search-col {
   text-align: center;
 }
+
 #searchToggle {
   background: none;
   border: none;
   font-size: 18px;
   cursor: pointer;
 }
+
 #filterRow input {
   width: 95%;
   box-sizing: border-box;
 }
 
-tbody td{
-  border-bottom:1px solid var(--line); padding:12px 10px; vertical-align:middle;
+tbody td {
+  border-bottom: 1px solid var(--line);
+  padding: 12px 10px;
+  vertical-align: middle;
 }
-tbody tr:hover{ background:#181818 }
+
+tbody tr:hover {
+  background: #181818
+}
 
 
 /* =========================================
    🚨 툴바 & 검색창 배치 수정 (HTML 순서 변경 없이 CSS로 해결)
 ========================================= */
-.toolbar{
-  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
-  margin-bottom:12px;
+.toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
 }
 
 /* JS에서 주입하는 "총 00개"를 맨 왼쪽으로 밀어냅니다 */
@@ -194,31 +286,43 @@ tbody tr:hover{ background:#181818 }
   order: 2;
   display: flex;
   align-items: center;
-  gap: 8px; /* 버튼과 인풋 사이 간격 살짝 좁힘 */
+  gap: 8px;
+  /* 버튼과 인풋 사이 간격 살짝 좁힘 */
 }
 
 /* 드롭다운을 맨 오른쪽(검색창 바로 옆)으로 붙입니다 */
-.toolbar .rows{
+.toolbar .rows {
   order: 3;
-  display:flex; align-items:center; gap:8px;
-  color:var(--muted); font-size:14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 /* 2. 검색어 입력창 (Input) */
 .search-bar input[type="text"] {
-  width: 180px; /* 입력창 너비 */
-  padding: 8px 12px; /* 안쪽 여백 */
+  width: 180px;
+  /* 입력창 너비 */
+  padding: 8px 12px;
+  /* 안쪽 여백 */
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-  font-size: 14px; /* 글자 크기 */
-  border: 2px solid #e0e0e0; /* 옅은 회색 테두리 */
-  border-radius: 8px; /* 모서리 둥글게 */
-  outline: none; /* 클릭 시 생기는 기본 파란 테두리 제거 */
-  transition: border-color 0.3s ease; /* 색상 변경 시 부드러운 애니메이션 */
+  font-size: 14px;
+  /* 글자 크기 */
+  border: 2px solid #e0e0e0;
+  /* 옅은 회색 테두리 */
+  border-radius: 8px;
+  /* 모서리 둥글게 */
+  outline: none;
+  /* 클릭 시 생기는 기본 파란 테두리 제거 */
+  transition: border-color 0.3s ease;
+  /* 색상 변경 시 부드러운 애니메이션 */
 }
 
 /* 입력창을 클릭(포커스)했을 때의 스타일 */
 .search-bar input[type="text"]:focus {
-  border-color: #333333; /* 포커스 시 진한 색으로 변경 */
+  border-color: #333333;
+  /* 포커스 시 진한 색으로 변경 */
 }
 
 /* 3. 검색 버튼 (Button) */
@@ -227,40 +331,90 @@ tbody tr:hover{ background:#181818 }
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-size: 14px;
   font-weight: bold;
-  color: #ffffff; /* 글자색 흰색 */
-  background-color: #333333; /* 배경색 진한 회색 (CarpeDiem 톤에 맞게 수정 가능) */
-  border: none; /* 기본 테두리 제거 */
-  border-radius: 8px; /* 모서리 둥글게 (입력창과 통일) */
-  cursor: pointer; /* 마우스 올렸을 때 손가락 모양 */
-  transition: background-color 0.3s ease; /* 색상 변경 시 부드러운 애니메이션 */
+  color: #ffffff;
+  /* 글자색 흰색 */
+  background-color: #333333;
+  /* 배경색 진한 회색 (CarpeDiem 톤에 맞게 수정 가능) */
+  border: none;
+  /* 기본 테두리 제거 */
+  border-radius: 8px;
+  /* 모서리 둥글게 (입력창과 통일) */
+  cursor: pointer;
+  /* 마우스 올렸을 때 손가락 모양 */
+  transition: background-color 0.3s ease;
+  /* 색상 변경 시 부드러운 애니메이션 */
 }
 
 /* 버튼에 마우스를 올렸을 때(Hover)의 스타일 */
 .search-bar button:hover {
-  background-color: #555555; /* 호버 시 약간 밝은 회색으로 변경 */
+  background-color: #555555;
+  /* 호버 시 약간 밝은 회색으로 변경 */
 }
 
 /* 썸네일 */
-a.thumb{ display:inline-flex; align-items:center; gap:10px; position:relative; }
-a.thumb img{ width:96px; height:54px; object-fit:cover; border-radius:8px; display:block }
-a.thumb .play{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.3);
-  width:36px; height:36px; border-radius:999px; display:flex; align-items:center; justify-content:center;
-  font-size:14px;
+a.thumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
 }
-a.thumb:hover .play{ background:rgba(0,0,0,.75) }
+
+a.thumb img {
+  width: 96px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block
+}
+
+a.thumb .play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, .55);
+  border: 1px solid rgba(255, 255, 255, .3);
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+a.thumb:hover .play {
+  background: rgba(0, 0, 0, .75)
+}
 
 /* 페이저 */
-#pagination{
-  display:flex; gap:6px; align-items:center; justify-content:center;
-  padding:16px; background:#141414; border-top:1px solid var(--line);
+#pagination {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #141414;
+  border-top: 1px solid var(--line);
 }
-#pagination button{
-  background:#222; color:#fff; border:0; border-radius:8px; padding:7px 12px; cursor:pointer;
+
+#pagination button {
+  background: #222;
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
 }
-#pagination button.active{ background:var(--brand) }
-#pagination button[disabled]{ opacity:.5; cursor:default; }
+
+#pagination button.active {
+  background: var(--brand)
+}
+
+#pagination button[disabled] {
+  opacity: .5;
+  cursor: default;
+}
 
 /* 수정 버튼을 담고 있는 테이블 칸 (가운데 정렬) */
 .action-col {
@@ -270,20 +424,27 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 
 /* 관리자용 수정 버튼 스타일 */
 .btn-edit {
-  padding: 5px 5px;         /* 아담한 버튼 사이즈 */
-  font-size: 15px;           /* 작고 깔끔한 폰트 */
+  padding: 5px 5px;
+  /* 아담한 버튼 사이즈 */
+  font-size: 15px;
+  /* 작고 깔끔한 폰트 */
   font-weight: 500;
-  color: #ffffff;            /* 글자색 흰색 */
-  background-color: #4032ff; /* 눈에 잘 띄는 차분한 파란색 */
+  color: #ffffff;
+  /* 글자색 흰색 */
+  background-color: #4032ff;
+  /* 눈에 잘 띄는 차분한 파란색 */
   border: none;
-  border-radius: 4px;        /* 살짝 둥근 모서리 */
+  border-radius: 4px;
+  /* 살짝 둥근 모서리 */
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease; /* 호버/클릭 애니메이션 */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  /* 호버/클릭 애니메이션 */
 }
 
 /* 버튼에 마우스를 올렸을 때 */
 .btn-edit:hover {
-  background-color: #2e1fff; /* 더 진한 파란색으로 변경 */
+  background-color: #2e1fff;
+  /* 더 진한 파란색으로 변경 */
 }
 
 /* 버튼을 클릭할 때 살짝 눌리는 느낌 */
@@ -295,8 +456,10 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 .edit-form-container {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* 각 항목(라벨+입력창) 사이의 세로 간격 */
-  text-align: left; /* 모달 안에서 글자들이 왼쪽부터 예쁘게 정렬되도록 함 */
+  gap: 12px;
+  /* 각 항목(라벨+입력창) 사이의 세로 간격 */
+  text-align: left;
+  /* 모달 안에서 글자들이 왼쪽부터 예쁘게 정렬되도록 함 */
   margin-top: 15px;
 }
 
@@ -305,7 +468,8 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
   font-size: 14px;
   font-weight: 600;
   color: #555555;
-  margin-bottom: -6px; /* 라벨과 입력창 사이를 살짝 좁혀서 한 세트처럼 보이게 함 */
+  margin-bottom: -6px;
+  /* 라벨과 입력창 사이를 살짝 좁혀서 한 세트처럼 보이게 함 */
   padding-left: 4px;
 }
 
@@ -314,12 +478,15 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 .edit-form-container .custom-select {
   width: 100%;
   box-sizing: border-box;
-  margin: 0; /* SweetAlert 기본 마진 덮어쓰기 */
-  height: 45px; /* 입력창 높이 통일 */
+  margin: 0;
+  /* SweetAlert 기본 마진 덮어쓰기 */
+  height: 45px;
+  /* 입력창 높이 통일 */
   padding: 0 12px;
   font-size: 15px;
   border: 1px solid #cccccc;
-  border-radius: 6px; /* 모서리 부드럽게 */
+  border-radius: 6px;
+  /* 모서리 부드럽게 */
   background-color: #ffffff;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -327,15 +494,19 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 /* 4. 클릭(포커스) 했을 때 강조 효과 */
 .edit-form-container .swal2-input:focus,
 .edit-form-container .custom-select:focus {
-  border-color: #4A90E2; /* 선택 시 파란색 테두리 */
+  border-color: #4A90E2;
+  /* 선택 시 파란색 테두리 */
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15); /* 은은한 파란색 그림자 (Glow 효과) */
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+  /* 은은한 파란색 그림자 (Glow 효과) */
 }
 
 /* 5. Select 요소만 갖는 특징 추가 */
 .edit-form-container .custom-select {
-  cursor: pointer; /* 마우스 올리면 손가락 모양으로 변경 */
-  appearance: auto; /* 브라우저 기본 화살표 사용 */
+  cursor: pointer;
+  /* 마우스 올리면 손가락 모양으로 변경 */
+  appearance: auto;
+  /* 브라우저 기본 화살표 사용 */
 }
 
 /* =========================================
@@ -345,6 +516,7 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
   .main-visual-bg {
     height: 240px;
   }
+
   .main-visual-content h1 {
     font-size: 2.2rem;
   }
@@ -353,30 +525,32 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
 /* =========================================
    🚨 모바일 반응형 (표 비율만 완벽하게 조정)
 ========================================= */
-@media (max-width: 820px){
-  .add-form { grid-template-columns: 1fr 1fr; }
-  
-  
+@media (max-width: 820px) {
+  .add-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+
   /* 좁은 화면에서 검색창 너비를 조금 더 줄임 */
   .search-bar input[type="text"] {
     width: 140px;
   }
 
   table {
-    min-width: 100%; 
+    min-width: 100%;
   }
 
-  table td{
+  table td {
     padding: 12px 5px;
   }
 
-  table th{
+  table th {
     padding: 12px 5px;
   }
 
   .search-bar input[type="text"] {
-  font-size: 11px;
-}
+    font-size: 11px;
+  }
 
 }
 
@@ -385,48 +559,79 @@ a.thumb:hover .play{ background:rgba(0,0,0,.75) }
   .toolbar {
     gap: 10px;
   }
+
   .toolbar #info {
-    order:1;
-    width: 100%; /* 총 개수가 위로 올라가고 검색창+셀렉트박스가 밑으로 오게 됨 */
+    order: 1;
+    width: 100%;
+    /* 총 개수가 위로 올라가고 검색창+셀렉트박스가 밑으로 오게 됨 */
     margin-bottom: 5px;
   }
+
   .search-bar input[type="text"] {
     width: 140px;
-    font-size:10.5px;
+    font-size: 10.5px;
   }
-  
+
 
   /* 🚨 1. th, td 뿐만 아니라 뼈대인 <col> 자체를 숨겨야 빈 공간이 생기지 않습니다! */
-  table col:nth-child(4), table th:nth-child(4), table td:nth-child(4),
-  table col:nth-child(6), table th:nth-child(6), table td:nth-child(6) {
+  table col:nth-child(4),
+  table th:nth-child(4),
+  table td:nth-child(4),
+  table col:nth-child(6),
+  table th:nth-child(6),
+  table td:nth-child(6) {
     display: none;
   }
 
   /* 🚨 2. 남은 열들이 100% 빈 공간 없이 꽉 채우도록 비율을 재분배합니다 (!important로 HTML 덮어쓰기) */
-  table col:nth-child(1) { width: 80px !important; } /* 썸네일 공간 살짝 축소 */
-  table col:nth-child(2) { width: 31% !important; }  /* 곡명 (가장 넓게) */
-  table col:nth-child(3) { width: 30% !important; }  /* 아티스트 */
-  table col:nth-child(5) { width: 25% !important; }  /* 공연 */
-  table col:nth-child(7) { width: 14% !important; }  /* 버튼/돋보기 */
+  table col:nth-child(1) {
+    width: 80px !important;
+  }
+
+  /* 썸네일 공간 살짝 축소 */
+  table col:nth-child(2) {
+    width: 31% !important;
+  }
+
+  /* 곡명 (가장 넓게) */
+  table col:nth-child(3) {
+    width: 30% !important;
+  }
+
+  /* 아티스트 */
+  table col:nth-child(5) {
+    width: 25% !important;
+  }
+
+  /* 공연 */
+  table col:nth-child(7) {
+    width: 14% !important;
+  }
+
+  /* 버튼/돋보기 */
 
   /* 🚨 1. 글자가 '...'으로 잘리지 않고 두 줄로 예쁘게 보이도록 수정 */
   tbody td {
-    white-space: normal; /* 한 줄 고정 해제! 이제 아래로 자연스럽게 넘어갑니다 */
-    word-break: keep-all; /* 단어가 중간에 찢어지지 않게 보호 */
-    line-height: 1.4; /* 두 줄이 되었을 때 답답하지 않게 줄간격 추가 */
-    font-size: 13px; /* 글자 크기도 조금 더 또렷하게 */
+    white-space: normal;
+    /* 한 줄 고정 해제! 이제 아래로 자연스럽게 넘어갑니다 */
+    word-break: keep-all;
+    /* 단어가 중간에 찢어지지 않게 보호 */
+    line-height: 1.4;
+    /* 두 줄이 되었을 때 답답하지 않게 줄간격 추가 */
+    font-size: 13px;
+    /* 글자 크기도 조금 더 또렷하게 */
   }
 
-  thead th{
+  thead th {
     font-size: 13px;
   }
 
-  tbody td button.btn-edit{
-    font-size:12px;
+  tbody td button.btn-edit {
+    font-size: 12px;
   }
 
   a.thumb img {
-    width: 65px; 
+    width: 65px;
     height: 42px;
   }
 }

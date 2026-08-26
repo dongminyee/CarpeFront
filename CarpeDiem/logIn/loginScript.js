@@ -8,7 +8,7 @@ const loginData = {
     username: params.get('username')
 };
 
-if(window.opener && loginData.accessToken){
+if (window.opener && loginData.accessToken) {
     window.opener.postMessage({
         type: 'LOGIN_SUCCESS',
         payload: loginData
@@ -19,7 +19,7 @@ if(window.opener && loginData.accessToken){
 
 // login 팝업창 띄우기
 let loginBtn = document.getElementsByClassName("loginButton")[0];
-let loginEvent = ()=>{
+let loginEvent = () => {
     const width = 500;
     const height = 600;
 
@@ -29,7 +29,7 @@ let loginEvent = ()=>{
 
     // 3. 구글 로그인 URL (Spring Security 기본 설정 경로)
     // 만약 백엔드 경로가 다르다면 수정하세요.
-    const url = 'https://effective-space-waffle-46x5j4xvv56fqvp5-8080.app.github.dev/oauth2/authorization/google'; 
+    const url = 'http://localhost:8080/oauth2/authorization/google';
 
     // 4. 윈도우 옵션 설정 (크기, 위치, 스크롤바 등)
     const windowFeatures = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,status=yes`;
@@ -37,4 +37,4 @@ let loginEvent = ()=>{
     // 5. 새 창 열기
     window.open(url, 'google-login-popup', windowFeatures);
 };
-loginBtn.addEventListener("click",loginEvent);
+loginBtn.addEventListener("click", loginEvent);

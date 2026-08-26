@@ -33,7 +33,7 @@
 .main-visual-content h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  letter-spacing: 5px;
+  letter-spacing: 0.1rem;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
@@ -53,7 +53,7 @@
   padding: 4rem 0 6rem;
 }
 
-.schedule-section .wrap {
+.schedule-section .schedule-scroll-wrapper {
   max-width: 1040px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -70,6 +70,43 @@
   justify-content: flex-end;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* =========================================
+   시간표 가로 스크롤 래퍼 (기본 & 다크 테마)
+========================================= */
+.schedule-scroll-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  /* 🚨 내용이 넘치면 이 박스 안에서만 가로 스크롤 발생 */
+  -webkit-overflow-scrolling: touch;
+  /* 모바일 iOS 부드러운 터치 스크롤 */
+  border-radius: 12px;
+  background-color: rgb(17, 17, 17);
+
+  margin-bottom: 2rem;
+}
+
+/* 얇고 세련된 다크 테마 전용 가로 스크롤바 */
+.schedule-scroll-wrapper::-webkit-scrollbar {
+  height: 6px;
+  /* 스크롤바 두께 */
+}
+
+.schedule-scroll-wrapper::-webkit-scrollbar-track {
+  background: #141414;
+  border-radius: 4px;
+}
+
+.schedule-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+.schedule-scroll-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #4032ff;
+  /* 브랜드 블루 */
 }
 
 /* =========================================
@@ -269,6 +306,10 @@ footer {
     padding: 2rem 0 4rem;
   }
 
+  .schedule-section .schedule-scroll-wrapper {
+    padding: 0;
+  }
+
   /* 🚨 1. 유령 컬럼 제거: JS에 신호를 보내 모바일에서는 75px만 쓰게 만듭니다! */
   .schedule-grid {
     --time-width: 75px;
@@ -276,6 +317,7 @@ footer {
     border-radius: 8px;
     -webkit-overflow-scrolling: touch;
     background: #1a1a1a;
+    min-width: 600px;
   }
 
   /* 🚨 2. 시간대 줄바꿈 통일 (절대 안 꺾임) */
