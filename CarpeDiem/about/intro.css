@@ -34,7 +34,7 @@
 .main-visual-content h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  letter-spacing: 5px;
+  letter-spacing: 0.1rem;
   /* 글자 사이를 띄워서 고급스럽게 */
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
   /* 글씨가 배경에 묻히지 않게 그림자 추가 */

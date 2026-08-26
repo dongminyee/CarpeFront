@@ -79,6 +79,8 @@ async function checkAuthAndUI() {
 function updateLoginUI() {
     const loginBtn = document.getElementById('login-btn');
     const userProfile = document.getElementById('user-profile');
+    const loginBtnMobile = document.getElementById('login-btn-mobile');
+    const userProfileMobile = document.getElementById('user-profile-mobile');
 
     // 버튼 숨기고 프로필 보이기
     if (loginBtn) loginBtn.style.display = 'none';
@@ -86,6 +88,12 @@ function updateLoginUI() {
         userProfile.style.display = 'flex';
         document.getElementById('profile-name').textContent = localStorage.getItem("userName");
         document.getElementById('profile-img').src = localStorage.getItem("userPicture");
+    }
+    if (loginBtnMobile) loginBtnMobile.style.display = 'none';
+    if (userProfileMobile) {
+        userProfileMobile.style.display = 'flex';
+        document.getElementById('profile-name-mobile').textContent = localStorage.getItem("userName");
+        document.getElementById('profile-img-mobile').src = localStorage.getItem("userPicture");
     }
 }
 

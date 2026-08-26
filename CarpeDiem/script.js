@@ -148,7 +148,8 @@ function notAuthed() {
   localStorage.clear();
   const loginBtn = document.getElementById('login-btn');
   const userProfile = document.getElementById('user-profile');
-
+  const loginBtnMobile = document.getElementById('login-btn-mobile');
+  const userProfileMobile = document.getElementById('user-profile-mobile');
   Swal.fire({
     icon: 'error',
     title: '접근 권한 없음',
@@ -157,4 +158,6 @@ function notAuthed() {
 
   if (loginBtn) loginBtn.style.display = 'block';
   if (userProfile) userProfile.style.display = 'none';
+  if (loginBtnMobile) loginBtnMobile.style.display = 'block';
+  if (userProfileMobile) userProfileMobile.style.display = 'none';
 }

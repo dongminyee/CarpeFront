@@ -11,11 +11,11 @@
   text-align: center;
   color: #fff;
   background:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to bottom,
       rgba(0, 0, 0, 0.7) 0%,
       rgba(0, 0, 0, 0.5) 60%,
-      rgba(17, 17, 17, 1) 100% /* 배경색과 스르륵 이어지는 그라데이션 */
+      rgba(17, 17, 17, 1) 100%
+      /* 배경색과 스르륵 이어지는 그라데이션 */
     ),
     url('../images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
@@ -26,13 +26,14 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 2rem; /* 모바일에서 글자가 끝에 닿지 않도록 방어막 */
+  padding: 0 2rem;
+  /* 모바일에서 글자가 끝에 닿지 않도록 방어막 */
 }
 
 .main-visual-content h1 {
   font-size: 3.5rem;
   font-weight: 800;
-  letter-spacing: 5px;
+  letter-spacing: 0.1rem;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
 
@@ -40,7 +41,8 @@
   margin-top: 1.5rem;
   font-size: 1.15rem;
   color: #cccccc;
-  word-break: keep-all; /* 단어 단위 줄바꿈 유지 */
+  word-break: keep-all;
+  /* 단어 단위 줄바꿈 유지 */
 }
 
 .doubleblue {
@@ -59,7 +61,8 @@
 }
 
 .section-logo .container {
-  max-width: 900px; /* 텍스트 읽기 가장 편안한 너비로 제한 */
+  max-width: 900px;
+  /* 텍스트 읽기 가장 편안한 너비로 제한 */
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -70,7 +73,7 @@
   font-size: 2.2rem;
   font-weight: 600;
   /* 박스를 글자 길이에 딱 맞춤 (초핵심 ⭐) */
-  width: fit-content; 
+  width: fit-content;
   /* 쪼그라든 박스를 화면 정중앙에 배치 + 아래쪽 여백(4rem) */
   margin: 0 auto 4rem auto;
   position: relative;
@@ -82,7 +85,8 @@
   position: absolute;
   left: 0;
   bottom: -10px;
-  width: 100%;  /* 80px 고정 삭제! 이제 글자 길이에 맞춰 자동으로 늘어납니다 */
+  width: 100%;
+  /* 80px 고정 삭제! 이제 글자 길이에 맞춰 자동으로 늘어납니다 */
   height: 4px;
   background: #4032ff;
   border-radius: 4px;
@@ -93,9 +97,11 @@
 .logo-row {
   display: flex;
   align-items: center;
-  gap: 3.5rem; /* 로고와 설명 사이의 넉넉한 간격 확보 */
+  gap: 3.5rem;
+  /* 로고와 설명 사이의 넉넉한 간격 확보 */
   padding: 3.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* 은은한 구분선 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  /* 은은한 구분선 */
 }
 
 .logo-row:last-child {
@@ -106,7 +112,8 @@
    로고 이미지 카드 (Logo Image)
 ========================================= */
 .logo-img {
-  flex: 0 0 280px; /* 이미지 영역 너비를 280px로 딱 고정 */
+  flex: 0 0 280px;
+  /* 이미지 영역 너비를 280px로 딱 고정 */
   display: flex;
   flex-direction: column;
 }
@@ -114,9 +121,11 @@
 .logo-img-wrapper {
   position: relative;
   width: 100%;
-  background: rgba(255, 255, 255, 0.03); /* 로고 뒤에 은은한 톤의 박스(카드)를 깔아줌 */
+  background: rgba(255, 255, 255, 0.03);
+  /* 로고 뒤에 은은한 톤의 박스(카드)를 깔아줌 */
   border-radius: 16px;
-  padding: 3rem 2rem 2rem 2rem; /* 위쪽에 라벨이 들어갈 공간(3rem) 확보 */
+  padding: 3rem 2rem 2rem 2rem;
+  /* 위쪽에 라벨이 들어갈 공간(3rem) 확보 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,10 +152,12 @@
    설명 텍스트 및 버튼 (Description & Buttons)
 ========================================= */
 .logo-desc p {
-  line-height: 1.8; /* 🚨 숨통 트이는 줄간격 */
+  line-height: 1.8;
+  /* 🚨 숨통 트이는 줄간격 */
   font-size: 1.15rem;
   color: #cccccc;
-  word-break: keep-all; /* 단어 쪼개짐 방지 */
+  word-break: keep-all;
+  /* 단어 쪼개짐 방지 */
   margin-bottom: 1.8rem;
 }
 
@@ -159,7 +170,8 @@
 .btn-download {
   padding: 0.8rem 1.6rem;
   border: none;
-  border-radius: 2rem; /* 동글동글한 알약(Pill) 모양으로 세련되게 */
+  border-radius: 2rem;
+  /* 동글동글한 알약(Pill) 모양으로 세련되게 */
   font-size: 0.95rem;
   font-weight: 600;
   color: white;
@@ -168,13 +180,15 @@
 }
 
 .btn-download.ai {
-  background: #333333; /* 빨간색 대신 차분한 다크 그레이로 모던하게 */
+  background: #333333;
+  /* 빨간색 대신 차분한 다크 그레이로 모던하게 */
   border: 1px solid #555;
 }
 
 .btn-download.ai:hover {
   background: #444444;
-  transform: translateY(-2px); /* 살짝 떠오르는 호버 효과 */
+  transform: translateY(-2px);
+  /* 살짝 떠오르는 호버 효과 */
 }
 
 .btn-download.jpg {
@@ -193,39 +207,43 @@
   .main-visual-bg {
     height: 280px;
   }
+
   .main-visual-content h1 {
     font-size: 2.2rem;
   }
+
   .main-visual-content p {
     font-size: 1rem;
   }
-  
+
   .logo-title {
     font-size: 1.8rem;
     margin-bottom: 3rem;
   }
-  
+
   /* 모바일에서는 가로 나란히를 위아래 세로로 바꿈 */
   .logo-row {
     flex-direction: column;
     align-items: center;
-    text-align: center; /* 텍스트도 가운데 정렬 */
+    text-align: center;
+    /* 텍스트도 가운데 정렬 */
     gap: 2rem;
     padding: 2rem 0;
   }
-  
+
   .logo-img {
     flex: none;
     width: 100%;
-    max-width: 320px; /* 이미지가 폰 화면 꽉 차지 않게 제한 */
+    max-width: 320px;
+    /* 이미지가 폰 화면 꽉 차지 않게 제한 */
   }
-  
+
   .logo-desc p {
     font-size: 1.05rem;
   }
-  
+
   /* 버튼도 모바일에서는 가운데 정렬 */
   .logo-buttons {
-    justify-content: center; 
+    justify-content: center;
   }
 }

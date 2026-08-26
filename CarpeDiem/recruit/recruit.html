@@ -67,7 +67,7 @@
         </ul>
         <ul class="dropCommu">
           <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-          <li><a href="/CarpeDiem/community/clubroom/club.html">동방 이용 시간표</a></li>
+          <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
           <!-- <li><a href="#">WhenToMeet</a></li> -->
         </ul>
         <ul class="dropRecr">
@@ -113,7 +113,13 @@
       </div>
 
       <div class="mobile-nav-login">
-        <a href="/CarpeDiem/logIn/index.html">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+        <a href="/CarpeDiem/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
+            class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a>
+        <div id="user-profile-mobile" style="display: none; align-items: center; gap: 0.5rem;">
+          <img id="profile-img-mobile" src="" alt="프로필">
+          <span id="profile-name-mobile" style="font-weight: bold;"></span>
+          <button onclick="logout()" style=" cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </div>
       </div>
     </div>
   </div>

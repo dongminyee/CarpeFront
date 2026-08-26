@@ -1,244 +1,261 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarpeDiem : KAIST 팝밴드 까르페디엠</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/CarpeDiem/style.css">
-    <link rel="stylesheet" href="/CarpeDiem/common.css">
-    <link rel="stylesheet" href="song.css">
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <h1>
-          <a href="/CarpeDiem/index.html"><img class="logo" src="/CarpeDiem/images/CARPELOGO_simple.png" alt="로고" style="height: 60px;"></a>
-        </h1>
-        <nav>
-          <ul class="gnb">
-            <li>
-              <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
-              <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
-                <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
-                <span id="profile-name" style="font-weight: bold;"></span>
-                <button onclick="logout()" style=" cursor: pointer;"><i class="fa-solid fa-right-from-bracket"></i></button>
-              </div>
-            </li>
-            <li>
-              <button class="menu-btn" data-menu="about">About Us</button>
-            </li>
-            <li>
-              <button class="menu-btn" data-menu="gallery">Gallery</button>
-            </li>
-            <li>
-              <button class="menu-btn" data-menu="community">Community</button>
-            </li>
-            <li>
-              <button class="menu-btn" data-menu="recruit">Recruit</button>
-            </li>
-          </ul>
-        </nav>
-        <button class="hamburger" id="hamburger-btn">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
 
-        <div class="mobile-nav-overlay" id="mobile-nav">
-          <button class="mobile-nav-close" id="mobile-close-btn"><i class="fa-solid fa-xmark"></i></button>
-          
-          <div class="mobile-nav-menu">
-            <div class="mobile-nav-section">
-              <span>About Us</span>
-              <ul>
-                <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
-                <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
-                <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
-              </ul>
-            </div>
-            
-            <div class="mobile-nav-section">
-              <span>Gallery</span>
-              <ul>
-                <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
-                <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
-              </ul>
-            </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarpeDiem : KAIST 팝밴드 까르페디엠</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/CarpeDiem/style.css">
+  <link rel="stylesheet" href="/CarpeDiem/common.css">
+  <link rel="stylesheet" href="song.css">
+</head>
 
-            <div class="mobile-nav-section">
-              <span>Community</span>
-              <ul>
-                <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-                <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
-              </ul>
+<body>
+  <header>
+    <div class="container">
+      <h1>
+        <a href="/CarpeDiem/index.html"><img class="logo" src="/CarpeDiem/images/CARPELOGO_simple.png" alt="로고"
+            style="height: 60px;"></a>
+      </h1>
+      <nav>
+        <ul class="gnb">
+          <li>
+            <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i
+                  class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
+            <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
+              <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
+              <span id="profile-name" style="font-weight: bold;"></span>
+              <button onclick="logout()" style=" cursor: pointer;"><i
+                  class="fa-solid fa-right-from-bracket"></i></button>
             </div>
-            <div class="mobile-nav-section">
-              <span>Recruit</span>
-              <ul>
-                <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
-              </ul>
-            </div>
+          </li>
+          <li>
+            <button class="menu-btn" data-menu="about">About Us</button>
+          </li>
+          <li>
+            <button class="menu-btn" data-menu="gallery">Gallery</button>
+          </li>
+          <li>
+            <button class="menu-btn" data-menu="community">Community</button>
+          </li>
+          <li>
+            <button class="menu-btn" data-menu="recruit">Recruit</button>
+          </li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
-            <div class="mobile-nav-login">
-              <a href="/CarpeDiem/logIn/index.html">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="hovermenu" id="megaDropdown">
-          <ul class="dropAbout">
-            <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
+      <div class="mobile-nav-overlay" id="mobile-nav">
+        <button class="mobile-nav-close" id="mobile-close-btn"><i class="fa-solid fa-xmark"></i></button>
+
+        <div class="mobile-nav-menu">
+          <div class="mobile-nav-section">
+            <span>About Us</span>
+            <ul>
+              <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
               <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
               <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
-          </ul>
-          <ul class="dropGal">
-            <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-nav-section">
+            <span>Gallery</span>
+            <ul>
+              <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
               <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
-          </ul>
-          <ul class="dropCommu">
-            <li><a href="song.html">역대 선곡 리스트</a></li>
-              <li><a href="../clubroom/club.html">동방 이용 시간표</a></li>
-              <!-- <li><a href="#">WhenToMeet</a></li> -->
-          </ul>
-          <ul class="dropRecr">
-            <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
-          </ul>
+            </ul>
+          </div>
+
+          <div class="mobile-nav-section">
+            <span>Community</span>
+            <ul>
+              <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+            </ul>
+          </div>
+          <div class="mobile-nav-section">
+            <span>Recruit</span>
+            <ul>
+              <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+            </ul>
+          </div>
+
+          <div class="mobile-nav-login">
+            <a href="/CarpeDiem/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
+                class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a>
+            <div id="user-profile-mobile" style="display: none; align-items: center; gap: 0.5rem;">
+              <img id="profile-img-mobile" src="" alt="프로필">
+              <span id="profile-name-mobile" style="font-weight: bold;"></span>
+              <button onclick="logout()" style=" cursor: pointer;"><i
+                  class="fa-solid fa-right-from-bracket"></i></button>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
-    <div class="main-visual-bg">
-        <div class="main-visual-content">
-            <h1><span class="doubleblue">「</span>역대 선곡 리스트<span class="doubleblue">」</span></h1>
-        </div>
+      <div class="hovermenu" id="megaDropdown">
+        <ul class="dropAbout">
+          <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
+          <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
+          <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+        </ul>
+        <ul class="dropGal">
+          <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
+          <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+        </ul>
+        <ul class="dropCommu">
+          <li><a href="song.html">역대 선곡 리스트</a></li>
+          <li><a href="../clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+          <!-- <li><a href="#">WhenToMeet</a></li> -->
+        </ul>
+        <ul class="dropRecr">
+          <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+        </ul>
+      </div>
     </div>
-    <!-- //end Main -->
+  </header>
+  <div class="main-visual-bg">
+    <div class="main-visual-content">
+      <h1><span class="doubleblue">「</span>역대 선곡 리스트<span class="doubleblue">」</span></h1>
+    </div>
+  </div>
+  <!-- //end Main -->
 
-    <!--    TODO:  코드 이해, 검색창 만들기, 테이블 인터페이스 예쁘게, 항목별 정렬 기능 제작 -->
-    <div class="wrap">
+  <!--    TODO:  코드 이해, 검색창 만들기, 테이블 인터페이스 예쁘게, 항목별 정렬 기능 제작 -->
+  <div class="wrap">
 
-      <div class="toolbar" >
+    <div class="toolbar">
 
-        <div class="search-bar">
-          <input type="text" id="keyword" placeholder="제목 또는 아티스트 검색">
-          <button onclick="fetchSongs(0)">검색</button>
-        </div>
-
-        <div class="info" id="info"></div>
-
-        <div class="rows">
-          <label for="rowsPerPage">한 페이지:</label>
-          <select id="rowsPerPage">
-            <option>5</option>
-            <option selected>10</option>
-            <option>15</option>
-            <option>20</option>
-          </select>
-        </div>
+      <div class="search-bar">
+        <input type="text" id="keyword" placeholder="제목 또는 아티스트 검색">
+        <button onclick="fetchSongs(0)">검색</button>
       </div>
 
-      <div class="table-card">
-        <table id="coverTable">
-          <colgroup>
-            <col style="width:140px">   <!-- 썸네일 -->
-            <col style="width:24%">     <!-- 곡 -->
-            <col style="width:18%">     <!-- 아티스트 -->
-            <col style="width:10%">     <!-- 기수 -->
-            <!-- <col style="width:10%">     키 -->
-            <col style="width:17%">     <!-- 공연 -->
-            <col style="width:10%">     <!-- 연도 -->
-            <col style="width:6%">    <!-- 돋보기 -->
-          </colgroup>
-          <thead>
-            <tr>
-              <th style="width:140px">영상</th>
-              <th class="sortable" data-key="title"  data-type="text">곡
-              </th>
-              <th class="sortable" data-key="artist" data-type="text">아티스트
-              </th>
-              <th class="sortable" data-key="generation" data-type="text">기수
-              </th>
-              <th class="sortable" data-key="concert"  data-type="text">공연
-              </th>
-              <th class="sortable" data-key="year"   data-type="number">연도
-              </th>
-              <th class="search-col"> 
-              </th>
-            </tr>
+      <div class="info" id="info"></div>
 
-          </thead>
-          <tbody id="song-list">
-            <!-- 초기 더미 데이터(20행). 실제에선 서버/CSV로 채워짐 -->
-            <!-- video는 유튜브 URL 또는 ID 가능 -->
-            <tr data-status="pending">
-              <td>
-                <a class="thumb" href="https://www.youtube.com/watch?v=jfJSJdVcu00" target="_blank" rel="noopener">
-                  <img src="https://img.youtube.com/vi/jfJSJdVcu00/mqdefault.jpg" alt=""><span class="play">▶</span>
-                </a>
-              </td>
-              <td data-key="title">Antifreeze</td>
-              <td data-key="artist">검정치마</td>
-              <td data-key="gen">21</td>
-              <!-- <td data-key="key">C</td> -->
-              <td data-key="stage">봄 정기공연</td>
-              <td data-key="year">2025</td>
-              <td class="action-col">
-                <button class="btn-edit" onclick="editSong(this, 'jfJSJdVcu00')">수정</button>
-              </td>
-            </tr>
-            <!-- 같은 포맷으로 여러 줄 복제 -->
-
-
-          </tbody>
-        </table>
-        <div id="pagination"></div>
+      <div class="rows">
+        <label for="rowsPerPage">한 페이지:</label>
+        <select id="rowsPerPage">
+          <option>5</option>
+          <option selected>10</option>
+          <option>15</option>
+          <option>20</option>
+        </select>
       </div>
-
     </div>
 
-    
-      
-    <footer>
-      <div class="footer-main">
-        <div class="footer-info">
-          <div class="footer-made">
-            <b>CarpeDiem <span style="font-size: 0.8rem;">Since 2004</span></b><br>
-            Released Version 0.1.0 | Developed by 이동민<br>
-            대전광역시 유성구 대학로 291, KAIST N12 B110호<br>
-            dongminyee@kaist.ac.kr
-          </div>
-        </div>
-        <div class="footer-contacts">
-          <div class="footer-president">
-            <b>회장</b><br>
-            최태훈 010-9374-8223
-          </div>
-          <div class="footer-vp">
-            <b>부회장</b><br>
-            임시현 010-9141-3722
-          </div>
+    <div class="table-card">
+      <table id="coverTable">
+        <colgroup>
+          <col style="width:140px"> <!-- 썸네일 -->
+          <col style="width:24%"> <!-- 곡 -->
+          <col style="width:18%"> <!-- 아티스트 -->
+          <col style="width:10%"> <!-- 기수 -->
+          <!-- <col style="width:10%">     키 -->
+          <col style="width:17%"> <!-- 공연 -->
+          <col style="width:10%"> <!-- 연도 -->
+          <col style="width:6%"> <!-- 돋보기 -->
+        </colgroup>
+        <thead>
+          <tr>
+            <th style="width:140px">영상</th>
+            <th class="sortable" data-key="title" data-type="text">곡
+            </th>
+            <th class="sortable" data-key="artist" data-type="text">아티스트
+            </th>
+            <th class="sortable" data-key="generation" data-type="text">기수
+            </th>
+            <th class="sortable" data-key="concert" data-type="text">공연
+            </th>
+            <th class="sortable" data-key="year" data-type="number">연도
+            </th>
+            <th class="search-col">
+            </th>
+          </tr>
+
+        </thead>
+        <tbody id="song-list">
+          <!-- 초기 더미 데이터(20행). 실제에선 서버/CSV로 채워짐 -->
+          <!-- video는 유튜브 URL 또는 ID 가능 -->
+          <tr data-status="pending">
+            <td>
+              <a class="thumb" href="https://www.youtube.com/watch?v=jfJSJdVcu00" target="_blank" rel="noopener">
+                <img src="https://img.youtube.com/vi/jfJSJdVcu00/mqdefault.jpg" alt=""><span class="play">▶</span>
+              </a>
+            </td>
+            <td data-key="title">Antifreeze</td>
+            <td data-key="artist">검정치마</td>
+            <td data-key="gen">21</td>
+            <!-- <td data-key="key">C</td> -->
+            <td data-key="stage">봄 정기공연</td>
+            <td data-key="year">2025</td>
+            <td class="action-col">
+              <button class="btn-edit" onclick="editSong(this, 'jfJSJdVcu00')">수정</button>
+            </td>
+          </tr>
+          <!-- 같은 포맷으로 여러 줄 복제 -->
+
+
+        </tbody>
+      </table>
+      <div id="pagination"></div>
+    </div>
+
+  </div>
+
+
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-info">
+        <div class="footer-made">
+          <b>CarpeDiem <span style="font-size: 0.8rem;">Since 2004</span></b><br>
+          Released Version 0.1.0 | Developed by 이동민<br>
+          대전광역시 유성구 대학로 291, KAIST N12 B110호<br>
+          dongminyee@kaist.ac.kr
         </div>
       </div>
-      <hr>
-      <div class="footer-top">
-        <div class="footer-copyright">
-          Copyright ⓒ CarpeDiem All Rights Reserved.
+      <div class="footer-contacts">
+        <div class="footer-president">
+          <b>회장</b><br>
+          최태훈 010-9374-8223
         </div>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/pop.carpediem/" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.facebook.com/kaistcarpediem" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="https://www.youtube.com/channel/UCfKytZeHMKEU0sG6MtI4bgA" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+        <div class="footer-vp">
+          <b>부회장</b><br>
+          임시현 010-9141-3722
         </div>
       </div>
-    </footer>
+    </div>
+    <hr>
+    <div class="footer-top">
+      <div class="footer-copyright">
+        Copyright ⓒ CarpeDiem All Rights Reserved.
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/pop.carpediem/" target="_blank" rel="noopener"><i
+            class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/kaistcarpediem" target="_blank" rel="noopener"><i
+            class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.youtube.com/channel/UCfKytZeHMKEU0sG6MtI4bgA" target="_blank" rel="noopener"><i
+            class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
   <!-- end Contact With Me -->
   <!-- script 태그는 수정하지 않습니다. -->
   <!-- CSV 파싱 라이브러리(가벼움): PapaParse -->
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-    <script src="/CarpeDiem/script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="song.js"></script>
-    <script src="/CarpeDiem/auth.js"></script>
-  </body>
-</html>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="/CarpeDiem/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="song.js"></script>
+  <script src="/CarpeDiem/auth.js"></script>
+</body>
 
+</html>

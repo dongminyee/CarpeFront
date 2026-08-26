@@ -45,7 +45,7 @@ body {
 .main-visual-content h1 {
     font-size: 3.5rem;
     font-weight: 800;
-    letter-spacing: 5px;
+    letter-spacing: 0.1rem;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     margin: 0;
 }
@@ -272,6 +272,7 @@ body {
 .dark-form input[type="text"],
 .dark-form input[type="date"],
 .dark-form input[type="file"] {
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
     background: #252525;
     border: 1px solid #333;
     padding: 14px;

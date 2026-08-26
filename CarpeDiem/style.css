@@ -5,10 +5,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-a, a:link, a:visited {
+
+a,
+a:link,
+a:visited {
   color: inherit;
   text-decoration: none;
 }
+
 li {
   list-style: none;
 }
@@ -24,9 +28,11 @@ li {
 body {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
+
 section {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
+
 button {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
@@ -41,6 +47,7 @@ header {
   padding: 0 0.5rem;
   background-color: black;
 }
+
 header .container {
   position: relative;
   color: white;
@@ -50,37 +57,47 @@ header .container {
   width: 100%;
   height: 70px;
 }
+
 header nav ul {
   display: flex;
 }
+
 header nav ul li {
-  width: 140px; /* 모든 메뉴가 140px이라는 동일한 지분을 가짐 */
-  padding: 0;   /* 들쭉날쭉하던 패딩 싹 삭제! */
+  width: 140px;
+  /* 모든 메뉴가 140px이라는 동일한 지분을 가짐 */
+  padding: 0;
+  /* 들쭉날쭉하던 패딩 싹 삭제! */
   display: flex;
-  justify-content: center; /* 글자를 칸의 정중앙에 예쁘게 배치 */
+  justify-content: center;
+  /* 글자를 칸의 정중앙에 예쁘게 배치 */
   align-items: center;
 }
+
 header nav ul .login-btn {
   padding: 0 0rem;
 }
+
 header button {
   color: white;
   background: transparent;
   border: 0;
   cursor: pointer;
 }
+
 header a {
   color: white;
   background: transparent;
   border: 0;
   cursor: pointer;
 }
+
 header h1 .logo {
   margin-top: 0.2rem;
   margin-left: 5rem;
   font-size: 0.7rem;
   font-weight: bold;
 }
+
 header nav ul li button {
   font-size: 1.2rem;
 }
@@ -100,6 +117,7 @@ header nav ul li button {
   width: 36px;
   height: 36px;
 }
+
 .hamburger span {
   display: block;
   width: 24px;
@@ -115,29 +133,31 @@ header nav ul li button {
   display: flex;
   position: fixed;
   top: 0;
-  right: 0; /* 화면 오른쪽 끝에 기준을 잡음 */
-  width: 100%; 
+  right: 0;
+  /* 화면 오른쪽 끝에 기준을 잡음 */
+  width: 100%;
   height: 100vh;
   /* 까만 배경을 좀 더 모던하게 (투명도 살짝) */
-  background: rgba(0, 0, 0, 0.5); 
-  backdrop-filter: blur(10px); /* 배경을 살짝 흐리게 (아이폰 스타일) */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  /* 배경을 살짝 흐리게 (아이폰 스타일) */
   /* 🚨 3. 아이폰(Safari) 브라우저에서도 블러가 먹히도록 호환성 코드를 추가합니다 */
   -webkit-backdrop-filter: blur(10px);
 
   z-index: 200;
   flex-direction: column;
   /* 🚨 1. center를 지우고 flex-start(위에서부터 정렬)로 바꿉니다 */
-  justify-content: flex-start; 
+  justify-content: flex-start;
   /* 🚨 2. 내용이 화면보다 길어지면 세로 스크롤을 생성합니다 */
-  overflow-y: auto; 
+  overflow-y: auto;
   /* 🚨 3. 위쪽 X 버튼(닫기)을 가리지 않도록 넉넉한 패딩을 줍니다 */
   padding: 5rem 0 3rem 0;
   align-items: center;
 
   /* 🚨 1. 화면 오른쪽 바깥으로 100% 밀어내서 숨겨둡니다 */
-  transform: translateX(100%); 
+  transform: translateX(100%);
   /* 숨겨진 상태에서는 클릭 방지 */
-  visibility: hidden; 
+  visibility: hidden;
   /* 🚨 2. 부드러운 가속도로 미끄러져 들어오는 애니메이션 */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
 }
@@ -156,13 +176,16 @@ header nav ul li button {
   background: transparent;
   border: none;
   color: #fff;
-  font-size: 1.5rem; /* 버튼을 좀 더 시원하게 키움 */
+  font-size: 1.5rem;
+  /* 버튼을 좀 더 시원하게 키움 */
   cursor: pointer;
   padding: 0.5rem;
   transition: transform 0.2s;
 }
+
 .mobile-nav-close:active {
-  transform: scale(0.9); /* 누를 때 살짝 작아지는 터치감 */
+  transform: scale(0.9);
+  /* 누를 때 살짝 작아지는 터치감 */
 }
 
 /* 메뉴 리스트 디자인 다듬기 */
@@ -170,15 +193,19 @@ header nav ul li button {
   width: 100%;
   padding: 0 2rem;
 }
+
 .mobile-nav-menu ul {
   list-style: none;
   padding: 0;
   text-align: center;
 }
+
 .mobile-nav-section {
-  margin-bottom: 2rem; /* 섹션 간격 넓힘 */
+  margin-bottom: 2rem;
+  /* 섹션 간격 넓힘 */
 }
-.mobile-nav-section > span {
+
+.mobile-nav-section>span {
   display: inline-block;
   color: #4032ff;
   font-size: 0.9rem;
@@ -186,115 +213,216 @@ header nav ul li button {
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 1rem;
-  border-bottom: 1px solid rgba(64, 50, 255, 0.3); /* 살짝 밑줄 추가 */
+  border-bottom: 1px solid rgba(64, 50, 255, 0.3);
+  /* 살짝 밑줄 추가 */
   padding-bottom: 0.3rem;
 }
-.mobile-nav-section > ul li a {
+
+.mobile-nav-section>ul li a {
   display: block;
-  color: #e0e0e0; /* 완전 흰색보다 눈이 편한 밝은 회색 */
-  font-size: 1.4rem; /* 폰트 사이즈 살짝 키움 */
+  color: #e0e0e0;
+  /* 완전 흰색보다 눈이 편한 밝은 회색 */
+  font-size: 1.4rem;
+  /* 폰트 사이즈 살짝 키움 */
   padding: 0.5rem 0;
   font-weight: 500;
   transition: color 0.2s, transform 0.2s;
 }
+
 /* 클릭/터치할 때 효과 */
-.mobile-nav-section > ul li a:active {
+.mobile-nav-section>ul li a:active {
   color: #5a73fd;
-  transform: scale(0.98); 
+  transform: scale(0.98);
 }
 
 /* 로그인 버튼 영역 */
 .mobile-nav-login {
-  margin-top: 3rem;
-  padding-top: 2rem;
-  border-top: 1px solid #333;
-  text-align: center;
+  margin-top: auto;
+  /* 🚨 모바일 메뉴가 길어져도 항상 맨 아래에 고정되게 밀어냄 */
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  /* 위쪽 메뉴들과 구분하는 은은한 선 */
+  background-color: transparent;
+  /* 다크 테마 배경 */
 }
-.mobile-nav-login a {
-  color: #fff;
-  font-size: 1.3rem;
+
+/* 1. 로그인 버튼 (비로그인 상태) */
+.login-btn-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #4032ff;
+  /* 브랜드 블루 */
+  color: #ffffff;
+  border-radius: 10px;
+  /* 애플 스타일의 부드러운 모서리 */
+  font-size: 1.1rem;
   font-weight: 600;
-  background: #4032ff;
-  padding: 0.8rem 2rem;
-  border-radius: 2rem; /* 동글동글한 버튼 모양으로 변경 */
-  display: inline-block;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.login-btn-mobile:active {
+  background-color: #3025cc;
+  transform: scale(0.98);
+  /* 터치 시 살짝 눌리는 애니메이션 */
+}
+
+/* 2. 유저 프로필 박스 (로그인 성공 상태) */
+#user-profile-mobile {
+  width: 100%;
+  justify-content: space-between;
+
+  /* 🚨 위아래 여백을 16px로 늘려 가로로만 길어보이는 현상(건전지 비율) 완화 */
+  padding: 16px 20px;
+
+  background-color: rgba(255, 255, 255, 0.06);
+  /* 은은한 반투명 글래스 느낌 */
+  border-radius: 16px;
+  /* 둥글기를 키워서 최신 iOS 카드 느낌으로 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* 카드 주변에 부드러운 그림자 */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  /* 기존의 탁한 테두리를 매우 얇게 변경 */
+}
+
+/* 3. 프로필 이미지 (인라인 스타일 덮어쓰기) */
+#profile-img-mobile {
+  idth: 44px !important;
+  /* 36px -> 44px로 큼직하게 */
+  height: 44px !important;
+  border: 2px solid #5a73fd;
+  /* 네온 블루 포인트 */
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* 4. 프로필 이름 */
+#profile-name-mobile {
+  font-size: 1.1rem;
+  color: #ffffff;
+  flex: 1;
+  margin-left: 15px;
+  text-align: left;
+  /* 이름도 좌측 정렬 확실히 */
+}
+
+/* 5. 로그아웃 버튼 */
+#user-profile-mobile button {
+  background: transparent;
+  border: none;
+  color: #ff4d4d;
+  /* 🚨 로그아웃(파괴적 행동)은 눈에 띄는 빨간색으로 */
+  font-size: 1.2rem;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+#user-profile-mobile button:active {
+  background-color: rgba(255, 77, 77, 0.15);
+  /* 터치 시 빨간 배경 살짝 */
 }
 
 /* ===== Dropdown (데스크탑) ===== */
 
 .hovermenu {
   position: absolute;
-  top: 70px; /* 헤더 높이(70px) 바로 아래에서 출발 */
+  top: 70px;
+  /* 헤더 높이(70px) 바로 아래에서 출발 */
   left: 0;
-  width: 100%; /* container(1140px) 너비에 딱 맞춤 */
-  
+  width: 100%;
+  /* container(1140px) 너비에 딱 맞춤 */
+
   /* 세련된 배경 (글래스모피즘 & 부드러운 그림자) */
   background: rgba(15, 15, 15, 0.95);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-radius: 0 0 1.2rem 1.2rem; /* 아래쪽 모서리만 둥글게 */
+  border-radius: 0 0 1.2rem 1.2rem;
+  /* 아래쪽 모서리만 둥글게 */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  
+
   /* 칼각 정렬 (덕지덕지 붙어있던 margin 삭제하고 flex gap으로 통합) */
   display: flex;
-  justify-content: flex-end; /* 상단 nav 메뉴들과 우측 정렬 */
-  gap: 0rem; /* 각 카테고리별 간격을 동일하게 설정 */
-  padding-right: 0rem; /* 전체 메뉴 우측 여백 맞춤 */
-  
+  justify-content: flex-end;
+  /* 상단 nav 메뉴들과 우측 정렬 */
+  gap: 0rem;
+  /* 각 카테고리별 간격을 동일하게 설정 */
+  padding-right: 0rem;
+  /* 전체 메뉴 우측 여백 맞춤 */
+
   /* 애니메이션 초기 상태 (살짝 위로 숨어있음) */
   opacity: 0;
   height: 0;
   overflow: hidden;
   pointer-events: none;
-  transform: translateY(-10px); 
+  transform: translateY(-10px);
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
   z-index: 99;
 }
+
 /* 기존 불필요한 마진 싹 제거 */
-.hovermenu .dropAbout, 
-.hovermenu .dropGal, 
-.hovermenu .dropCommu, 
+.hovermenu .dropAbout,
+.hovermenu .dropGal,
+.hovermenu .dropCommu,
 .hovermenu .dropRecr {
-  margin: 0; 
+  margin: 0;
 }
+
 .hovermenu.active {
   opacity: 1;
-  height: 200px; /* 내부 내용물에 맞게 적당히 조절 */
-  transform: translateY(0); /* 제자리로 안착 */
+  height: 200px;
+  /* 내부 내용물에 맞게 적당히 조절 */
+  transform: translateY(0);
+  /* 제자리로 안착 */
   pointer-events: all;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
 /* 개별 카테고리 (About, Gal 등) */
 .hovermenu ul {
-  width: 140px; /* 상단 메뉴(li)와 소름 돋게 똑같은 너비 부여! (핵심 ⭐) */
+  width: 140px;
+  /* 상단 메뉴(li)와 소름 돋게 똑같은 너비 부여! (핵심 ⭐) */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
 }
+
 /* 서브 메뉴(li) 디자인 */
 header .hovermenu li {
   width: 100%;
   padding: 0;
-  margin-bottom: 0.4rem; /* 위아래 메뉴 간격 */
+  margin-bottom: 0.4rem;
+  /* 위아래 메뉴 간격 */
 }
+
 header .hovermenu li a {
   display: block;
-  color: #a0a0a0; /* 기본 글씨는 은은한 회색 */
+  color: #a0a0a0;
+  /* 기본 글씨는 은은한 회색 */
   padding: 0.7rem 1rem;
   text-align: center;
   font-size: 0.95rem;
   font-weight: 500;
-  border-radius: 0.5rem; /* 동글동글한 호버 배경을 위해 */
+  border-radius: 0.5rem;
+  /* 동글동글한 호버 배경을 위해 */
   transition: all 0.2s ease;
 }
+
 header .hovermenu li a:hover {
   color: #5a73fd;
 }
+
 header nav ul li button:hover,
-header nav ul li:hover > button {
+header nav ul li:hover>button {
   color: #4032ff;
   transition: color 0.3s;
 }
@@ -304,25 +432,31 @@ main {
   width: 100%;
   height: 100vh;
   color: white;
-  background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/me.jpg') center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('images/me.jpg') center center;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-main h4 { font-size: 3rem; }
+
+main h4 {
+  font-size: 3rem;
+}
+
 main h2 {
   font-family: "Pretendard Variable", Pretendard, sans-serif;
   font-size: 5rem;
   margin: 1rem 0;
   letter-spacing: 3px;
 }
+
 main p {
   max-width: 500px;
   margin: 0 auto;
   font-size: 1.25rem;
 }
+
 main button.mouse {
   background-color: transparent;
   border: none;
@@ -335,10 +469,19 @@ main button.mouse {
   animation: upDown 1.2s ease-in-out infinite;
   cursor: pointer;
 }
+
 @keyframes upDown {
-  0%   { bottom: 1rem; }
-  50%  { bottom: 2rem; }
-  100% { bottom: 1rem; }
+  0% {
+    bottom: 1rem;
+  }
+
+  50% {
+    bottom: 2rem;
+  }
+
+  100% {
+    bottom: 1rem;
+  }
 }
 
 /* ===== Section 공통 ===== */
@@ -346,11 +489,13 @@ section {
   padding: 5rem 0;
   background-color: rgb(17, 17, 17);
 }
+
 section .title {
   display: flex;
   justify-content: center;
   margin-bottom: 3rem;
 }
+
 section .title h2 {
   color: #f0f0f0;
   font-size: 2.2rem;
@@ -362,17 +507,23 @@ section .title h2::after {
   content: '';
   display: block;
   position: absolute;
-  left: 0; bottom: 0;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 4px;
   background: #4032ff;
   border-radius: 4px;
 }
-section .title p { font-size: 1.15rem; }
+
+section .title p {
+  font-size: 1.15rem;
+}
+
 section .more {
   display: flex;
   justify-content: center;
 }
+
 section .more button {
   margin-top: 1rem;
   background-color: #4032ff;
@@ -386,7 +537,10 @@ section .more button {
   transition: background 0.2s;
   outline: none;
 }
-.more button:hover { background-color: #2e1ffc; }
+
+.more button:hover {
+  background-color: #2e1ffc;
+}
 
 /* ===== About 섹션 ===== */
 .carpeVideo {
@@ -394,13 +548,16 @@ section .more button {
   width: 100%;
   max-width: 720px;
   margin: 3rem auto;
-  aspect-ratio: 16 / 9; /* 반응형 비율 유지 */
+  aspect-ratio: 16 / 9;
+  /* 반응형 비율 유지 */
 }
+
 .carpeVideo iframe {
   width: 100%;
   height: 100%;
   border: none;
 }
+
 section .about-self .introduction p {
   color: #d3d3d3;
   font-size: 1.2rem;
@@ -415,12 +572,14 @@ section.Activity::after {
   display: block;
   clear: both;
 }
+
 .acts {
   display: flex;
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
 }
+
 section.Activity .acts-inner {
   width: calc(33.333% - 1.5rem);
   max-width: 320px;
@@ -430,11 +589,13 @@ section.Activity .acts-inner {
   border-radius: 1rem;
   margin-bottom: 1.5rem;
 }
+
 section.Activity .acts-inner img {
   width: 100%;
   display: block;
   border-radius: 0.5rem;
 }
+
 section.Activity .acts-inner strong {
   color: #ffffff;
   padding: 0 1rem;
@@ -444,11 +605,13 @@ section.Activity .acts-inner strong {
   display: block;
   text-align: center;
 }
+
 section.Activity .acts-inner p {
   color: #d3d3d3;
   padding: 0 0.8rem;
   font-size: 1rem;
 }
+
 section.Activity .actsScrpt p {
   color: #d3d3d3;
   font-size: 1.2rem;
@@ -466,6 +629,7 @@ footer {
   padding: 2.3rem 0 2rem 0;
   font-size: 1rem;
 }
+
 .footer-top {
   display: flex;
   justify-content: space-between;
@@ -474,7 +638,11 @@ footer {
   margin: 0 auto;
   padding: 0 2rem;
 }
-.footer-copyright { font-size: 1rem; }
+
+.footer-copyright {
+  font-size: 1rem;
+}
+
 .footer-social a {
   color: #fff;
   font-size: 1.5rem;
@@ -482,13 +650,18 @@ footer {
   vertical-align: middle;
   transition: color 0.2s;
 }
-.footer-social a:hover { color: #ffe082; }
+
+.footer-social a:hover {
+  color: #ffe082;
+}
+
 footer hr {
   border: none;
   border-top: 1px solid #fff4;
   margin: 1.3rem auto 2rem auto;
   max-width: 1500px;
 }
+
 .footer-main {
   display: flex;
   justify-content: space-between;
@@ -498,13 +671,18 @@ footer hr {
   padding: 0 2rem;
   flex-wrap: wrap;
 }
+
 .footer-info {
   max-width: 50%;
   min-width: 250px;
   font-size: 1rem;
   line-height: 2;
 }
-.footer-made b { font-size: 1.8rem; }
+
+.footer-made b {
+  font-size: 1.8rem;
+}
+
 .footer-contacts {
   text-align: left;
   display: flex;
@@ -513,6 +691,7 @@ footer hr {
   min-width: 200px;
   font-size: 1rem;
 }
+
 footer a {
   text-decoration: none;
   color: #fff;
@@ -530,7 +709,7 @@ footer a {
 
   header nav ul li,
   .hovermenu ul {
-    width: 105px; 
+    width: 105px;
   }
 
   header nav ul li button {
@@ -551,13 +730,16 @@ footer a {
 
 /* 모바일 (768px 이하) */
 @media (max-width: 768px) {
+
   /* 헤더 nav 숨기고 햄버거 표시 */
   header nav {
     display: none;
   }
+
   .hamburger {
     display: flex;
   }
+
   /* 데스크탑 드롭다운 모바일에서 숨김 */
   .hovermenu {
     display: none !important;
@@ -573,6 +755,7 @@ footer a {
     font-size: 3rem;
     letter-spacing: 1px;
   }
+
   main p {
     font-size: 1rem;
     padding: 0 1rem;
@@ -590,10 +773,12 @@ footer a {
     flex-direction: column;
     align-items: center;
   }
+
   section.Activity .acts-inner {
     width: 100%;
     max-width: 480px;
   }
+
   section.Activity .actsScrpt p {
     margin-left: 1.5rem;
     margin-right: 1.5rem;
@@ -604,9 +789,11 @@ footer a {
   section {
     padding: 3.5rem 0;
   }
+
   section .title {
     margin-bottom: 2rem;
   }
+
   section .title h2 {
     font-size: 1.8rem;
   }
@@ -616,14 +803,17 @@ footer a {
     flex-direction: column;
     gap: 2rem;
   }
+
   .footer-info {
     max-width: 100%;
   }
+
   .footer-top {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
+
   .footer-social {
     margin-top: 0.5rem;
   }
@@ -634,6 +824,7 @@ footer a {
   main h2 {
     font-size: 2.2rem;
   }
+
   main p {
     font-size: 0.95rem;
   }
@@ -651,6 +842,7 @@ footer a {
   .footer-made b {
     font-size: 1.4rem;
   }
+
   .footer-info {
     font-size: 0.9rem;
     line-height: 1.8;
