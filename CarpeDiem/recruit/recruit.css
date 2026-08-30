@@ -84,6 +84,10 @@ section.Activity {
   margin-bottom: 2rem;
 }
 
+.section-cntct .title {
+  margin-bottom: 1.5rem;
+}
+
 .section-cntct {
   background-color: #111;
   /* 배경 어두운 톤 */
@@ -104,14 +108,15 @@ section.Activity {
   /* 화면 작아지면 줄바꿈 */
 }
 
-section .section-cntct .title h2 {
-  font-size: 1.8rem;
+section.section-cntct .title h2 {
+  font-size: 2.5rem;
   margin-bottom: 2rem;
   color: white;
 }
 
 .section-cntct .banner img {
-  max-width: 100%;
+  width: 95%;
+  height: 95%;
 }
 
 .cntct-group {
@@ -121,12 +126,12 @@ section .section-cntct .title h2 {
 
 
 .cntct-group h3 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 0.3rem;
 }
 
 .cntct-group p {
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   color: #74efff;
   /* 살짝 연한 흰색 */
@@ -134,7 +139,7 @@ section .section-cntct .title h2 {
 
 .cntct-group a {
   color: white;
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-top: 10px;
   display: inline-block;
   transition: color 0.3s;
@@ -152,7 +157,7 @@ section .section-cntct .title h2 {
 }
 
 .section-cntct .schedules {
-  width: 25%;
+  width: 30%;
   margin: 1rem;
 }
 
@@ -160,7 +165,7 @@ section .section-cntct .title h2 {
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: rgb(255, 200, 48);
   margin: 1rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 
@@ -221,7 +226,7 @@ section .section-cntct .title h2 {
   .section-cntct .container {
     flex-direction: column;
     /* 🚨 가로 정렬을 세로 정렬(위아래)로 강제 변경 */
-    gap: 3.5rem;
+    gap: 3rem;
     /* 8rem의 거대한 간격을 모바일에 맞게 축소 */
   }
 
@@ -235,9 +240,9 @@ section .section-cntct .title h2 {
 
   .section-cntct .schedules,
   .section-cntct .post {
-    width: 100%;
+    width: 90%;
     /* 🚨 25%, 32%로 쪼개져 있던 너비를 화면 100%로 꽉 채움 */
-    max-width: 400px;
+    max-width: 340px;
     /* 너무 커지지 않도록 최대치 제한 */
     margin: 0 auto;
     /* 정중앙 배치 */
@@ -250,5 +255,9 @@ section .section-cntct .title h2 {
 
   .cntct-group h3 {
     font-size: 1.3rem;
+  }
+
+  .section-cntct .moreButton {
+    font-size: 1rem;
   }
 }

@@ -5,7 +5,8 @@ const loginData = {
     refreshToken: params.get('refreshToken'),
     name: params.get('name'),
     picture: params.get('picture'),
-    username: params.get('username')
+    username: params.get('username'),
+    role: params.get('role')
 };
 
 if (window.opener && loginData.accessToken) {

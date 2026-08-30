@@ -198,8 +198,16 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
             formData.append("file", blob, 'cropped.jpg');
 
             // 서버 전송 로직 (fetch)
+            const token = localStorage.getItem('accessToken');
+            if (!token) {
+                alert("로그인이 필요합니다.");
+                return;
+            }
             const response = await fetch('http://localhost:8080/api/photos/upload', {
                 method: 'POST',
+                headers: {
+                    'accessToken': token
+                },
                 // [중요!] body에 formData를 넣으면
                 // Content-Type 헤더는 브라우저가 알아서 'multipart/form-data'로 설정합니다.
                 // 직접 헤더를 설정하면 오히려 에러가 납니다.
@@ -322,8 +330,18 @@ async function handleEdit(id) {
             const formData = new FormData();
             formData.append('title', data.title);
             formData.append('date', data.date);
+
+            const token = localStorage.getItem('accessToken');
+
+            if (!token) {
+                alert("로그인이 필요합니다.");
+                return;
+            }
             fetch(`http://localhost:8080/api/photos/patch/${id}`, {
                 method: 'PATCH',
+                headers: {
+                    'accessToken': token
+                },
                 // ⚠️ 주의: FormData를 보낼 때는 'Content-Type' 헤더를 직접 적지 마세요!
                 // 브라우저가 알아서 'multipart/form-data'로 설정해줍니다.
                 body: formData
@@ -370,7 +388,18 @@ async function handleDelete(id) {
 async function delOperation(id) {
     try {
         // 실제 서버로 삭제 요청 (DELETE API)
-        const rst = await fetch(`${'http://localhost:8080/api/photos/delete'}/${id}`, { method: 'DELETE' });
+        const token = localStorage.getItem('accessToken');
+
+        if (!token) {
+            alert("로그인이 필요합니다.");
+            return;
+        }
+        const rst = await fetch(`${'http://localhost:8080/api/photos/delete'}/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'accessToken': token
+            }
+        });
         if (rst.ok) {
             console.log(id);
             console.log('삭제 요청, ID:', id);

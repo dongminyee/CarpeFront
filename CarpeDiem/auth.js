@@ -10,6 +10,7 @@ window.addEventListener('message', (event) => {
         localStorage.setItem('userName', data.name);
         localStorage.setItem('userPicture', data.picture);
         localStorage.setItem('email', data.username);
+        localStorage.setItem('role', data.role);
 
         window.location.replace('/CarpeDiem/index.html');
 
@@ -88,12 +89,28 @@ function updateLoginUI() {
         userProfile.style.display = 'flex';
         document.getElementById('profile-name').textContent = localStorage.getItem("userName");
         document.getElementById('profile-img').src = localStorage.getItem("userPicture");
+        if ((localStorage.getItem('role') === 'ROLE_ADMIN') && (localStorage.getItem('email') === 'dongminyeeaa@gmail.com')) {
+            document.getElementById('profile-name').innerHTML = `
+                <a href="/CarpeDiem/admin/admin.html" style="font-weight: bold; cursor: pointer; color: inherit;">
+                    ${localStorage.getItem("userName")} <span style="font-size: 0.8em; color: red;">(관리자)</span>
+                </a>
+            `;
+
+        }
     }
     if (loginBtnMobile) loginBtnMobile.style.display = 'none';
     if (userProfileMobile) {
         userProfileMobile.style.display = 'flex';
         document.getElementById('profile-name-mobile').textContent = localStorage.getItem("userName");
         document.getElementById('profile-img-mobile').src = localStorage.getItem("userPicture");
+        if ((localStorage.getItem('role') === 'ROLE_ADMIN') && (localStorage.getItem('email') === 'dongminyeeaa@gmail.com')) {
+            document.getElementById('profile-name-mobile').innerHTML = `
+                <a href="/CarpeDiem/admin/admin.html" style="font-weight: bold; cursor: pointer; color: inherit;">
+                    ${localStorage.getItem("userName")} <span style="font-size: 0.8em; color: red;">(관리자)</span>
+                </a>
+            `;
+
+        }
     }
 }
 
@@ -109,10 +126,14 @@ async function logout() {
     localStorage.clear();
     const loginBtn = document.getElementById('login-btn');
     const userProfile = document.getElementById('user-profile');
+    const loginBtnMobile = document.getElementById('login-btn-mobile');
+    const userProfileMobile = document.getElementById('user-profile-mobile');
     location.reload();
     // 프로필 숨기고 버튼 보이기
     if (loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
     if (userProfile) userProfile.style.display = 'none';
+    if (loginBtnMobile) loginBtnMobile.style.display = 'block';
+    if (userProfileMobile) userProfileMobile.style.display = 'none';
 }
 
 
@@ -131,6 +152,15 @@ function updateProfileUI(name, picture) {
         userProfile.style.display = 'flex';
         if (profileName) profileName.textContent = name;
         if (profileImg) profileImg.src = picture;
+        console.log('success1')
+        if ((localStorage.getItem('role') === 'ROLE_ADMIN') && (localStorage.getItem('email') === 'dongminyeeaa@gmail.com')) {
+            profileName.innerHTML = `
+                <a href="/CarpeDiem/admin/admin.html" style="text-decoration: underline; font-weight: bold; cursor: pointer; color: inherit;">
+                    ${name} <span style="font-size: 0.8em; color: red;">(관리자)</span>
+                </a>
+            `;
+            console.log('success2')
+        }
     }
 }
 
@@ -145,7 +175,7 @@ window.addEventListener('storage', (event) => {
         const picture = localStorage.getItem('userPicture');
 
         if (event.newValue) { // 로그인 됨
-            updateProfileUI(name, picture);
+            updateLoginUI();
         } else { // 로그아웃 됨 (값이 null이 됨)
             location.reload();
         }

@@ -272,8 +272,18 @@ async function editSong(buttonElement, videoId) {
         date: data.date,
         status: data.status
       })
+      const token = localStorage.getItem('accessToken');
+
+      if (!token) {
+        alert("로그인이 필요합니다.");
+        return;
+      }
+
       fetch(`http://localhost:8080/api/song/patch?${params.toString()}`, {
-        method: 'PATCH'
+        method: 'PATCH',
+        headers: {
+          'accessToken': token
+        }
       })
         .then(response => {
           if (response.ok) {
