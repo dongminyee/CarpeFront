@@ -609,9 +609,14 @@ footer hr {
 }
 
 .footer-contacts {
-  text-align: left;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* 내부 요소 가로축을 왼쪽으로 맞춤 (text-align: left와 자연스럽게 어울림) */
+  align-self: center;
+  /* ⭐️ 핵심: 부모(.footer-main) 높이를 기준으로 이 박스 자체를 세로 중앙으로 내림 */
+  text-align: left;
   gap: 2rem;
   min-width: 200px;
   font-size: 1rem;
