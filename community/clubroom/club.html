@@ -9,22 +9,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/CarpeDiem/style.css">
-  <link rel="stylesheet" href="/CarpeDiem/common.css">
-  <link rel="stylesheet" href="song.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="club.css">
 </head>
 
 <body>
   <header>
     <div class="container">
       <h1>
-        <a href="/CarpeDiem/index.html"><img class="logo" src="/CarpeDiem/images/CARPELOGO_simple.png" alt="로고"
-            style="height: 60px;"></a>
+        <a href="/index.html"><img class="logo" src="/images/CARPELOGO_simple.png" alt="로고" style="height: 60px;"></a>
       </h1>
       <nav>
         <ul class="gnb">
           <li>
-            <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i
+            <button class="login-btn" id="login-btn"><a href="/logIn/index.html">Login<i
                   class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
             <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
@@ -47,6 +46,7 @@
           </li>
         </ul>
       </nav>
+
       <button class="hamburger" id="hamburger-btn">
         <span></span>
         <span></span>
@@ -60,36 +60,36 @@
           <div class="mobile-nav-section">
             <span>About Us</span>
             <ul>
-              <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
-              <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
-              <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+              <li><a href="/about/introduction.html">소개</a></li>
+              <li><a href="/ci/ci.html">CI</a></li>
+              <li><a href="/contact/contact.html">Contact</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-section">
             <span>Gallery</span>
             <ul>
-              <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
-              <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+              <li><a href="/gallery/mainActs/mainacts.html">주요활동</a></li>
+              <li><a href="/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-section">
             <span>Community</span>
             <ul>
-              <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-              <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+              <li><a href="/community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
             </ul>
           </div>
           <div class="mobile-nav-section">
             <span>Recruit</span>
             <ul>
-              <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+              <li><a href="/recruit/recruit.html">지원하기</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-login">
-            <a href="/CarpeDiem/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
+            <a href="/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
                 class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a>
             <div id="user-profile-mobile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img-mobile" src="" alt="프로필">
@@ -100,116 +100,41 @@
           </div>
         </div>
       </div>
+
       <div class="hovermenu" id="megaDropdown">
         <ul class="dropAbout">
-          <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
-          <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
-          <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+          <li><a href="/about/introduction.html">소개</a></li>
+          <li><a href="/ci/ci.html">CI</a></li>
+          <li><a href="/contact/contact.html">Contact</a></li>
         </ul>
         <ul class="dropGal">
-          <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
-          <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+          <li><a href="/gallery/mainActs/mainacts.html">주요활동</a></li>
+          <li><a href="/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
         </ul>
         <ul class="dropCommu">
-          <li><a href="song.html">역대 선곡 리스트</a></li>
-          <li><a href="../clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+          <li><a href="/community/songlist/song.html">역대 선곡 리스트</a></li>
+          <li><a href="club.html" class="requires-auth">동방 이용 시간표</a></li>
           <!-- <li><a href="#">WhenToMeet</a></li> -->
         </ul>
         <ul class="dropRecr">
-          <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+          <li><a href="/recruit/recruit.html">지원하기</a></li>
         </ul>
       </div>
     </div>
   </header>
   <div class="main-visual-bg">
     <div class="main-visual-content">
-      <h1><span class="doubleblue">「</span>역대 선곡 리스트<span class="doubleblue">」</span></h1>
+      <h1><span class="doubleblue">「</span>동방 이용 시간표<span class="doubleblue">」</span></h1>
     </div>
   </div>
   <!-- //end Main -->
 
-  <!--    TODO:  코드 이해, 검색창 만들기, 테이블 인터페이스 예쁘게, 항목별 정렬 기능 제작 -->
-  <div class="wrap">
-
-    <div class="toolbar">
-
-      <div class="search-bar">
-        <input type="text" id="keyword" placeholder="제목 또는 아티스트 검색">
-        <button onclick="fetchSongs(0)">검색</button>
-      </div>
-
-      <div class="info" id="info"></div>
-
-      <div class="rows">
-        <label for="rowsPerPage">한 페이지:</label>
-        <select id="rowsPerPage">
-          <option>5</option>
-          <option selected>10</option>
-          <option>15</option>
-          <option>20</option>
-        </select>
-      </div>
+  <section id="practice-schedule" class="schedule-section">
+    <div class="schedule-scroll-wrapper">
+      <div id="scheduleGrid" class="schedule-grid"></div>
+      <p>Google Sheet 업데이트 후 새로고침해주세요</p>
     </div>
-
-    <div class="table-card">
-      <table id="coverTable">
-        <colgroup>
-          <col style="width:140px"> <!-- 썸네일 -->
-          <col style="width:24%"> <!-- 곡 -->
-          <col style="width:18%"> <!-- 아티스트 -->
-          <col style="width:10%"> <!-- 기수 -->
-          <!-- <col style="width:10%">     키 -->
-          <col style="width:17%"> <!-- 공연 -->
-          <col style="width:10%"> <!-- 연도 -->
-          <col style="width:6%"> <!-- 돋보기 -->
-        </colgroup>
-        <thead>
-          <tr>
-            <th style="width:140px">영상</th>
-            <th class="sortable" data-key="title" data-type="text">곡
-            </th>
-            <th class="sortable" data-key="artist" data-type="text">아티스트
-            </th>
-            <th class="sortable" data-key="generation" data-type="text">기수
-            </th>
-            <th class="sortable" data-key="concert" data-type="text">공연
-            </th>
-            <th class="sortable" data-key="year" data-type="number">연도
-            </th>
-            <th class="search-col">
-            </th>
-          </tr>
-
-        </thead>
-        <tbody id="song-list">
-          <!-- 초기 더미 데이터(20행). 실제에선 서버/CSV로 채워짐 -->
-          <!-- video는 유튜브 URL 또는 ID 가능 -->
-          <tr data-status="pending">
-            <td>
-              <a class="thumb" href="https://www.youtube.com/watch?v=jfJSJdVcu00" target="_blank" rel="noopener">
-                <img src="https://img.youtube.com/vi/jfJSJdVcu00/mqdefault.jpg" alt=""><span class="play">▶</span>
-              </a>
-            </td>
-            <td data-key="title">Antifreeze</td>
-            <td data-key="artist">검정치마</td>
-            <td data-key="gen">21</td>
-            <!-- <td data-key="key">C</td> -->
-            <td data-key="stage">봄 정기공연</td>
-            <td data-key="year">2025</td>
-            <td class="action-col">
-              <button class="btn-edit" onclick="editSong(this, 'jfJSJdVcu00')">수정</button>
-            </td>
-          </tr>
-          <!-- 같은 포맷으로 여러 줄 복제 -->
-
-
-        </tbody>
-      </table>
-      <div id="pagination"></div>
-    </div>
-
-  </div>
-
+  </section>
 
 
   <footer>
@@ -250,12 +175,11 @@
   </footer>
   <!-- end Contact With Me -->
   <!-- script 태그는 수정하지 않습니다. -->
-  <!-- CSV 파싱 라이브러리(가벼움): PapaParse -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="/CarpeDiem/script.js"></script>
+  <script src="/script.js"></script>
+  <script src="club.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="song.js"></script>
-  <script src="/CarpeDiem/auth.js"></script>
+  <script src="/auth.js"></script>
 </body>
 
 </html>

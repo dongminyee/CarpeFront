@@ -9,25 +9,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/CarpeDiem/style.css">
-  <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="mainacts.css">
-  <link rel="stylesheet" href="/CarpeDiem/common.css">
-  <link rel="stylesheet" href="timeline.css">
+  <!-- <link rel="stylesheet" href="/style.css"> -->
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="loginStyle.css">
 </head>
 
 <body>
   <header>
     <div class="container">
       <h1>
-        <a href="../../index.html"><img class="logo" src="../../images/CARPELOGO_simple.png" alt="로고"
+        <a href="../index.html"><img class="logo" src="../images/CARPELOGO_simple.png" alt="로고"
             style="height: 60px;"></a>
       </h1>
       <nav>
         <ul class="gnb">
           <li>
-            <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i
+            <button class="login-btn" id="login-btn"><a href="/logIn/index.html">Login<i
                   class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
             <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
@@ -63,36 +60,36 @@
           <div class="mobile-nav-section">
             <span>About Us</span>
             <ul>
-              <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
-              <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
-              <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+              <li><a href="/about/introduction.html">소개</a></li>
+              <li><a href="/ci/ci.html">CI</a></li>
+              <li><a href="/contact/contact.html">Contact</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-section">
             <span>Gallery</span>
             <ul>
-              <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
-              <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+              <li><a href="/gallery/mainActs/mainacts.html">주요활동</a></li>
+              <li><a href="/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-section">
             <span>Community</span>
             <ul>
-              <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-              <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+              <li><a href="/community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
             </ul>
           </div>
           <div class="mobile-nav-section">
             <span>Recruit</span>
             <ul>
-              <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+              <li><a href="/recruit/recruit.html">지원하기</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-login">
-            <a href="/CarpeDiem/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
+            <a href="/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
                 class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a>
             <div id="user-profile-mobile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img-mobile" src="" alt="프로필">
@@ -105,105 +102,61 @@
       </div>
       <div class="hovermenu" id="megaDropdown">
         <ul class="dropAbout">
-          <li><a href="../../about/introduction.html">소개</a></li>
-          <li><a href="../../ci/ci.html">CI</a></li>
-          <li><a href="../../contact/contact.html">Contact</a></li>
+          <li><a href="../about/introduction.html">소개</a></li>
+          <li><a href="../ci/ci.html">CI</a></li>
+          <li><a href="../contact/contact.html">Contact</a></li>
         </ul>
         <ul class="dropGal">
-          <li><a href="../mainActs/mainacts.html">주요활동</a></li>
-          <li><a href="../memberGal/mainacts.html">기수 갤러리</a></li>
+          <li><a href="../gallery/mainActs/mainacts.html">주요활동</a></li>
+          <li><a href="../gallery/memberGal/mainacts.html">기수 갤러리</a></li>
         </ul>
         <ul class="dropCommu">
-          <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-          <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+          <li><a href="../community/songlist/song.html">역대 선곡 리스트</a></li>
+          <li><a href="../community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
           <!-- <li><a href="#">WhenToMeet</a></li> -->
         </ul>
         <ul class="dropRecr">
-          <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+          <li><a href="../recruit/recruit.html">지원하기</a></li>
         </ul>
       </div>
     </div>
   </header>
   <div class="main-visual-bg">
     <div class="main-visual-content">
-      <h1><span class="doubleblue">「</span>기수 갤러리<span class="doubleblue">」</span></h1>
+      <h1><span class="doubleblue">「</span>Login<span class="doubleblue">」</span></h1>
     </div>
   </div>
   <!-- //end Main -->
+  <!-- About Me -->
+  <!-- end About Us -->
 
-
-  <div class="header">
-    <h1 id="mainTxt"></h1>
-    <div class="year-switch" id="yearSwitch">
-      <button class="year-toggle" id="yearToggle" aria-haspopup="true" aria-expanded="false">
-        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-      </button>
-      <div class="year-menu" id="yearMenu">
-        <!-- button tag의 연도가 추가됨 -->
+  <!-- Acts -->
+  <section id="Activity" class="Activity">
+    <div class="container">
+      <div class="title">
+        <img src="/images/CARPELOGO_simple.png">
+      </div>
+      <div class="context">
+        <div class="introduction">
+          <button class="loginButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48" style="display:block;">
+              <path fill="#EA4335"
+                d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+              <path fill="#4285F4"
+                d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+              <path fill="#FBBC05"
+                d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24s.92 7.54 2.56 10.78l7.97-6.19z" />
+              <path fill="#34A853"
+                d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+              <path fill="none" d="M0 0h48v48H0z" />
+            </svg> Google 계정으로 로그인
+          </button>
+          <p>까르페디엠 연락처 파일의 email을 구글 계정으로 수정해야 게시물 수정이 가능합니다.</p>
+        </div>
       </div>
     </div>
-
-  </div>
-
-  <div class="activity-control">
-    <button id="toggle-btn" class="btn-toggle">
-      <span>업로드</span>
-    </button>
-  </div>
-
-  <div id="form-container" class="form-wrapper">
-    <form class="dark-form" id="uploadForm">
-      <button type="button" id="close-modal-btn" class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
-      <div class="row">
-        <div class="input-group half">
-          <label>제목</label>
-          <input type="text" placeholder="활동 제목을 입력하세요" id="imageTitle" name="title">
-        </div>
-        <div class="input-group half">
-          <label>기수</label>
-          <div class="custom-select-wrapper" id="giSelectWrapper">
-            <input type="hidden" name="gi" id="giInput" value="20">
-
-            <div class="custom-select-trigger">
-              <span id="giTriggerText">21기</span>
-              <span class="arrow">▼</span>
-            </div>
-
-            <ul class="custom-options">
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-group half">
-          <label>날짜</label>
-          <input type="date" id="imageDate" name="date">
-        </div>
-        <div class="input-group half">
-          <label>사진 첨부</label>
-          <input type="file" class="file-input" id="imageFile" name="attachImage">
-        </div>
-      </div>
-
-      <div class="img-container">
-        <img id="image-to-crop" src="">
-      </div>
-
-      <button type="submit" class="btn-submit">Upload Post</button>
-    </form>
-  </div>
-
-  <div class="timeline">
-    <div class="carousel carousel-main" data-flickity='{}' id="image-container">
-      <div class="carousel-cell"><time datetime="2024-02-21"><span>2024. 2. 21</span> 19기 & 20기 단체사진</time>
-        <div class="img-wrapper"><img src="images/1920photo.jpg"></div>
-      </div>
-
-    </div>
-  </div>
-
-
+  </section>
+  <!-- //end Acts -->
   <footer>
     <div class="footer-main">
       <div class="footer-info">
@@ -242,14 +195,10 @@
   </footer>
   <!-- end Contact With Me -->
   <!-- script 태그는 수정하지 않습니다. -->
-  <script src="../../script.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.3.0/flickity.pkgd.min.js"></script>
-  <script src="mainacts.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-  <script src="crop.js"></script>
-
+  <script src="../script.js"></script>
+  <script src="loginScript.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/CarpeDiem/auth.js"></script>
+  <script src="/auth.js"></script>
 </body>
 
 </html>

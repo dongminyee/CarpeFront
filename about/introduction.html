@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/CarpeDiem/style.css">
-  <link rel="stylesheet" href="/CarpeDiem/common.css">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="intro.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
       <nav>
         <ul class="gnb">
           <li>
-            <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i
+            <button class="login-btn" id="login-btn"><a href="/logIn/index.html">Login<i
                   class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
             <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
@@ -83,36 +83,36 @@
       <div class="mobile-nav-section">
         <span>About Us</span>
         <ul>
-          <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
-          <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
-          <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+          <li><a href="/about/introduction.html">소개</a></li>
+          <li><a href="/ci/ci.html">CI</a></li>
+          <li><a href="/contact/contact.html">Contact</a></li>
         </ul>
       </div>
 
       <div class="mobile-nav-section">
         <span>Gallery</span>
         <ul>
-          <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
-          <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+          <li><a href="/gallery/mainActs/mainacts.html">주요활동</a></li>
+          <li><a href="/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
         </ul>
       </div>
 
       <div class="mobile-nav-section">
         <span>Community</span>
         <ul>
-          <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-          <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+          <li><a href="/community/songlist/song.html">역대 선곡 리스트</a></li>
+          <li><a href="/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
         </ul>
       </div>
       <div class="mobile-nav-section">
         <span>Recruit</span>
         <ul>
-          <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+          <li><a href="/recruit/recruit.html">지원하기</a></li>
         </ul>
       </div>
 
       <div class="mobile-nav-login">
-        <a href="/CarpeDiem/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
+        <a href="/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
             class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a>
         <div id="user-profile-mobile" style="display: none; align-items: center; gap: 0.5rem;">
           <img id="profile-img-mobile" src="" alt="프로필">
@@ -125,7 +125,7 @@
 
   <div class="main-visual-bg">
     <div class="main-visual-content">
-      <h1><span class="doubleblue">「</span>관리자 설정<span class="doubleblue">」</span></h1>
+      <h1><span class="doubleblue">「</span>소개<span class="doubleblue">」</span></h1>
     </div>
   </div>
   <!-- //end Main -->
@@ -136,33 +136,54 @@
   <section id="Activity" class="Activity">
     <div class="container">
       <div class="title">
-        <h2><i><span class="highlight-text">관리자 설정</span></i></h2>
+        <h2><i>"If not now, when? <span class="highlight-text">CarpeDiem</span>"</i></h2>
       </div>
       <div class="about-self">
         <div class="introduction">
-          <p>API는 신중하게 이용 부탁드립니다.</p>
+          <p>CarpeDiem은 KAIST의 최강 pop 밴드로,</p>
+          <p>2004년 창설 이래 KAIST의 축제인 태울석림제, SUM, 프린지 뿐만 아니라
+            카포전, 과기원 연합 체육대회(STadium)등 다양한 축제, 다른 대학밴드와의 연합 공연 등 다양한 무대에서 활약하는 자타공인 1등 밴드입니다.</p>
         </div>
       </div>
       <div class="acts">
         <div class="acts-inner">
-          <strong>선곡 리스트 업데이트</strong>
-          <p>선곡 리스트를 유튜브에서 가져옵니다. 전체 리스트를 가져올 수도 있고, 최근 50곡만 업데이트할 수도 있습니다.</p>
-          <div class="sync-controls">
-            <select id="period-select">
-              <option value="all">전체 노래 동기화</option>
-              <option value="recent">최근 노래만 동기화</option>
-            </select>
-            <button id="sync-song-btn">노래 동기화 실행</button>
-          </div>
+          <img src="images/nightConcert.jpg" alt="">
+          <strong>카포전</strong>
+          <p>카이스트와 포스텍에서 번갈아 열리는 카포전 폐막식에 CarpeDiem이 선발되어 매년 무대에 올라 카이스트를 응원하고 있습니다.</p>
         </div>
         <div class="acts-inner">
-          <strong>ADMIN 리스트 업데이트</strong>
-          <p>까르페디엠 Drive 연락처 파일 gmail 열의 모든 이메일을 ADMIN으로 업데이트합니다.</p>
-          <button id="sync-btn">ADMIN 업데이트(전체)</button>
+          <img src="images/fringe.jpg" alt="">
+          <strong>프린지</strong>
+          <p>프린지는 태울석림제에서 진행하는 프린지의 밴드팀 공연으로 매년 상반기에 무대에 올라 공연을 진행하고 있습니다.</p>
+        </div>
+        <div class="acts-inner">
+          <img src="images/stadium.jpg" alt="">
+          <strong>STadium</strong>
+          <p>STadium은 카이스트를 포함한 6개 대학이 함께한 연합 교류전으로, CarpeDiem도 매년 참여하여 무대를 빛내고 있습니다.</p>
         </div>
       </div>
       <div class="actsScrpt">
-        <p>관리자 API는 과도한 빈도로 사용해서는 안됩니다.</p>
+        <p>다양한 공연 뿐만 아니라, 매년 여러 행사를 통해 친목을 다지고 있습니다.</p>
+        <p>새내기 기수와 메인 기수를 중심으로 딸기파티, MT, 홈커밍, 공연 뒷풀이 등
+          다양한 친목 행사가 이루어집니다. 이외에도 각 기수끼리 방학을 이용하여 여행을 가기도 하며,
+          따뜻하고 돈독한 분위기에서 활동을 이어나가고 있습니다.</p>
+      </div>
+      <div class="acts">
+        <div class="acts-inner">
+          <img src="images/strawberryParty.jpg" alt="">
+          <strong>딸기파티</strong>
+          <p>카이스트에서 매년 봄에 열리는 딸기파티를 진행하며 딸기와 점심을 함께 나누어 먹으며 즐거운 시간을 보냅니다.</p>
+        </div>
+        <div class="acts-inner">
+          <img src="images/mt.jpg" alt="">
+          <strong>MT</strong>
+          <p>봄과 여름에 MT를 가고, 여름에는 현역 기수들이 바다로 가 레크레이션과 바베큐를 즐기며 친목을 다지고 있습니다.</p>
+        </div>
+        <div class="acts-inner">
+          <img src="images/behind.jpg" alt="">
+          <strong>공연 뒷풀이</strong>
+          <p>매년 11월, 지난 1년간 동아리에서 진행했던 활동 보고와 선후배 간 친목을 다질 수 있는 레크레이션을 진행하는 시간을 가집니다.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -207,8 +228,7 @@
   <!-- script 태그는 수정하지 않습니다. -->
   <script src="../script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/CarpeDiem/auth.js"></script>
-  <script src="admin.js"></script>
+  <script src="/auth.js"></script>
 </body>
 
 </html>

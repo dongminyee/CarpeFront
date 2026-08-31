@@ -18,7 +18,7 @@
       rgba(17, 17, 17, 1) 100%
       /* 배경색(17,17,17)과 스르륵 이어지게 블렌딩 */
     ),
-    url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
+    url('/images/section_background.jpg') center center/cover no-repeat;
   z-index: 1;
   padding-top: 70px;
 }

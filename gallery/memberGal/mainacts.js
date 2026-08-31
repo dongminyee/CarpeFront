@@ -53,6 +53,7 @@
 }
 
 // 로그인 상태 확인
+
 async function checkEditAuth() {
     const accessToken = localStorage.getItem('accessToken');
 
@@ -89,7 +90,7 @@ async function checkEditAuth() {
                 // [상태 2] 갱신됨 -> 로컬스토리지 갈아끼우기 + UI 업데이트
                 if (result.newAccessToken) {
                     localStorage.setItem('accessToken', result.newAccessToken);
-                    localStorage.setItem('refreshToken', result.refreshToken);
+                    localStorage.setItem('refreshfToken', result.refreshToken);
                     console.log("토큰이 갱신되었습니다.");
                 }
                 if (role == "ROLE_ADMIN") return true;
@@ -183,8 +184,8 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
 
     formData.append("title", title);
     formData.append("date", date);
-    formData.append("category", "activity");
-    formData.append("generation", "none");
+    formData.append("category", "generation");
+    formData.append("generation", document.getElementById("giInput").value);
 
     cropper.getCroppedCanvas().toBlob(async (blob) => {
         try {
@@ -216,7 +217,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
             // 4. 응답 처리
             if (response.ok) {
                 // 성공 시 (200 OK)
-                const data = await response.json(); // 백엔드가 반환한 이미지 데이터
+                const data = await response.text(); // 백엔드가 반환한 이미지 데이터
                 console.log('성공:', data);
 
                 // 성공 알림창
@@ -227,8 +228,8 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
                 });
 
                 // (선택) 타임라인 새로고침 로직 추가
-                document.getElementById("mainTxt").textContent = date.substring(0, 4);
-                fetchAndUpdateImages(date.substring(0, 4));
+                document.getElementById("mainTxt").textContent = document.getElementById("giInput").value + "기";
+                fetchAndUpdateImages(document.getElementById("giInput").value);
 
                 // 🚨 폼 닫기 및 스크롤 해제
                 const formContainer = document.getElementById('form-container');
@@ -276,6 +277,21 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
         } catch (error) {
             // 네트워크 오류 등
             console.error('네트워크 에러:', error);
+            // 🚨 폼 닫기 및 스크롤 해제
+            const formContainer = document.getElementById('form-container');
+            formContainer.classList.remove('open');
+            document.body.style.overflow = '';
+            // (선택) 폼 내부 입력값 초기화
+            document.getElementById('uploadForm').reset();
+
+            // 3. 이미지 미리보기 태그 비우기
+            document.getElementById('image-to-crop').src = '';
+
+            // 4. Cropper 인스턴스 파괴 (crop.js에 전역 선언된 cropper 변수 참조)
+            if (typeof cropper !== 'undefined' && cropper !== null) {
+                cropper.destroy();
+                cropper = null; // 다음 렌더링을 위해 완전히 비움
+            }
             Swal.fire({
                 icon: 'error',
                 title: '네트워크 오류',
@@ -283,7 +299,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
             });
         }
 
-    }, 'image/jpeg', 0.9);
+    }, 'image/jpeg', 0.7);
 
 });
 
@@ -348,7 +364,7 @@ async function handleEdit(id) {
                 .then(response => {
                     if (response.ok) {
                         Swal.fire('수정 완료', `${data.title}(${data.date})`, 'success');
-                        fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
+                        fetchAndUpdateImages(document.getElementById("mainTxt").textContent.substring(0, 2));
                     } else {
                         Swal.fire('수정 실패', '등록 중 오류가 발생했습니다.', 'error');
                     }
@@ -368,9 +384,8 @@ async function handleDelete(id) {
     if (!rtn) return;
 
     Swal.fire({
-        html: `
-        <h1 id="del-title">정말 삭제하시겠습니까?</h1>
-        <p id="del-text">삭제하면 복구할 수 없습니다!</p>`,
+        title: '정말 삭제하시겠습니까?',
+        text: "삭제하면 복구할 수 없습니다!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
@@ -407,7 +422,7 @@ async function delOperation(id) {
             // 삭제 성공 시 UI 업데이트 (예: 새로고침)
 
             Swal.fire('삭제됨!', '파일이 삭제되었습니다.', 'success');
-            fetchAndUpdateImages(document.getElementById("mainTxt").textContent);
+            fetchAndUpdateImages(document.getElementById("mainTxt").textContent.substring(0, 2));
         }
         else {
             Swal.fire('실패', '삭제에 실패했습니다.', 'error');
@@ -440,13 +455,30 @@ const API_URL = 'http://localhost:8080/api/photos';
 /**
  * API를 호출하고 화면을 업데이트하는 함수
  */
-async function fetchAndUpdateImages(year) {
+async function fetchAndUpdateImages(gen) {
     console.log('이미지 업데이트 중...');
     const flkty = Flickity.data(imageContainer);
 
+    const wrapper = document.getElementById('giSelectWrapper');
+    const options = wrapper.querySelectorAll('.custom-option');
+    const hiddenInput = document.getElementById('giInput');
+    const triggerText = document.getElementById('giTriggerText');
+
+    // 숨겨진 input에 값 넣기 (이게 백엔드로 날아감)
+    hiddenInput.value = gen;
+
+    // 화면에 보이는 글자 바꾸기
+    triggerText.textContent = gen + "기";
+
+    // 기존 선택된 스타일 지우고, 방금 클릭한 애한테 스타일 주기
+    options.forEach(opt => {
+        opt.classList.remove('selected');
+        if (opt.textContent == (gen + "기")) opt.classList.add('selected');
+    });
+
     try {
         //1. API로 데이터 요청
-        const response = await fetch(API_URL + "/activity?year=" + year);
+        const response = await fetch(API_URL + "/generation?gen=" + gen);
         if (!response.ok) {
             throw new Error(`API 요청 실패: ${response.status}`);
         }
@@ -514,7 +546,7 @@ async function fetchAndUpdateImages(year) {
 
             // <img> 태그 생성
             const img = document.createElement('img');
-            img.src = 'http://localhost:8080/gallery/' + imageData.imageUrl; // API 응답에 맞는 이미지 URL
+            img.setAttribute('data-flickity-lazyload', imageData.imageUrl);
             const div2 = document.createElement('div');
             div2.classList.add('img-wrapper');
             div2.appendChild(img);
@@ -544,25 +576,72 @@ async function fetchAndUpdateImages(year) {
 // 페이지가 처음 로드될 때 즉시 한 번 실행
 document.addEventListener('DOMContentLoaded', () => {
     let currentYear = new Date().getFullYear();
-    currentYear--;
-    mainTxt.textContent = currentYear;
-    fetchAndUpdateImages(currentYear);
+    mainTxt.textContent = (currentYear - 2005) + "기";
+    fetchAndUpdateImages(currentYear - 2005);
     initButtons();
+
+    const wrapper = document.getElementById('giSelectWrapper');
+    const trigger = wrapper.querySelector('.custom-select-trigger');
+    const options = wrapper.querySelectorAll('.custom-option');
+    const hiddenInput = document.getElementById('giInput');
+    const triggerText = document.getElementById('giTriggerText');
+
+    // 1. 트리거 클릭 시 드롭다운 열기/닫기
+    trigger.addEventListener('click', () => {
+        wrapper.classList.toggle('open');
+    });
+
+    // 2. 옵션 중 하나를 클릭했을 때
+    options.forEach(option => {
+        option.addEventListener('click', function () {
+            // 선택한 값 가져오기
+            const value = this.getAttribute('data-value');
+            const text = this.textContent;
+
+            // 숨겨진 input에 값 넣기 (이게 백엔드로 날아감)
+            hiddenInput.value = value;
+
+            // 화면에 보이는 글자 바꾸기
+            triggerText.textContent = text;
+
+            // 기존 선택된 스타일 지우고, 방금 클릭한 애한테 스타일 주기
+            options.forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+
+            // 드롭다운 닫기
+            wrapper.classList.remove('open');
+        });
+    });
+
+    // 3. 드롭다운 바깥 영역을 클릭하면 닫히게 만들기 (센스)
+    window.addEventListener('click', (e) => {
+        if (!wrapper.contains(e.target)) {
+            wrapper.classList.remove('open');
+        }
+    });
 });
 
 const initButtons = () => {
     const container = document.getElementById("yearMenu");
     const mainTxt = document.getElementById("mainTxt");
     let currentYear = new Date().getFullYear();
-    for (let i = currentYear; i >= 2021; i--) {
+    for (let i = (currentYear - 2004); i >= 17; i--) {
         const btn = document.createElement("button");
-        btn.textContent = `${i}`;
+        btn.textContent = `${i}기`;
 
         btn.onclick = () => {
-            mainTxt.textContent = `${i}`;
+            mainTxt.textContent = `${i}기`;
             fetchAndUpdateImages(i);
         }
 
         container.appendChild(btn);
+
+        const parent = document.getElementsByClassName("custom-options")[0];
+        const newLi = document.createElement('li');
+        if (i == (currentYear - 2005)) newLi.className = "custom-option selected";
+        else newLi.className = "custom-option";
+        newLi.setAttribute('data-value', i);
+        newLi.innerText = i + "기";
+        parent.appendChild(newLi);
     }
 }

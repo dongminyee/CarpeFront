@@ -37,7 +37,7 @@ body {
             rgba(0, 0, 0, 0.7) 0%,
             rgba(0, 0, 0, 0.5) 60%,
             rgba(17, 17, 17, 1) 100%),
-        url('/CarpeDiem/images/section_background.jpg') center center/cover no-repeat;
+        url('/images/section_background.jpg') center center/cover no-repeat;
     z-index: 1;
     padding-top: 70px;
 }
@@ -225,6 +225,17 @@ body {
 .form-wrapper.open .dark-form {
     transform: scale(1) translateY(0);
 }
+
+/* 가로 배치용 */
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.half {
+    flex: 1;
+}
+
 
 /* 3. 모달 닫기(X) 버튼 스타일 */
 .modal-close-btn {
@@ -464,4 +475,91 @@ body {
     .form-wrapper.open .dark-form {
         transform: translateY(0);
     }
+}
+
+
+
+label,
+input {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* 부모 기준점 설정 */
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+    user-select: none;
+    /* 드래그 방지 */
+}
+
+/* 화면에 보이는 클릭 버튼 */
+.custom-select-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #2e2e2e;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.custom-select-trigger .arrow {
+    font-size: 0.7rem;
+    color: #999;
+}
+
+/* 촤르륵 떨어지는 목록 창 */
+.custom-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    background-color: #2e2e2e;
+    /* 다크 테마 배경 */
+    border: 1px solid #444;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    /* 그림자 효과 */
+    z-index: 100;
+    /* 사진 같은 거 위에 뜨도록 */
+    display: none;
+    /* 평소엔 숨김 */
+
+    max-height: 200px;
+    /* 옵션 1개 높이(약 40px) × 5개 = 200px */
+    overflow-y: auto;
+    /* 200px을 넘어가면 자동으로 세로 스크롤 생성 */
+}
+
+/* 드롭다운이 열렸을 때 (JS로 open 클래스 추가) */
+.custom-select-wrapper.open .custom-options {
+    display: block;
+}
+
+/* 개별 옵션 디자인 */
+.custom-option {
+    padding: 10px 12px;
+    color: #ddd;
+    cursor: pointer;
+    transition: background 0.2s;
+    /* 부드러운 색상 전환 */
+}
+
+/* 드디어! 마우스 올렸을 때 배경색 변경 */
+.custom-option:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+/* 선택된 항목 표시 */
+.custom-option.selected {
+    color: #4032ff;
+    font-weight: bold;
 }

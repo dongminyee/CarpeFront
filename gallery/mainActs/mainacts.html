@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="/CarpeDiem/style.css">
+  <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
   <link rel="stylesheet" href="mainacts.css">
-  <link rel="stylesheet" href="/CarpeDiem/common.css">
+  <link rel="stylesheet" href="/common.css">
   <link rel="stylesheet" href="timeline.css">
 </head>
 
@@ -27,7 +27,7 @@
       <nav>
         <ul class="gnb">
           <li>
-            <button class="login-btn" id="login-btn"><a href="/CarpeDiem/logIn/index.html">Login<i
+            <button class="login-btn" id="login-btn"><a href="/logIn/index.html">Login<i
                   class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a> </button>
             <div id="user-profile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img" src="" alt="프로필" style="width: 1.3rem; height: 1.3rem; border-radius: 50%;">
@@ -63,36 +63,36 @@
           <div class="mobile-nav-section">
             <span>About Us</span>
             <ul>
-              <li><a href="/CarpeDiem/about/introduction.html">소개</a></li>
-              <li><a href="/CarpeDiem/ci/ci.html">CI</a></li>
-              <li><a href="/CarpeDiem/contact/contact.html">Contact</a></li>
+              <li><a href="/about/introduction.html">소개</a></li>
+              <li><a href="/ci/ci.html">CI</a></li>
+              <li><a href="/contact/contact.html">Contact</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-section">
             <span>Gallery</span>
             <ul>
-              <li><a href="/CarpeDiem/gallery/mainActs/mainacts.html">주요활동</a></li>
-              <li><a href="/CarpeDiem/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
+              <li><a href="/gallery/mainActs/mainacts.html">주요활동</a></li>
+              <li><a href="/gallery/memberGal/mainacts.html">기수 갤러리</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-section">
             <span>Community</span>
             <ul>
-              <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-              <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+              <li><a href="/community/songlist/song.html">역대 선곡 리스트</a></li>
+              <li><a href="/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
             </ul>
           </div>
           <div class="mobile-nav-section">
             <span>Recruit</span>
             <ul>
-              <li><a href="/CarpeDiem/recruit/recruit.html">지원하기</a></li>
+              <li><a href="/recruit/recruit.html">지원하기</a></li>
             </ul>
           </div>
 
           <div class="mobile-nav-login">
-            <a href="/CarpeDiem/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
+            <a href="/logIn/index.html" class="login-btn-mobile" id="login-btn-mobile">Login<i
                 class="fa-solid fa-arrow-right-to-bracket" style="margin-left: 0.5rem;"></i></a>
             <div id="user-profile-mobile" style="display: none; align-items: center; gap: 0.5rem;">
               <img id="profile-img-mobile" src="" alt="프로필">
@@ -114,8 +114,8 @@
           <li><a href="../memberGal/mainacts.html">기수 갤러리</a></li>
         </ul>
         <ul class="dropCommu">
-          <li><a href="/CarpeDiem/community/songlist/song.html">역대 선곡 리스트</a></li>
-          <li><a href="/CarpeDiem/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
+          <li><a href="/community/songlist/song.html">역대 선곡 리스트</a></li>
+          <li><a href="/community/clubroom/club.html" class="requires-auth">동방 이용 시간표</a></li>
           <!-- <li><a href="#">WhenToMeet</a></li> -->
         </ul>
         <ul class="dropRecr">
@@ -190,7 +190,7 @@
       <button type="submit">Upload</button>
     </form> -->
   <div class="timeline">
-    <div class="carousel carousel-main" data-flickity='{}' id="image-container">
+    <div class="carousel carousel-main" data-flickity='{"lazyLoad": 2}' id="image-container">
       <div class="carousel-cell"><time datetime="2025-01-01"><span>2025. 1. 23</span> 25' 신입생 영어캠프 공연</time>
         <div class="img-wrapper"><img src="images/20250123_english.jpg"></div>
       </div>
@@ -286,7 +286,7 @@
   <script src="crop.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/CarpeDiem/auth.js"></script>
+  <script src="/auth.js"></script>
 </body>
 
 </html>
