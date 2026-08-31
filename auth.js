@@ -33,6 +33,8 @@ async function checkAuthAndUI() {
         return;
     }
 
+    updateloginUI();
+
     try {
         // 1. 서버에 상태 확인 요청
         const response = await fetch('https://carpespring.onrender.com/api/auth/status', {
@@ -51,7 +53,6 @@ async function checkAuthAndUI() {
         switch (result.status) {
             case 'LOGIN_SUCCESS':
                 // [상태 1] 정상 -> UI만 업데이트
-                updateLoginUI();
                 break;
 
             case 'TOKEN_REFRESHED':
@@ -61,7 +62,6 @@ async function checkAuthAndUI() {
                     localStorage.setItem('refreshToken', result.newRefreshToken);
                     console.log("토큰이 갱신되었습니다.");
                 }
-                updateLoginUI();
                 break;
 
             case 'LOGOUT_REQUIRED':
