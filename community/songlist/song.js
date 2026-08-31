@@ -121,6 +121,19 @@ function notAuthed() {
 
 async function fetchSongs(nextPage) {
   page = nextPage
+  // 🚨 통신 시작 전 로딩 스피너 띄우기
+  const tb = document.getElementById('song-list');
+  if (tb) {
+    tb.innerHTML = `
+      <tr>
+        <td colspan="7" style="text-align:center; padding: 60px 0;">
+          <div class="song-spinner"></div>
+          <div style="margin-top:15px; color:#9aa0a6; font-size:14px;">선곡 리스트를 불러오는 중...</div>
+        </td>
+      </tr>
+    `;
+  }
+
   const keyword = document.getElementById('keyword').value.trim();
   const params = new URLSearchParams({
     page,
@@ -130,17 +143,31 @@ async function fetchSongs(nextPage) {
     ...(keyword && { keyword })
   });
 
-  const isAdmin = await checkEditAuth();
-  console.log(isAdmin);
-  const additive = isAdmin ? "&auth=admin" : "&auth=user";
-  const response = await fetch(`${API_BASE}/get?${params}` + additive);
-  console.log(`${API_BASE}/get?${params}` + additive);
-  const data = await response.json();
-  console.log(data);
+  try {
+    const isAdmin = await checkEditAuth();
+    console.log(isAdmin);
+    const additive = isAdmin ? "&auth=admin" : "&auth=user";
 
-  renderTable(data.content, isAdmin);
-  renderPagination(data.number, data.totalPages);
-  document.getElementById('info').textContent = `총 ${data.totalElements}개`;
+    // API 통신 (이 동안 화면에는 스피너가 돌고 있음)
+    const response = await fetch(`${API_BASE}/get?${params}` + additive);
+    console.log(`${API_BASE}/get?${params}` + additive);
+
+    if (!response.ok) throw new Error("네트워크 응답이 정상이 아닙니다.");
+
+    const data = await response.json();
+    console.log(data);
+
+    // 통신 완료 후 정상 데이터 렌더링 (스피너가 덮어씌워지며 사라짐)
+    renderTable(data.content, isAdmin);
+    renderPagination(data.number, data.totalPages);
+    document.getElementById('info').textContent = `총 ${data.totalElements}개`;
+
+  } catch (error) {
+    console.error('데이터 로딩 중 에러 발생:', error);
+    if (tb) {
+      tb.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:#ff4d4d;">데이터를 불러오는 데 실패했습니다.</td></tr>';
+    }
+  }
 }
 
 // 테이블 렌더링
