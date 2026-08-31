@@ -115,7 +115,14 @@ async function checkEditAuth() {
     switch (result.status) {
       case 'LOGIN_SUCCESS':
         if (role == "ROLE_ADMIN") return true;
-        else return false;
+        else {
+          Swal.fire({
+            icon: 'error',
+            title: '접근 권한 없음',
+            text: `사용자의 게시물 접근 권한이 없음`
+          });
+          return false;
+        }
 
       case 'TOKEN_REFRESHED':
         if (result.newAccessToken) {
@@ -123,7 +130,14 @@ async function checkEditAuth() {
           localStorage.setItem('refreshToken', result.refreshToken);
         }
         if (role == "ROLE_ADMIN") return true;
-        else return false;
+        else {
+          Swal.fire({
+            icon: 'error',
+            title: '접근 권한 없음',
+            text: `사용자의 게시물 접근 권한이 없음`
+          });
+          return false;
+        }
 
       case 'LOGOUT_REQUIRED':
       default:

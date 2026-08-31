@@ -83,7 +83,14 @@ async function checkEditAuth() {
             case 'LOGIN_SUCCESS':
                 // [상태 1] 정상 -> UI만 업데이트
                 if (role == "ROLE_ADMIN") return true;
-                else return false;
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '접근 권한 없음',
+                        text: `사용자의 게시물 접근 권한이 없음`
+                    });
+                    return false;
+                }
             case 'TOKEN_REFRESHED':
                 // [상태 2] 갱신됨 -> 로컬스토리지 갈아끼우기 + UI 업데이트
                 if (result.newAccessToken) {
@@ -92,7 +99,14 @@ async function checkEditAuth() {
                     console.log("토큰이 갱신되었습니다.");
                 }
                 if (role == "ROLE_ADMIN") return true;
-                else return false;
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '접근 권한 없음',
+                        text: `사용자의 게시물 접근 권한이 없음`
+                    });
+                    return false;
+                }
             case 'LOGOUT_REQUIRED':
             default:
                 // [상태 3] 만료/비정상 -> 데이터 날리고 로그아웃 화면
