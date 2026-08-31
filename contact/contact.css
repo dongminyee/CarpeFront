@@ -261,25 +261,47 @@ body .map .map-section {
 
   /* 🚨 모바일에서 카카오맵 양옆 여백 추가 */
   .map-section {
-    /* 모바일에서는 화면이 작으니 여백을 1.5rem(약 24px)으로 살짝 줄입니다 */
     width: calc(100% - 3rem);
     margin: 0 auto 4rem auto;
     border-radius: 12px;
+    box-sizing: border-box;
+    /* ⭐️ 추가: 패딩/보더가 너비를 뚫고 나가지 않도록 억제 */
+    overflow: hidden;
+    /* ⭐️ 추가: 내부 카카오맵 화면이 둥근 모서리나 박스를 뚫고 나가는 것 방지 */
   }
 
   /* 길찾기 폼 세로 정렬 */
   .map-cta {
+    display: flex;
+    /* (기존에 있다면 생략 가능) */
     flex-direction: column;
     align-items: flex-start;
     padding: 1.5rem;
+    box-sizing: border-box;
+    /* ⭐️ 추가 */
+    width: 100%;
+    /* ⭐️ 추가: 부모 요소에 딱 맞게 고정 */
   }
 
   .route-form {
     width: 100%;
     min-width: 0;
+    box-sizing: border-box;
+    /* ⭐️ 추가 */
+  }
+
+  /* ⭐️ 폼 내부의 입력창이나 버튼이 화면을 뚫고 나가는 것 방지 */
+  .route-form input,
+  .route-form button {
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .map-addr {
     font-size: 1.05rem;
+    word-break: keep-all;
+    /* ⭐️ 추가: 주소가 길어질 때 단어 단위로 깔끔하게 줄바꿈 */
+    overflow-wrap: break-word;
+    /* ⭐️ 추가: 박스 바깥으로 텍스트가 나가지 않음 */
   }
 }
