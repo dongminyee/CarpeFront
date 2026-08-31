@@ -91,7 +91,7 @@ function updateLoginUI() {
         document.getElementById('profile-img').src = localStorage.getItem("userPicture");
         if ((localStorage.getItem('role') === 'ROLE_ADMIN') && (localStorage.getItem('email') === 'dongminyeeaa@gmail.com')) {
             document.getElementById('profile-name').innerHTML = `
-                <a href="/admin/admin.html" style="font-weight: bold; cursor: pointer; color: inherit;">
+                <a href="/CarpeFront/admin/admin.html" style="font-weight: bold; cursor: pointer; color: inherit;">
                     ${localStorage.getItem("userName")} <span style="font-size: 0.8em; color: red;">(관리자)</span>
                 </a>
             `;
@@ -105,7 +105,7 @@ function updateLoginUI() {
         document.getElementById('profile-img-mobile').src = localStorage.getItem("userPicture");
         if ((localStorage.getItem('role') === 'ROLE_ADMIN') && (localStorage.getItem('email') === 'dongminyeeaa@gmail.com')) {
             document.getElementById('profile-name-mobile').innerHTML = `
-                <a href="/admin/admin.html" style="font-weight: bold; cursor: pointer; color: inherit;">
+                <a href="/CarpeFront/admin/admin.html" style="font-weight: bold; cursor: pointer; color: inherit;">
                     ${localStorage.getItem("userName")} <span style="font-size: 0.8em; color: red;">(관리자)</span>
                 </a>
             `;
@@ -155,7 +155,7 @@ function updateProfileUI(name, picture) {
         console.log('success1')
         if ((localStorage.getItem('role') === 'ROLE_ADMIN') && (localStorage.getItem('email') === 'dongminyeeaa@gmail.com')) {
             profileName.innerHTML = `
-                <a href="/admin/admin.html" style="text-decoration: underline; font-weight: bold; cursor: pointer; color: inherit;">
+                <a href="/CarpeFront/admin/admin.html" style="text-decoration: underline; font-weight: bold; cursor: pointer; color: inherit;">
                     ${name} <span style="font-size: 0.8em; color: red;">(관리자)</span>
                 </a>
             `;
