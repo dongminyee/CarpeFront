@@ -23,6 +23,10 @@ document.addEventListener('pageshow', () => {
     checkAuthAndUI();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuthAndUI();
+});
+
 async function checkAuthAndUI() {
     const accessToken = localStorage.getItem('accessToken');
 
