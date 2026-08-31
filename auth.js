@@ -19,7 +19,7 @@ window.addEventListener('message', (event) => {
     }
 });
 
-document.addEventListener('pageshow', () => {
+window.addEventListener('pageshow', () => {
     checkAuthAndUI();
 });
 
