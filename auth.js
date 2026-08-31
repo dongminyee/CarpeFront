@@ -33,7 +33,7 @@ async function checkAuthAndUI() {
         return;
     }
 
-    updateloginUI();
+    updateLoginUI();
 
     try {
         // 1. 서버에 상태 확인 요청
