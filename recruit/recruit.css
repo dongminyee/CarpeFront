@@ -206,7 +206,7 @@ section.section-cntct .title h2 {
 .insta-post .carousel-cell img {
   width: 100%;
   display: block;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;
   /* ⭐️ 핵심: 사진이 로딩 안 되어도 무조건 1:1 정사각형 공간을 미리 확보함 */
   object-fit: cover;
   /* 비율이 안 맞는 사진이 들어와도 예쁘게 꽉 채움 */
