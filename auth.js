@@ -62,6 +62,7 @@ async function checkAuthAndUI() {
                     localStorage.setItem('refreshToken', result.newRefreshToken);
                     console.log("토큰이 갱신되었습니다.");
                 }
+                updateLoginUI();
                 break;
 
             case 'LOGOUT_REQUIRED':
