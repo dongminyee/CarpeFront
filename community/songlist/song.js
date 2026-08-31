@@ -37,12 +37,12 @@ thead.addEventListener('click', (e) => {
 
 // 로그인 상태 확인
 
-async function checkEditAuth() {
+async function checkSongEditAuth() {
   const accessToken = localStorage.getItem('accessToken');
 
   // 토큰 없으면 바로 로그아웃 처리
   if (accessToken == null) {
-    notAuthed();
+    notSongAuthed();
     return false;
   }
 
@@ -84,11 +84,11 @@ async function checkEditAuth() {
       case 'LOGOUT_REQUIRED':
       default:
         // [상태 3] 만료/비정상 -> 데이터 날리고 로그아웃 화면
-        notAuthed();
+        notSongAuthed();
         return false;
         break;
     }
-    notAuthed();
+    notSongAuthed();
     return false;
 
   } catch (error) {
@@ -102,7 +102,7 @@ async function checkEditAuth() {
   }
 }
 
-function notAuthed() {
+function notSongAuthed() {
   // 저장소 비우기
   localStorage.clear();
   const loginBtn = document.getElementById('login-btn');
@@ -144,7 +144,7 @@ async function fetchSongs(nextPage) {
   });
 
   try {
-    const isAdmin = await checkEditAuth();
+    const isAdmin = await checkSongEditAuth();
     console.log(isAdmin);
     const additive = isAdmin ? "&auth=admin" : "&auth=user";
 
