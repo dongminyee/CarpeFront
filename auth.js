@@ -11,7 +11,7 @@ window.addEventListener('message', (event) => {
         localStorage.setItem('userPicture', data.picture);
         localStorage.setItem('email', data.username);
         localStorage.setItem('role', data.role);
-
+        checkAuthAndUI();
         window.location.replace('/CarpeFront/index.html');
 
         // UI 즉시 업데이트
