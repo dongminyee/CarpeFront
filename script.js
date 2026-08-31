@@ -115,7 +115,7 @@ async function checkEditAuth() {
     switch (result.status) {
       case 'LOGIN_SUCCESS':
         if (role == "ROLE_ADMIN") return true;
-        break;
+        else return false;
 
       case 'TOKEN_REFRESHED':
         if (result.newAccessToken) {
@@ -123,7 +123,7 @@ async function checkEditAuth() {
           localStorage.setItem('refreshToken', result.refreshToken);
         }
         if (role == "ROLE_ADMIN") return true;
-        break;
+        else return false;
 
       case 'LOGOUT_REQUIRED':
       default:
