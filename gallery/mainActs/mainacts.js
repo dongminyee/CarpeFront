@@ -475,6 +475,25 @@ async function fetchAndUpdateImages(year) {
     console.log('이미지 업데이트 중...');
     const flkty = Flickity.data(imageContainer);
 
+    // 1. 기존 플리키티 카드 모두 삭제 (화면 클리어)
+    const currentCells = flkty.getCellElements();
+    flkty.remove(currentCells);
+
+    // 2. 로딩 스피너 생성 및 띄우기
+    let loader = document.getElementById('timeline-loader');
+    if (!loader) {
+        // 처음 실행 시 로딩 UI DOM을 만들어 부모(.timeline)에 붙임
+        loader = document.createElement('div');
+        loader.id = 'timeline-loader';
+        loader.innerHTML = `
+            <div class="timeline-spinner"></div>
+            <p style="color: #9aa0a6; margin-top: 15px; font-weight: 500;">사진을 불러오는 중...</p>
+        `;
+        imageContainer.parentElement.appendChild(loader);
+    }
+    loader.style.display = 'flex';       // 스피너 켜기
+    imageContainer.style.opacity = '0';  // 플리키티 영역 잠깐 투명하게 숨김
+
     try {
         //1. API로 데이터 요청
         const response = await fetch(API_URL + "/activity?year=" + year);
@@ -482,13 +501,6 @@ async function fetchAndUpdateImages(year) {
             throw new Error(`API 요청 실패: ${response.status}`);
         }
         const images = await response.json(); // JSON 데이터를 JS 객체로 변환
-
-        //2. 기존 이미지 목록 삭제 (화면 클리어)
-
-
-        const currentCells = flkty.getCellElements();
-        flkty.remove(currentCells);
-
 
         //3. 받아온 데이터로 새 <div>와 <img> 생성
         const newCellList = images.map(imageData => {
@@ -558,6 +570,9 @@ async function fetchAndUpdateImages(year) {
             return div;
         });
 
+        // 5. 다운로드가 다 끝났으니 스피너 끄고 화면 복구
+        loader.style.display = 'none';
+        imageContainer.style.opacity = '1';
 
         flkty.append(newCellList);
         flkty.reloadCells();
@@ -566,7 +581,10 @@ async function fetchAndUpdateImages(year) {
 
     } catch (error) {
         console.error('이미지 로딩 중 오류 발생:', error);
-        imageContainer.innerHTML = '<p>이미지를 불러오는 데 실패했습니다.</p>';
+        // 에러 시 무한 로딩 방지
+        loader.style.display = 'none';
+        imageContainer.style.opacity = '1';
+        imageContainer.innerHTML = '<p style="color: white; text-align: center; width: 100%; margin-top: 50px;">이미지를 불러오는 데 실패했습니다.</p>';
     }
 
 
