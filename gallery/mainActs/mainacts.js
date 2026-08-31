@@ -83,8 +83,7 @@ async function checkEditAuth() {
             case 'LOGIN_SUCCESS':
                 // [상태 1] 정상 -> UI만 업데이트
                 if (role == "ROLE_ADMIN") return true;
-                break;
-
+                else return false;
             case 'TOKEN_REFRESHED':
                 // [상태 2] 갱신됨 -> 로컬스토리지 갈아끼우기 + UI 업데이트
                 if (result.newAccessToken) {
@@ -93,8 +92,7 @@ async function checkEditAuth() {
                     console.log("토큰이 갱신되었습니다.");
                 }
                 if (role == "ROLE_ADMIN") return true;
-                break;
-
+                else return false;
             case 'LOGOUT_REQUIRED':
             default:
                 // [상태 3] 만료/비정상 -> 데이터 날리고 로그아웃 화면
@@ -121,6 +119,8 @@ function notAuthed() {
     localStorage.clear();
     const loginBtn = document.getElementById('login-btn');
     const userProfile = document.getElementById('user-profile');
+    const loginBtnMobile = document.getElementById('login-btn-mobile');
+    const userProfileMobile = document.getElementById('user-profile-mobile');
     Swal.fire({
         icon: 'error',
         title: '수정 권한 없음',
@@ -129,6 +129,8 @@ function notAuthed() {
     // 프로필 숨기고 버튼 보이기
     if (loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
     if (userProfile) userProfile.style.display = 'none';
+    if (loginBtnMobile) loginBtnMobile.style.display = 'block';
+    if (userProfileMobile) userProfileMobile.style.display = 'none';
 }
 
 

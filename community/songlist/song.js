@@ -107,9 +107,13 @@ function notAuthed() {
   localStorage.clear();
   const loginBtn = document.getElementById('login-btn');
   const userProfile = document.getElementById('user-profile');
+  const loginBtnMobile = document.getElementById('login-btn-mobile');
+  const userProfileMobile = document.getElementById('user-profile-mobile');
   // 프로필 숨기고 버튼 보이기
   if (loginBtn) loginBtn.style.display = 'block'; // flex 대신 block 권장 (내부 정렬 때문)
   if (userProfile) userProfile.style.display = 'none';
+  if (loginBtnMobile) loginBtnMobile.style.display = 'block';
+  if (userProfileMobile) userProfileMobile.style.display = 'none';
 }
 
 // ------- 나머지 기존 로직(필터/페이지/CSV/렌더)은 그대로 두세요 -------
