@@ -314,7 +314,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
             });
         }
 
-    }, 'image/jpeg', 0.7);
+    }, 'image/jpeg', 0.6);
 
 });
 
