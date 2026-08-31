@@ -12,7 +12,7 @@ window.addEventListener('message', (event) => {
         localStorage.setItem('email', data.username);
         localStorage.setItem('role', data.role);
 
-        window.location.replace('/index.html');
+        window.location.replace('/CarpeFront/index.html');
 
         // UI 즉시 업데이트
         //updateProfileUI(data.name, data.picture);
