@@ -18,7 +18,7 @@ if (syncBtn) {
 
         try {
             // 3. 백엔드로 POST 요청 보내기 (경로는 컨트롤러 설정에 맞게 조절하세요)
-            const response = await fetch('http://localhost:8080/admin/sync-sheet', {
+            const response = await fetch('https://carpespring.onrender.com/admin/sync-sheet', {
                 method: 'POST',
                 headers: {
                     'accessToken': token // 백엔드 JwtFilter가 기다리는 헤더 이름
@@ -76,7 +76,7 @@ if (syncSongBtn && periodSelect) {
 
         try {
             // 🌟 동적으로 읽어온 period 값을 주소에 삽입합니다.
-            const response = await fetch(`http://localhost:8080/api/song/sync?period=${period}`, {
+            const response = await fetch(`https://carpespring.onrender.com/api/song/sync?period=${period}`, {
                 method: 'POST',
                 headers: {
                     'accessToken': token

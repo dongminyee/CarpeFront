@@ -30,7 +30,7 @@ let loginEvent = () => {
 
     // 3. 구글 로그인 URL (Spring Security 기본 설정 경로)
     // 만약 백엔드 경로가 다르다면 수정하세요.
-    const url = 'http://localhost:8080/oauth2/authorization/google';
+    const url = 'https://carpespring.onrender.com/oauth2/authorization/google';
 
     // 4. 윈도우 옵션 설정 (크기, 위치, 스크롤바 등)
     const windowFeatures = `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes,status=yes`;

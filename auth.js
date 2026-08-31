@@ -35,7 +35,7 @@ async function checkAuthAndUI() {
 
     try {
         // 1. 서버에 상태 확인 요청
-        const response = await fetch('http://localhost:8080/api/auth/status', {
+        const response = await fetch('https://carpespring.onrender.com/api/auth/status', {
             method: 'GET',
             headers: {
                 'accessToken': localStorage.getItem('accessToken'),
@@ -116,7 +116,7 @@ function updateLoginUI() {
 
 async function logout() {
     // 저장소 비우기
-    await fetch('http://localhost:8080/api/auth/logout', {
+    await fetch('https://carpespring.onrender.com/api/auth/logout', {
         method: 'DELETE',
         headers: {
             'username': localStorage.getItem('email'),

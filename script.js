@@ -100,7 +100,7 @@ async function checkEditAuth() {
   }
 
   try {
-    const response = await fetch('http://localhost:8080/api/auth/status', {
+    const response = await fetch('https://carpespring.onrender.com/api/auth/status', {
       method: 'GET',
       headers: {
         'accessToken': localStorage.getItem('accessToken'),

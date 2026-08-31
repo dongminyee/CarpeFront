@@ -5,7 +5,7 @@ const rowsPerSel = document.getElementById('rowsPerPage');
 const pager = document.getElementById('pagination');
 const csvInput = document.getElementById('csvInput');
 
-const API_BASE = 'http://localhost:8080/api/song';
+const API_BASE = 'https://carpespring.onrender.com/api/song';
 
 let filters = {};
 let sortState = { key: "publishedAt", dir: 1 };
@@ -48,7 +48,7 @@ async function checkEditAuth() {
 
   try {
     // 1. 서버에 상태 확인 요청
-    const response = await fetch('http://localhost:8080/api/auth/status', {
+    const response = await fetch('https://carpespring.onrender.com/api/auth/status', {
       method: 'GET',
       headers: {
         'accessToken': localStorage.getItem('accessToken'),
@@ -279,7 +279,7 @@ async function editSong(buttonElement, videoId) {
         return;
       }
 
-      fetch(`http://localhost:8080/api/song/patch?${params.toString()}`, {
+      fetch(`https://carpespring.onrender.com/api/song/patch?${params.toString()}`, {
         method: 'PATCH',
         headers: {
           'accessToken': token

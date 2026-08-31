@@ -64,7 +64,7 @@ async function checkEditAuth() {
 
     try {
         // 1. 서버에 상태 확인 요청
-        const response = await fetch('http://localhost:8080/api/auth/status', {
+        const response = await fetch('https://carpespring.onrender.com/api/auth/status', {
             method: 'GET',
             headers: {
                 'accessToken': localStorage.getItem('accessToken'),
@@ -202,7 +202,7 @@ document.getElementById('uploadForm').addEventListener('submit', async function 
                 alert("로그인이 필요합니다.");
                 return;
             }
-            const response = await fetch('http://localhost:8080/api/photos/upload', {
+            const response = await fetch('https://carpespring.onrender.com/api/photos/upload', {
                 method: 'POST',
                 headers: {
                     'accessToken': token
@@ -351,7 +351,7 @@ async function handleEdit(id) {
                 alert("로그인이 필요합니다.");
                 return;
             }
-            fetch(`http://localhost:8080/api/photos/patch/${id}`, {
+            fetch(`https://carpespring.onrender.com/api/photos/patch/${id}`, {
                 method: 'PATCH',
                 headers: {
                     'accessToken': token
@@ -409,7 +409,7 @@ async function delOperation(id) {
             alert("로그인이 필요합니다.");
             return;
         }
-        const rst = await fetch(`${'http://localhost:8080/api/photos/delete'}/${id}`, {
+        const rst = await fetch(`${'https://carpespring.onrender.com/api/photos/delete'}/${id}`, {
             method: 'DELETE',
             headers: {
                 'accessToken': token
@@ -450,7 +450,7 @@ const imageContainer = document.getElementById('image-container');
 
 // 테스트용 API URL (10개의 사진 데이터를 요청)
 // 실제 사용 시에는 백엔드 API 주소를 넣으세요.
-const API_URL = 'http://localhost:8080/api/photos';
+const API_URL = 'https://carpespring.onrender.com/api/photos';
 
 /**
  * API를 호출하고 화면을 업데이트하는 함수
