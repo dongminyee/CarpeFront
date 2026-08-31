@@ -188,7 +188,8 @@ function renderTable(songs, isAdmin) {
       <td data-key="artist">${song.artist}</td>
       <td data-key="gen">${song.generation}</td>
       <td data-key="stage">${song.concert}</td>
-      <td data-key="year">${song.date}</td>`
+      <td data-key="year">${song.date}</td>
+      <td data-key="status" style="display:none;">${song.status}</td>`
     + (isAdmin ? `
       <td class="action-col">
         <button class="btn-edit" onclick="editSong(this, '${song.videoId}')">수정</button>
@@ -240,6 +241,7 @@ async function editSong(buttonElement, videoId) {
   const generation = tr.querySelector('[data-key="gen"]').innerText;
   const concert = tr.querySelector('[data-key="stage"]').innerText;
   const year = tr.querySelector('[data-key="year"]').innerText;
+  const status = tr.querySelector('[data-key="status"]').innerText;
 
   Swal.fire({
     title: '노래 정보 수정',
@@ -262,9 +264,9 @@ async function editSong(buttonElement, videoId) {
 
               <label for="editStatus">공개 상태</label>
               <select id="edit-input-status" class="swal2-select custom-select">
-                <option value="PENDING">검토 대기 (Pending)</option>
-                <option value="PUBLISHED">전체 공개 (Published)</option>
-                <option value="HIDDEN">숨김 처리 (Hidden)</option>
+                <option value="PENDING" ${status === 'PENDING' ? 'selected' : ''}>검토 대기 (Pending)</option>
+                <option value="PUBLISHED" ${status === 'PUBLISHED' ? 'selected' : ''}>전체 공개 (Published)</option>
+                <option value="HIDDEN" ${status === 'HIDDEN' ? 'selected' : ''}>숨김 처리 (Hidden)</option>
               </select>
             </div>
        `,
