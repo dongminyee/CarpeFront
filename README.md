@@ -1,4 +1,4 @@
-# CarpeDie Web - Frontend
+# CarpeDiem Web - Frontend
 
 KAIST 팝밴드 **까르페디엠(CarpeDiem)**의 웹 서비스 프론트엔드 레포지토리입니다.  
 동아리 소개, 구글 OAuth 기반 로그인/인증, 실시간 동방 이용 시간표, 역대 선곡 리스트, 연도별 갤러리 기능을 제공합니다.
@@ -19,8 +19,6 @@ KAIST 팝밴드 **까르페디엠(CarpeDiem)**의 웹 서비스 프론트엔드 
 ---
 
 ## 🛠 Tech Stack
-
-- **Frontend**
 
 * JavaScript (ES6+)
 * HTML5 / CSS3
